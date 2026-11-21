@@ -1,0 +1,154 @@
+<section class="lead" id="form" style="--lead-bg:url('/img/misc/lead.webp')">
+	<div class="wrap grid">
+		<div class="formcard">
+			<div class="done" id="lead-done" hidden>
+				<div class="tick"><i class="fa-solid fa-check"></i></div>
+				<p class="big">Thanks for submitting</p>
+				<p>You have successfully submitted the form | For re-submitting <a href="/">Click here</a></p>
+			</div>
+
+			<form id="lead-form" novalidate>
+				<h2>Please enter your details to get a call back from <span>Career Mentor</span></h2>
+				<input name="name" type="text" required placeholder="Your name" autocomplete="name" />
+				<input name="phone" type="tel" required pattern="[1-9][0-9]{9}" placeholder="Mobile No" title="Please enter a 10 digit mobile no" autocomplete="tel" />
+				<input name="email" type="email" required placeholder="Email" autocomplete="email" />
+				<select name="education" required aria-label="Select Education">
+					<option value="">Select Education</option>
+					<option value="any_engineers">Any Engineers</option>
+					<option value="bca/b.sc">BCA / B.Sc</option>
+					<option value="mca/mtech/m.sc/mba">MCA / MTech / MSc / MBA</option>
+					<option value="diploma">Diploma</option>
+					<option value="other_degree">Other Degree</option>
+				</select>
+				<select name="experience" required aria-label="Select Experience">
+					<option value="">Select Experience</option>
+					<option value="it_working_professional">IT Working Professional</option>
+					<option value="non-it_working_professional">Non-IT Working Professional</option>
+					<option value="fresher-looking_for_job">Fresher Looking For Job</option>
+					<option value="student">Student</option>
+				</select>
+				<p class="consent">I authorise MicroDegree &amp; its representatives to contact me regarding courses, career guidance and placement assistance.</p>
+				<button class="btn btn-primary" type="submit">Submit Request</button>
+				<p class="err" id="lead-err" role="alert" hidden></p>
+				<p class="legal">By providing your contact details, you agree to our <a href="https://pages.microdegree.work/termsnconditions.html">Terms of Use</a> &amp; <a href="https://www.next.microdegree.work/privacy">Privacy Policy</a></p>
+			</form>
+		</div>
+
+		<div class="about">
+			<span class="eyebrow">About MicroDegree</span>
+			<h2><b>IT Skilling</b> Platform for <b>Karnataka</b></h2>
+			<p>Platform where you learn the most in-demand IT skills and improve your chances of landing a high-paying job.</p>
+			<ul>
+				<li><i class="fa-solid fa-check"></i> Get trained by industry experts</li>
+				<li><i class="fa-solid fa-check"></i> Work on real world projects</li>
+				<li><i class="fa-solid fa-check"></i> Interview preparation</li>
+				<li><i class="fa-solid fa-check"></i> Placement Assistance</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.lead { padding: 88px 0; background: var(--bg) var(--lead-bg) center / cover no-repeat; }
+	.grid { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 72px; align-items: center; }
+	.formcard {
+		position: relative; overflow: hidden; border-radius: 28px; padding: 32px;
+		background: linear-gradient(145deg, #1c1cb0, #151595); box-shadow: 0 30px 60px -24px rgba(21, 21, 149, .6); color: #fff;
+	}
+	.formcard::before { content: ""; position: absolute; top: -70px; right: -70px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 0, 73, .25); filter: blur(48px); }
+	form { position: relative; display: grid; gap: 12px; }
+	h2 { font-size: 1.3rem; font-weight: 400; line-height: 1.4; margin-bottom: 8px; }
+	form h2 span { color: #ff5c8a; font-weight: 600; }
+	input, select {
+		width: 100%; padding: 14px 16px; border-radius: 12px; border: 2px solid transparent;
+		background: rgba(255, 255, 255, .96); color: var(--ink); font: inherit; font-size: .95rem; outline: none; transition: border-color .2s;
+	}
+	input:focus, select:focus { border-color: var(--accent); }
+	input:user-invalid, select:user-invalid { border-color: #f87171; }
+	.consent { font-size: .68rem; color: rgba(255, 255, 255, .8); }
+	.legal { font-size: .72rem; color: rgba(255, 255, 255, .7); margin-top: 4px; }
+	.legal a { border-bottom: 1px solid rgba(255, 255, 255, .5); }
+	.err { color: #fecaca; font-size: .85rem; }
+	.err[hidden], .done[hidden] { display: none; }
+	.done { position: absolute; inset: 0; z-index: 5; background: rgba(15, 15, 40, .96); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 12px; padding: 24px; }
+	.done a { color: #ff5c8a; }
+	.big { font-size: 1.5rem; font-weight: 600; }
+	.tick { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-size: 1.6rem; animation: pop .4s ease; }
+	@keyframes pop { from { transform: scale(.4); opacity: 0; } }
+
+	.eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #9ca3af; display: inline-flex; align-items: center; gap: 10px; }
+	.eyebrow::before { content: ""; width: 24px; height: 3px; border-radius: 99px; background: var(--accent); }
+	.about { display: grid; gap: 22px; justify-items: start; }
+	.about h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.03em; color: #374151; margin: 0; }
+	.about b { font-weight: 600; color: var(--ink); }
+	.about p { color: var(--muted); font-size: 1.05rem; max-width: 48ch; }
+	.about ul { display: grid; gap: 12px; }
+	.about li { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+	.about li i { color: var(--accent); }
+
+	@media (max-width: 900px) {
+		.lead { padding: 56px 0; background-image: none; background: linear-gradient(135deg, #0f4c5c, #0a3240); }
+		.grid { grid-template-columns: 1fr; gap: 40px; }
+		.about { display: none; }
+		.formcard { background: none; box-shadow: none; padding: 0; overflow: visible; }
+		.formcard::before { display: none; }
+		.done { border-radius: 20px; }
+	}
+</style>
+
+<script>
+	const form = document.getElementById('lead-form') as HTMLFormElement;
+	const done = document.getElementById('lead-done') as HTMLElement;
+	const err = document.getElementById('lead-err') as HTMLElement;
+
+	// First-touch UTM attribution, same keys the previous site used.
+	const utm = () => {
+		const out: Record<string, string> = {};
+		const params = new URLSearchParams(location.search);
+		for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+			try {
+				const v = params.get(k);
+				if (v && (k === 'utm_content' || !localStorage.getItem(k))) localStorage.setItem(k, v);
+				const stored = localStorage.getItem(k);
+				if (stored) out[k] = stored;
+			} catch { /* storage unavailable */ }
+		}
+		return out;
+	};
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		if (!form.reportValidity()) return;
+
+		const url = import.meta.env.PUBLIC_SUPABASE_URL;
+		const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+		err.hidden = true;
+		if (!url || !key) {
+			err.textContent = 'Form is not configured yet (set PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY).';
+			err.hidden = false;
+			return;
+		}
+
+		const f = new FormData(form);
+		const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+		btn.disabled = true;
+		try {
+			const res = await fetch(`${url}/rest/v1/career_mentor`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', apikey: key, Authorization: `Bearer ${key}`, Prefer: 'return=minimal' },
+				body: JSON.stringify({
+					name: f.get('name'), email: f.get('email'), phone: f.get('phone'),
+					education: f.get('education'), experience: f.get('experience'), ...utm(),
+				}),
+			});
+			if (!res.ok) throw new Error(String(res.status));
+			form.reset();
+			done.hidden = false;
+		} catch {
+			err.textContent = 'Something went wrong. Please try again.';
+			err.hidden = false;
+		} finally {
+			btn.disabled = false;
+		}
+	});
+</script>

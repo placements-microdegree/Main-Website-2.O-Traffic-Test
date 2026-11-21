@@ -1,0 +1,105 @@
+---
+import Icon from '../Icon.astro';
+---
+
+<section class="relative w-full gap-4 p-6 mt-5 sm:p-8 lg:p-12 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-shadow duration-300 max-w-7xl mx-auto bg-white/70 backdrop-blur-xl border border-white/60 ring-1 ring-black/5 overflow-hidden">
+      {/* iOS-style glass sheen */}
+      <div class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/50 via-white/0 to-transparent" />
+
+      <div class="relative flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10">
+
+        {/* Left Section */}
+        <div class="flex-1 space-y-4 text-center lg:text-left order-2 lg:order-1">
+          
+          {/* Title */}
+          <h1 class="text-3xl sm:text-4xl lg:text-4xl font-semibold text-gray-900 text-center lg:text-left leading-tight tracking-tight">
+            Cloud, DevOps & AI Certification Program
+          </h1>
+
+          {/* Ratings */}
+          <div class="inline-flex items-center justify-center lg:justify-start gap-2 mx-auto lg:mx-0 w-fit px-3.5 py-1.5 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm text-[#FFB800]">
+            <span class="text-gray-700 font-medium text-sm sm:text-base">
+              4.7 Google Reviews
+            </span>
+            <div class="flex text-lg">
+              <Icon name="FaStar" /><Icon name="FaStar" /><Icon name="FaStar" /><Icon name="FaStar" /><Icon name="FaStar" />
+            </div>
+          </div>
+
+          {/* Features */}
+          <ul class="space-y-2.5 text-gray-700 text-base sm:text-base text-left leading-relaxed">
+            <li class="flex items-start">
+              <Icon name="FaCheckCircle" class="text-green-500 mt-1 mr-2 flex-shrink-0" />
+              Build 20+ Real Capstone Projects.
+            </li>
+            <li class="flex items-start">
+              <Icon name="FaCheckCircle" class="text-green-500 mt-1 mr-2 flex-shrink-0" />
+              Showcase as 5+ year work Experience.
+            </li>
+            <li class="flex items-start">
+              <Icon name="FaCheckCircle" class="text-green-500 mt-1 mr-2 flex-shrink-0" />
+              Learn 10x faster in Kannada.
+            </li>
+            <li class="flex items-start">
+              <Icon name="FaCheckCircle" class="text-green-500 mt-1 mr-2 flex-shrink-0" />
+              Get Trained by Industry experts (Google, Flipkart, Walmart & more).
+            </li>
+          </ul>
+
+          {/* Mobile Video */}
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5 border border-gray-200 mt-6 block lg:hidden">
+            <div class="relative pb-[56%]">
+              <iframe
+                class="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/Lyh2O6JxYro?mute=0&loop=1&playlist=Lyh2O6JxYro&controls=1&modestbranding=1&rel=0&showinfo=0"
+                title="Cloud, DevOps & AI Certification Program Introduction"
+                frameborder="0"
+                loading="lazy"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div class="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start">
+
+            {/* Join Button */}
+            <a
+              href="https://www.microdegree.work/demopage?utm_source=website&utm_medium=organic&utm_campaign=demo_page&utm_content=cloud_hero_section"
+              class="flex items-center justify-center gap-2 px-6 py-3 bg-[#FF0049] hover:bg-black text-white font-semibold rounded-lg shadow-sm hover:shadow-lg text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Icon name="FaPlay" class="text-white text-sm" />
+              Take a FREE Demo Now
+            </a>
+
+            {/* 🔥 Call Button with Conversion */}
+            <a
+              href="#"
+              data-tally="wbOQP7"
+              class="group flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#151595] bg-white/40 backdrop-blur-md text-[#151595] font-semibold rounded-lg hover:bg-[#151595] hover:text-white text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg"
+            >
+              <Icon name="FaPhoneAlt" class="text-[#151595] group-hover:text-white transition" />
+              Talk to our Career Counsellor
+            </a>
+
+          </div>
+        </div>
+
+        {/* Desktop Video */}
+        <div class="relative w-full max-w-md rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5 border border-gray-200 order-1 lg:order-2 hidden lg:block transition-transform duration-300 hover:-translate-y-1">
+          <div class="relative pb-[56%]">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/Lyh2O6JxYro?mute=0&loop=1&playlist=Lyh2O6JxYro&controls=1&modestbranding=1&rel=0&showinfo=0"
+              title="Cloud DevOps and AI Certification Program Introduction"
+              frameborder="0"
+              loading="lazy"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>

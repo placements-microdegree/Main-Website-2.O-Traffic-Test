@@ -1,0 +1,27 @@
+---
+const attrs = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+---
+
+<section class="section" id="news">
+	<div class="wrap">
+		<div class="section-head"><h2 id="news-media-heading">News &amp; Media Coverage</h2></div>
+		<div class="grid">
+			<img class="card clip" src="https://ik.imagekit.io/MicroDegree/Website/homeWebp/section9/news1.webp?updatedAt=1681880939851" alt="MicroDegree featured in news and media coverage" loading="lazy" decoding="async" width="1021" height="864" />
+			<div class="vids">
+				<div class="card clip frame"><iframe src="https://www.youtube.com/embed/bzl_X7dRo8k?si=0hDgJQCBqNaDRNEK" title="MicroDegree featured in media interview" loading="lazy" allow={attrs} allowfullscreen></iframe></div>
+				<div class="card clip frame"><iframe src="https://www.youtube.com/embed/y9yhmSQ6qlw?si=oMU91Yl7mTeNyyPp" title="MicroDegree featured in news and media coverage" loading="lazy" allow={attrs} allowfullscreen></iframe></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; align-items: stretch; }
+	.clip { overflow: hidden; }
+	.clip:hover { transform: none; }
+	.grid > img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+	.vids { display: grid; gap: 22px; }
+	.frame { aspect-ratio: 16 / 9; background: #000; }
+	iframe { width: 100%; height: 100%; border: 0; }
+	@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,71 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+
+const IK = 'https://ik.imagekit.io/MicroDegree/Website/homeWebp/Section3';
+const R = '/img/recog';
+const events = [
+	{ title: 'KDEM Recognition at BTS', desc: 'MicroDegree receiving award for its impactful work at grass root levels.', date: '21', month: 'nov', img: `${IK}/a1.webp?updatedAt=1681880924629` },
+	{ title: 'Winning Elevate 2020', desc: 'MicroDegree chosen as one of the top 100 startups by Govt. of Karnataka.', date: '20', month: 'mar', img: `${IK}/a2.webp?updatedAt=1681880924588` },
+	{ title: 'Awarded by IEEE', desc: 'MicroDegree impacted 3000+ rural talent imparting tech sessions in Kannada.', date: '21', month: 'feb', img: `${IK}/a3.webp?updatedAt=1681880924644` },
+	{ title: 'Bangalore Tech Summit', desc: 'Sharing a moment with our honourable Deputy Chief Minister of Karnataka.', date: '21', month: 'nov', img: `${IK}/a4.webp?updatedAt=1681880924755` },
+	{ title: 'Technovanza 3.0 2024', desc: 'Team MicroDegree participating in Technovanza 3.0 2024.', date: '7', month: 'feb', img: `${R}/TPO.webp` },
+	{ title: 'Our Co-Founder @ SDIT', desc: 'Our Co-founder Gaurav Kamath celebrated the National Youth Day for Inspiring Innovation at SDIT.', date: '18', month: 'jan', img: `${R}/Sridevi.webp` },
+	{ title: 'TPO Conclave 2024', desc: 'Conducted by KDEM at SJEC to empathize enlist Academia and Skill gap', date: '05', month: 'feb', img: `${R}/sjecnew.webp` },
+	{ title: 'Our Co-Founder @ SCEM', desc: 'Excited to see our co-founder inspiring the next generation at Sahyadri Engineering College.', date: '01', month: 'mar', img: `${R}/Sahyadri.webp` },
+	{ title: 'Startup Opportunities in Mangaluru', desc: 'Our Co-founder Gaurav Kamath and few others discussing exciting opportunities in city.', date: '21', month: 'nov', img: `${R}/Yuva.webp` },
+	{ title: 'Our Co-Founder @ MITE', desc: 'Our Co-founder, Gaurav Kamath, shares insightful moments at Mangalore Institute of Technology.', date: '29', month: 'jan', img: `${R}/Mit.webp` },
+	{ title: 'TiECon Mangaluru 2026', desc: 'Our Co-founder, Mr.Gaurav Kamath in conversation with Suniel Shetty, explaining the MicroDegree mission', date: '16', month: 'jan', img: `${R}/SS.webp` },
+];
+---
+
+<LPLayout
+	title="MicroDegree – Kannada's No.1 Tech Skilling Platform"
+	description="Upskill or transition to top tech roles with expert-led courses in Kannada. AWS, DevOps, GenAI & more. Join MicroDegree — Making Kannadigas Global Tech Talent."
+	path="/Recognition"
+>
+	<section class="section">
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow">Our Media</span>
+				<h2><b>Other</b> Events</h2>
+			</div>
+			<div class="grid">
+				{events.map((e) => (
+					<article class="card ev">
+						<div class="photo">
+							<img src={e.img} alt={e.title} loading="lazy" decoding="async" />
+							<div class="date"><b>{e.date}</b><span>{e.month}</span></div>
+						</div>
+						<div class="txt">
+							<h3>{e.title}</h3>
+							<p>{e.desc}</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</LPLayout>
+
+<style>
+	/* No 1180px cap on this page: the cards use the full width, like the footer. */
+	.wrap { max-width: 1560px; padding: 0 clamp(24px, 5vw, 80px); }
+	.section-head { text-align: left; margin-bottom: 0; }
+	.section-head::after { display: none; }
+	.section-head h2 { font-weight: 400; margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; }
+	.eyebrow { display: block; text-transform: uppercase; letter-spacing: .3em; font-size: .85rem; font-weight: 700; color: #9ca3af; margin-bottom: 10px; }
+	h2 b { font-weight: 600; }
+	.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 28px; }
+	.ev { overflow: hidden; display: flex; flex-direction: column; }
+	.photo { position: relative; height: clamp(165px, 13.5vw, 235px); overflow: hidden; background: #f3f4f6; }
+	.photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+	.ev:hover .photo img { transform: scale(1.06); }
+	.date { position: absolute; top: 12px; left: 12px; width: 48px; height: 48px; border-radius: 50%; background: #fff; display: grid; place-content: center; text-align: center; line-height: 1.1; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+	.date b { color: #eab308; font-size: 1rem; }
+	.date span { font-size: .65rem; text-transform: uppercase; font-weight: 600; }
+	.txt { padding: 20px 22px 24px; display: grid; gap: 10px; text-align: left; }
+	h3 { font-size: clamp(1rem, 1.2vw, 1.2rem); font-weight: 600; line-height: 1.35; }
+	.txt p { font-size: clamp(.86rem, 1vw, 1rem); color: var(--muted); }
+	@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+	@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+</style>

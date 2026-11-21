@@ -1,0 +1,59 @@
+---
+import BrandLogos from './BrandLogos.astro';
+
+interface Props { /** Hide the partner-logo row (pages that show it elsewhere). */ hideBrands?: boolean; }
+const { hideBrands = false } = Astro.props;
+const IK = 'https://ik.imagekit.io/MicroDegree/Website/homeWebp/Section3';
+const events = [
+	{ title: 'Karnataka Digital Economy Mission Recognition at BTS', desc: 'MicroDegree receiving an award for its impactful work at the grassroots level.', date: '21', month: 'nov', img: `${IK}/a1.webp?updatedAt=1681880924629` },
+	{ title: 'Winning Startup Elevate 2020', desc: 'MicroDegree chosen as one of the top 100 startups by Govt. of Karnataka.', date: '20', month: 'mar', img: `${IK}/a2.webp?updatedAt=1681880924588` },
+	{ title: 'Awarded by IEEE', desc: 'MicroDegree impacted 3000+ rural talent imparting tech sessions in Kannada.', date: '21', month: 'feb', img: `${IK}/a3.webp?updatedAt=1681880924644` },
+	{ title: 'NIDHI Seed Support Program', desc: 'MicroDegree featured among 75 promising startups in the Azadi Ka Amrit Mahotsav compendium', date: '16', month: 'jan', img: '/img/recog/NidhiSeed.webp' },
+];
+---
+
+<section class="section awards">
+	<div class="wrap">
+		<div class="section-head">
+			<h2 id="recognition-heading">Awards &amp; Recognition</h2>
+			<p>MicroDegree is proud to be acknowledged by some prominent publications and organizations</p>
+		</div>
+
+		{!hideBrands && <BrandLogos spaced />}
+
+		<div class="grid">
+			{events.map((e) => (
+				<article class="card ev reveal">
+					<div class="photo">
+						<img src={e.img} alt={e.title} loading="lazy" decoding="async" />
+						<div class="date"><b>{e.date}</b><span>{e.month}</span></div>
+					</div>
+					<div class="txt">
+						<h3>{e.title}</h3>
+						<p>{e.desc}</p>
+					</div>
+				</article>
+			))}
+		</div>
+
+		<div class="more"><a class="btn btn-brand" href="/Recognition" target="_blank" rel="noopener noreferrer" aria-label="View More Events">View More Events</a></div>
+	</div>
+</section>
+
+<style>
+	/* Same 4-column grid and gap as the cards below, so each logo spans one card's width. */
+	.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+	.ev { overflow: hidden; display: flex; flex-direction: column; }
+	.photo { position: relative; height: 180px; overflow: hidden; background: #f3f4f6; }
+	.photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+	.ev:hover .photo img { transform: scale(1.06); }
+	.date { position: absolute; top: 12px; left: 12px; width: 48px; height: 48px; border-radius: 50%; background: #fff; display: grid; place-content: center; text-align: center; line-height: 1.1; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+	.date b { color: #eab308; font-size: 1rem; }
+	.date span { font-size: .65rem; text-transform: uppercase; font-weight: 600; }
+	.txt { padding: 16px 18px 20px; display: grid; gap: 8px; }
+	h3 { font-size: 1rem; font-weight: 600; line-height: 1.35; }
+	.txt p { font-size: .86rem; color: var(--muted); }
+	.more { display: flex; justify-content: flex-end; margin-top: 32px; }
+	@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+	@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } .more { justify-content: stretch; } .more .btn { width: 100%; } }
+</style>

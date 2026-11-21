@@ -1,0 +1,54 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import Herox from '../components/lp/pythonfullstack/Herox.astro';
+import Whocanapply from '../components/lp/pythonfullstack/Whocanapply.astro';
+import Colleges from '../components/lp/pythonfullstack/Colleges.astro';
+import Carousel from '../components/lp/pythonfullstack/Carousel.astro';
+import Coursehighlights from '../components/lp/pythonfullstack/Coursehighlights.astro';
+import Roadmap from '../components/lp/pythonfullstack/Roadmap.astro';
+import Certificate from '../components/lp/pythonfullstack/Certificate.astro';
+import Video from '../components/lp/pythonfullstack/Video.astro';
+import Awards from '../components/lp/pythonfullstack/Awards.astro';
+import Students from '../components/lp/pythonfullstack/Students.astro';
+import Feedback from '../components/lp/pythonfullstack/Feedback.astro';
+import Reviews from '../components/lp/pythonfullstack/Reviews.astro';
+import Logoslider from '../components/lp/pythonfullstack/Logoslider.astro';
+import No1 from '../components/lp/pythonfullstack/No1.astro';
+import Team from '../components/lp/pythonfullstack/Team.astro';
+import Counter from '../components/lp/pythonfullstack/Counter.astro';
+import Supportedby from '../components/lp/pythonfullstack/Supportedby.astro';
+
+const description =
+	'Become a Python Full-Stack Developer in 12 weeks. Build 5+ projects and learn trending skills like ChatGPT and GenAI with MicroDegree — learn in Kannada from industry experts.';
+---
+
+<LPLayout
+	title="Python Full-Stack Developer Course | MicroDegree"
+	description={description}
+	path="/Pythonfull-stack"
+>
+<div class="course-page text-center leading-normal font-poppins overflow-x-clip">
+	<Herox />
+	<Whocanapply />
+	<Colleges />
+	<Carousel />
+	<Coursehighlights />
+	<Roadmap />
+	<Certificate />
+	<Video />
+	<Awards />
+	<Students />
+	<Feedback />
+	<Reviews />
+	<Logoslider />
+	<No1 />
+	<Team />
+	<Counter />
+	<Supportedby />
+</div>
+</LPLayout>
+
+<style is:global>
+	/* The old app wrapped pages in .App { text-align: center } and loaded App.css (.container). */
+	.course-page .container { display: flex; flex-direction: column; align-items: center; padding: 5px; }
+</style>

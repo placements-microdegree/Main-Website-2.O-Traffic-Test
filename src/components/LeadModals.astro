@@ -1,0 +1,171 @@
+---
+// "Talk to Career Counsellor" and "Download Curriculum" popups. Any element with data-modal="counsellor" | "curriculum"
+// opens the matching dialog. Submissions go to Supabase (free_consultation / download_curriculum) like the old site.
+const education = ['any_engineers', 'bca/b.sc', 'mca/mtech/m.sc/mba', 'diploma', 'other_degree'];
+const experience = ['it_working_professional', 'non-it_working_professional', 'fresher-looking_for_job', 'student'];
+
+const modals = [
+	{ id: 'counsellor', table: 'free_consultation', heading: 'Please enter your details to get a call back from Career Mentor' },
+	{ id: 'curriculum', table: 'download_curriculum', heading: 'Download Curriculum' },
+];
+const input =
+	'w-full rounded-xl border border-[#e4e6f2] bg-[#f9f8fd] px-4 py-2.5 text-[15px] text-[#12122b] placeholder:text-[#9a9db5] transition outline-none focus:border-[#4159ec] focus:bg-white focus:ring-4 focus:ring-[#4159ec]/10';
+const label = 'block mb-1 text-[13px] font-semibold text-[#12122b]';
+---
+
+{modals.map((m) => (
+	<dialog id={`lead-modal-${m.id}`} class="lead-modal" aria-label={m.id === 'curriculum' ? 'Download curriculum' : 'Talk to a career counsellor'}>
+		<div class="relative w-full rounded-3xl bg-white text-left shadow-[0_30px_80px_-20px_rgba(65, 89, 236,0.45)] overflow-hidden">
+
+			<button type="button" data-close class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#f3f4fa] text-[#5b5f7a] transition hover:bg-[#e4e6f2] hover:text-[#12122b]" aria-label="Close">
+				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+			</button>
+
+			<div class="px-7 pt-6 pb-6">
+				<h2 class="pr-10 text-[1.25rem] font-semibold leading-snug tracking-tight text-[#12122b]">{m.heading}</h2>
+
+				<form data-lead-modal-form data-table={m.table} data-kind={m.id} novalidate class="mt-4 space-y-3">
+					<label class="block">
+						<span class={label}>Your Name</span>
+						<input class={input} name="name" type="text" placeholder="Your Name" autocomplete="name" required />
+					</label>
+					<label class="block">
+						<span class={label}>Email</span>
+						<input class={input} name="email" type="email" placeholder="Enter Your Email Address" autocomplete="email" required />
+					</label>
+					<label class="block">
+						<span class={label}>Mobile No</span>
+						<input class={input} name="phone" type="tel" inputmode="numeric" placeholder="Enter Your Mobile No" autocomplete="tel" required />
+					</label>
+					<label class="block">
+						<span class={label}>Education</span>
+						<select class={`${input} lead-select`} name="education" aria-label="Select Education" required>
+							<option value="" disabled selected>Select Education</option>
+							{education.map((v) => <option value={v}>{v}</option>)}
+						</select>
+					</label>
+					<label class="block">
+						<span class={label}>Experience</span>
+						<select class={`${input} lead-select`} name="experience" aria-label="Select Experience" required>
+							<option value="" disabled selected>Select Experience</option>
+							{experience.map((v) => <option value={v}>{v}</option>)}
+						</select>
+					</label>
+
+					<p class="text-[11px] leading-relaxed text-[#5b5f7a]">
+						I authorise MicroDegree &amp; its representatives to contact me with updates and notifications via Email/SMS/What'sApp/Call. This will override DND/NDNC.
+					</p>
+
+					<p data-error hidden role="alert" class="rounded-lg bg-red-50 px-3 py-2 text-center text-sm font-medium text-red-600"></p>
+
+					<button type="submit" class="w-full rounded-xl bg-[#ff0055] px-5 py-3 text-[15px] font-semibold tracking-wide text-white shadow-[0_12px_24px_-10px_rgba(255,0,85,0.7)] transition hover:-translate-y-0.5 hover:bg-[#e6004d] disabled:translate-y-0 disabled:opacity-60">Submit</button>
+				</form>
+			</div>
+		</div>
+	</dialog>
+))}
+
+<div id="lead-toast" hidden role="status" class="fixed z-[10000] left-1/2 -translate-x-1/2 bottom-6 bg-green-500 rounded text-white px-4 py-2 shadow-md">
+	<p class="font-medium">Submitted Successfully</p>
+	<p class="font-light text-xs xl:text-sm">Our Team will contact you shortly</p>
+</div>
+
+<style is:global>
+	dialog.lead-modal { padding: 12px; background: transparent; border: 0; width: 100%; max-width: 28rem; max-height: 100dvh; overflow-y: auto; scrollbar-width: none; }
+	dialog.lead-modal::-webkit-scrollbar { display: none; }
+	dialog.lead-modal[open] { animation: lead-pop .22s ease-out; }
+	dialog.lead-modal::backdrop { background: rgba(18, 18, 43, .55); backdrop-filter: blur(6px); }
+	body:has(dialog.lead-modal[open]) { overflow: hidden; }
+	dialog.lead-modal .lead-select { appearance: none; padding-right: 2.5rem; cursor: pointer; background-repeat: no-repeat; background-position: right 1rem center; background-size: 14px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b5f7a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); }
+	dialog.lead-modal .lead-select:invalid { color: #9a9db5; }
+	@keyframes lead-pop { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+	@media (prefers-reduced-motion: reduce) { dialog.lead-modal[open] { animation: none; } }
+</style>
+
+<script>
+	import { captureUtmParams, getUtmValues, insertRow } from '../scripts/leads';
+
+	const CURRICULUM_PDF = 'https://main-website-images.s3.ap-south-1.amazonaws.com/Cloud_devOps_curriculum.pdf';
+	const COOLDOWN_MS = 60 * 1000;
+	let lastSubmittedAt = 0;
+	let toastTimer: number | undefined;
+
+	captureUtmParams();
+
+	const modal = (kind: string) => document.getElementById(`lead-modal-${kind}`) as HTMLDialogElement | null;
+
+	document.addEventListener('click', (e) => {
+		const trigger = (e.target as Element | null)?.closest<HTMLElement>('[data-modal]');
+		if (!trigger) return;
+		e.preventDefault();
+		modal(trigger.dataset.modal!)?.showModal();
+	});
+
+	const toast = () => {
+		const el = document.getElementById('lead-toast')!;
+		el.hidden = false;
+		clearTimeout(toastTimer);
+		toastTimer = window.setTimeout(() => (el.hidden = true), 4000);
+	};
+
+	document.querySelectorAll<HTMLDialogElement>('dialog.lead-modal').forEach((dlg) => {
+		dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+		dlg.querySelector('[data-close]')?.addEventListener('click', () => dlg.close());
+	});
+
+	document.querySelectorAll<HTMLFormElement>('form[data-lead-modal-form]').forEach((form) => {
+		const dlg = form.closest('dialog')!;
+		const errorEl = form.querySelector<HTMLElement>('[data-error]')!;
+		const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+		const showError = (m: string) => { errorEl.textContent = m; errorEl.hidden = !m; };
+		const kind = form.dataset.kind;
+		let sending = false;
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			if (sending) return;
+			const data = new FormData(form);
+			const name = String(data.get('name') || '').trim();
+			const email = String(data.get('email') || '').trim();
+			const phone = String(data.get('phone') || '').trim();
+			const education = String(data.get('education') || '');
+			const experience = String(data.get('experience') || '');
+
+			if (!name || !email || !phone || !education || !experience) return showError('Please fill all the fields correctly.');
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address.');
+			if (!/^[1-9][0-9]{9}$/.test(phone)) return showError('Please enter a valid 10-digit mobile number.');
+			showError('');
+
+			// Submitted less than a minute ago: don't insert a duplicate lead, just confirm (counsellor form only).
+			if (kind === 'counsellor' && Date.now() - lastSubmittedAt < COOLDOWN_MS) {
+				dlg.close();
+				toast();
+				return;
+			}
+
+			sending = true;
+			submit.disabled = true;
+			const err = await insertRow(form.dataset.table!, { name, email, phone, education, experience, ...getUtmValues() });
+			sending = false;
+			submit.disabled = false;
+			if (err) return showError(err);
+
+			if (kind === 'counsellor') lastSubmittedAt = Date.now();
+			form.reset();
+			dlg.close();
+			toast();
+
+			if (kind === 'curriculum') {
+				const link = document.createElement('a');
+				link.href = CURRICULUM_PDF;
+				link.download = 'AWS_and_DevOps_AI_Curriculum.pdf';
+				link.target = '_blank'; // cross-origin: `download` is ignored, so don't navigate the page away
+				link.rel = 'noopener';
+				document.body.appendChild(link);
+				link.click();
+				link.remove();
+			}
+		});
+	});
+</script>

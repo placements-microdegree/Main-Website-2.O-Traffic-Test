@@ -1,0 +1,93 @@
+---
+import Icon from '../Icon.astro';
+import Carousel from '../Carousel.astro';
+const slidesData = [
+    {
+      avatar:
+        "https://main-website-images.s3.ap-south-1.amazonaws.com/malatesh.png",
+      name: "malatesh",
+      rating: 5,
+      description:
+        "I recently completed the AWS course, and I must say it was an excellent learning experience! The course content was well-structured, up-to-date, and covered all the essential AWS services. The instructors were knowledgeable, supportive, and explained complex concepts in an easy-to-understand manner.",
+    },
+    {
+      avatar:
+        "https://main-website-images.s3.ap-south-1.amazonaws.com/Arunkumar+D.png",
+      name: "Arunkumar D",
+      rating: 5,
+      description:
+        "I took the AWS DevOps course and it was really good. They taught me a lot about AWS and how to do DevOps stuff. The hands-on practice helped me learn by doing. The teachers were helpful, and because of this course, I got a job! If you want to work in cloud computing, this course is worth it. Also The teachers were helpful, and the staff were very responsive when I had questions.",
+    },
+    {
+      avatar:
+        "https://main-website-images.s3.ap-south-1.amazonaws.com/Darshan+N.Kini.png",
+      name: "Darshan N.Kini",
+      rating: 5,
+      description:
+        "AWE Class was very informative and well structured, providing overview of AWS Services and hands on experience with Labs. Chitharanjan Sir was very knowledgeable and provided best explanations for complex concepts. Topics covered by Sir and explanation given which was easy to grasp and took Quizes on everyday to understand topics much more clear and also supportive and calm during all the time while clearing doubts. Thank you Team for the AWS course and would recommend to others who looking forward to learn AWS.",
+    },
+    {
+      avatar:
+        "https://main-website-images.s3.ap-south-1.amazonaws.com/Nagraj.png",
+      name: "Nagraj",
+      rating: 5,
+      description:
+        "I recently completed my training in DevOps class taught by Sumeet Kulkarni sir, the training was excellent with good interaction, knowledge sharing is good and recording facility is excellent for revising. Course was practically and informative. Sumeet Sir was enthusiastic and really aware of what he is explaining and most supportive at all the time and making complex concepts much easier for students to understand and apply them in real-world scenarios. Overall, I would highly recommend Sumeet Kulkarni sir as a DevOps teacher to anyone looking to deepen their understanding of DevOps practices and principles.",
+    },
+  ];
+---
+
+<section class="rv-section" aria-labelledby="rv-heading">
+  <div class="rv-wrap">
+    <h2 id="rv-heading" class="font-poppins text-3xl sm:text-4xl font-semibold text-gray-900 text-center tracking-tight">
+      Learners Review
+    </h2>
+
+    <div class="rv-carousel">
+      <Carousel show={2} showMobile={1} autoplay={5000}>
+        {slidesData.map((slide) => (
+          <div class="rv-slide">
+            <figure class="rv-card">
+              <svg class="rv-quote" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                <path fill="currentColor" d="M9.6 4.5C6.1 6 3.5 9.3 3.5 13.4V19.5h6.6v-6.6H6.7c.2-2 1.4-3.6 3.4-4.5L9.6 4.5zm10.4 0c-3.5 1.5-6.1 4.8-6.1 8.9v6.1h6.6v-6.6h-3.4c.2-2 1.4-3.6 3.4-4.5L20 4.5z" />
+              </svg>
+              <blockquote class="rv-text">{slide.description}</blockquote>
+              <figcaption class="rv-author">
+                <img loading="lazy" decoding="async" src={slide.avatar} alt="" class="rv-avatar" />
+                <div>
+                  <p class="rv-name">{slide.name}</p>
+                  <div class="rv-stars" aria-label={`${slide.rating} out of 5 stars`}>
+                    {[...Array(slide.rating)].map(() => <Icon name="FaStar" />)}
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .rv-section { padding: 32px 24px 40px; }
+  .rv-wrap { max-width: 72rem; margin: 0 auto; }
+  .rv-carousel { margin-top: 20px; }
+  .rv-slide { padding: 8px 12px 12px; display: flex; }
+  .rv-card {
+    margin: 0; width: 100%; display: flex; flex-direction: column; gap: 10px; position: relative;
+    padding: 20px 24px 18px; background: #fff; border: 1px solid #e4e6f2; border-radius: 22px;
+    transition: border-color .25s, transform .25s;
+  }
+  .rv-card:hover { border-color: #c9d0fb; transform: translateY(-3px); }
+  .rv-quote { color: #c9d0fb; flex: none; }
+  .rv-text { margin: 0; flex: 1; font-size: .92rem; line-height: 1.6; color: #4b5068; text-align: left; }
+  .rv-author { display: flex; align-items: center; gap: 14px; padding-top: 12px; border-top: 1px solid #eceefa; }
+  .rv-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 3px #eef0ff; }
+  .rv-name { margin: 0; font-weight: 600; font-size: 1rem; color: #12122b; line-height: 1.3; }
+  .rv-stars { display: flex; gap: 2px; margin-top: 3px; color: #fbbf24; font-size: .95rem; }
+  @media (max-width: 768px) {
+    .rv-section { padding: 28px 16px 36px; }
+    .rv-card { padding: 18px 18px 16px; }
+  }
+</style>

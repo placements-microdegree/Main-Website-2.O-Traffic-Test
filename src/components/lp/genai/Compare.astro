@@ -1,0 +1,153 @@
+---
+const iconStyle = "w-5 h-5";
+const comparisonData = [
+  {
+    feature: "Language advantage",
+    icon: `<svg class="${iconStyle} text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <circle cx="12" cy="12" r="9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Learn 10x faster in Kannada",
+    competitor: "Mostly English only delivery",
+  },
+  {
+    feature: "Batch flexibility",
+    icon: `<svg class="${iconStyle} text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <rect x="4" y="4" width="16" height="16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Switch any batches within a year",
+    competitor: "Fixed batches, limited flexibility",
+  },
+  {
+    feature: "Trainer quality",
+    icon: `<svg class="${iconStyle} text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <polygon points="12,3 22,9 12,15 2,9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Active IT professionals & industry experts",
+    competitor: "Professors with limited real world exposure",
+  },
+  {
+    feature: "Course pricing",
+    icon: `<svg class="${iconStyle} text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path d="M12 2v20M5 7h14M5 17h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Affordable & ROI-driven pricing",
+    competitor: "Often charge ₹1 - 3+ lakhs",
+  },
+  {
+    feature: "Target audience",
+    icon: `<svg class="${iconStyle} text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <circle cx="8" cy="10" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Designed for mid & senior IT professionals",
+    competitor: "Cater to everyone → mixed cohort quality",
+  },
+  {
+    feature: "Live interaction",
+    icon: `<svg class="${iconStyle} text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path d="M12 1v11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Learners can unmute & interact anytime with trainers",
+    competitor: "Muted, one sided webinar style sessions",
+  },
+  {
+    feature: "Curriculum structure",
+    icon: `<svg class="${iconStyle} text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <rect x="6" y="4" width="12" height="16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Comprehensive program covering multiple skills & career transition",
+    competitor: "Standalone courses with fragmented learning",
+  },
+  {
+    feature: "Learning approach",
+    icon: `<svg class="${iconStyle} text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <rect x="6" y="6" width="12" height="12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Hands-on, practical, real world projects",
+    competitor: "Theory heavy, certification focused",
+  },
+  {
+    feature: "Career transition focus",
+    icon: `<svg class="${iconStyle} text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Structured pathway to Cloud / DevOps / GenAI roles",
+    competitor: "Skill learning without career mapping",
+  },
+  {
+    feature: "Community advantage",
+    icon: `<svg class="${iconStyle} text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <circle cx="12" cy="12" r="6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg>`,
+    micro: "Strong Kannadiga IT community & peer learning",
+    competitor: "Limited localized community support",
+  },
+];
+const visibleData = comparisonData;
+---
+
+<section class="py-12 px-4">
+      <div class="max-w-6xl mx-auto">
+
+        {/* Heading */}
+        <h2 class="text-4xl md:text-4xl font-semibold mb-12 tracking-tight">
+          MicroDegree vs Competition — Feature Comparison
+        </h2>
+
+        {/* Desktop Header */}
+        <div class="hidden md:grid grid-cols-3 font-semibold text-xl border-b pb-4 text-left">
+          <div>Feature</div>
+          <div class="font-bold">MicroDegree</div>
+          <div class="font-bold">Typical Competitors</div>
+        </div>
+
+        {visibleData.map((item, index) => (
+          <div class:list={["border-b py-8", index >= 5 && "hidden"]} data-extra={index >= 5 ? "" : undefined}>
+
+            {/* MOBILE VIEW */}
+            <div class="md:hidden space-y-4 text-left">
+
+              <div class="flex items-center gap-3 font-semibold text-xl md:text-lg">
+                <Fragment set:html={item.icon} />
+                {item.feature}
+              </div>
+
+              <div>
+                <p class="font-bold mb-1 text-lg md:text-base">
+                  MicroDegree
+                </p>
+                <p class="text-gray-700 text-base md:text-sm">
+                  {item.micro}
+                </p>
+              </div>
+
+              <div>
+                <p class="font-bold mb-1 text-lg md:text-base">
+                  Typical Competitors
+                </p>
+                <p class="text-gray-600 text-base md:text-sm">
+                  {item.competitor}
+                </p>
+              </div>
+
+            </div>
+
+            {/* DESKTOP VIEW */}
+            <div class="hidden md:grid md:grid-cols-3 gap-6 text-left items-start">
+              <div class="flex items-center gap-3 font-semibold text-base md:text-base">
+                <Fragment set:html={item.icon} />
+                {item.feature}
+              </div>
+
+              <div class="font-medium text-base md:text-sm">
+                {item.micro}
+              </div>
+
+              <div class="font-medium text-gray-700 text-base md:text-sm">
+                {item.competitor}
+              </div>
+            </div>
+
+          </div>
+        ))}
+
+        {/* Show More / Less */}
+        {comparisonData.length > 5 && (
+          <div class="flex justify-center mt-8">
+            <button type="button" data-compare-toggle class="cursor-pointer text-base md:text-sm font-semibold text-black hover:underline transition">Show More ↓</button>
+          </div>
+        )}
+
+      </div>
+    </section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-compare-toggle]').forEach((btn) => {
+    const section = btn.closest('section')!;
+    btn.addEventListener('click', () => {
+      const open = btn.dataset.open !== 'true';
+      btn.dataset.open = String(open);
+      section.querySelectorAll('[data-extra]').forEach((el) => el.classList.toggle('hidden', !open));
+      btn.textContent = open ? 'Show Less ↑' : 'Show More ↓';
+    });
+  });
+</script>

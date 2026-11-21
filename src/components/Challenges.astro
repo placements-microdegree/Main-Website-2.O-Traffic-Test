@@ -1,0 +1,91 @@
+---
+const cards = [
+	{ title: 'Developers', challenge: 'Software releases get delayed because teams depend too much on infra, and important bugs are found very late.', advantage: 'With on-demand infra and CI/CD, developers can build faster, release daily, and keep improving without delays.' },
+	{ title: 'Testers', challenge: 'Manual testing takes too much time, is boring to repeat, and often catches bugs only at the end.', advantage: 'Automated testing with cloud environments finds issues early, improves quality, and speeds up delivery.' },
+	{ title: 'System Admins', challenge: 'Too much repetitive work like patching and monitoring, with outages handled reactively and scaling taking weeks.', advantage: 'Automating infra with code and cloud monitoring allows proactive alerts, self-healing, and instant scaling on demand.' },
+	{ title: 'Data Engineers / DB Developers', challenge: 'Data pipelines often break with heavy loads, scaling needs expensive hardware, and real-time processing is missing.', advantage: 'Cloud-native data tools with automated pipelines enable scalable warehouses, real-time streaming, and lower costs.' },
+	{ title: 'Release Engineers', challenge: 'Releases often fail due to manual coordination and environment mismatch, and rollbacks need downtime.', advantage: 'Automated CI/CD with containers enables smooth, safe deployments and zero-downtime rollouts.' },
+	{ title: 'Support Engineers', challenge: 'Too many repetitive tickets and reactive problem-solving, leaving no time for real skill growth.', advantage: 'Monitoring tools and automation reduce noise, while SRE roles bring ownership and proactive reliability.' },
+	{ title: 'Project Managers', challenge: 'Delivery gets delayed because teams depend on each other, legacy setups make changes costly, and infra blocks speed.', advantage: 'Agile + DevOps brings faster releases, lower infra costs, and clear client updates with metrics-driven reporting.' },
+	{ title: 'Delivery Managers', challenge: 'Hard to meet SLAs with legacy systems, teams lack cloud skills, and repetitive roles cause high attrition.', advantage: 'Lead cloud-first projects, improve margins with automation, and retain talent through future-proof work.' },
+];
+---
+
+<section class="section challenges">
+	<div class="wrap">
+		<div class="section-head">
+			<h2>Still Stuck with 2015 Skills in Legacy Projects?</h2>
+			<p>Time to leverage Cloud-DevOps and AI</p>
+		</div>
+
+		<div class="carousel">
+			<button class="arrow l" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+			<div class="track" id="ch-track">
+				{cards.map((c) => (
+					<article class="card ch">
+						<h3>{c.title}</h3>
+						<div class="cols">
+							<div class="col bad">
+								<h4><i class="fa-solid fa-triangle-exclamation"></i> Current Challenges</h4>
+								<p>{c.challenge}</p>
+							</div>
+							<div class="col good">
+								<h4><i class="fa-solid fa-circle-check"></i> Cloud Advantages</h4>
+								<p>{c.advantage}</p>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+			<button class="arrow r" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+		</div>
+
+		<div class="center">
+			<a href="#form" data-modal="counsellor" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Talk to Career Counsellor</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.carousel { position: relative; }
+	.track {
+		display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+		scrollbar-width: none; padding: 8px 4px 20px;
+	}
+	.track::-webkit-scrollbar { display: none; }
+	.ch { flex: 0 0 calc((100% - 20px) / 2); scroll-snap-align: start; padding: 26px; display: flex; flex-direction: column; gap: 18px; }
+	.ch h3 { font-size: 1.2rem; font-weight: 600; padding-bottom: 14px; border-bottom: 1px solid var(--line); text-align: center; }
+	.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; }
+	.col h4 { font-size: .95rem; font-weight: 600; margin-bottom: 8px; display: flex; gap: 8px; align-items: center; }
+	.col p { font-size: .95rem; color: var(--muted); }
+	.bad h4 { color: #dc2626; } .good h4 { color: #16a34a; }
+	.good { border-left: 1px solid var(--line); padding-left: 24px; }
+	.arrow {
+		position: absolute; top: 50%; transform: translateY(-60%); z-index: 3;
+		width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: #fff;
+		box-shadow: var(--shadow); color: var(--brand);
+	}
+	.l { left: -22px; } .r { right: -22px; }
+	.center { display: flex; justify-content: center; margin-top: 24px; }
+	@media (max-width: 900px) {
+		.ch { flex-basis: 100%; }
+		.l { left: -8px; } .r { right: -8px; }
+	}
+	@media (max-width: 560px) {
+		.cols { grid-template-columns: 1fr; }
+		.good { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 16px; }
+	}
+</style>
+
+<script>
+	const track = document.getElementById('ch-track') as HTMLElement;
+	const step = () => (track.firstElementChild as HTMLElement).offsetWidth + 20;
+	const move = (dir: number) => {
+		const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+		if (dir > 0 && atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+		else if (dir < 0 && track.scrollLeft <= 4) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+		else track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+	};
+	document.querySelector('.carousel .l')!.addEventListener('click', () => move(-1));
+	document.querySelector('.carousel .r')!.addEventListener('click', () => move(1));
+</script>

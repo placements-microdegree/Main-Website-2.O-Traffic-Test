@@ -1,0 +1,36 @@
+---
+const items = [
+	{ icon: 'fa-language', text: 'Kannadiga first approach – Making Kannadigas global tech talent' },
+	{ icon: 'fa-diagram-project', text: 'Build 20+ real world capstone projects' },
+	{ icon: 'fa-briefcase', text: 'Showcase 5+ year work Experience in Cloud & DevOps' },
+	{ icon: 'fa-bolt', text: 'Learn 10x Faster in Kannada' },
+	{ icon: 'fa-user-check', text: 'Get Trained Directly by Industry experts' },
+	{ icon: 'fa-calendar-check', text: 'Flexibility of Changing batches up-to 1 year' },
+];
+---
+
+<section class="section why">
+	<div class="wrap">
+		<div class="section-head"><h2>Why Choose MicroDegree</h2></div>
+		<div class="grid">
+			{items.map((it, i) => (
+				<div class="card item reveal" style={`transition-delay:${i * 60}ms`}>
+					<span class="ic"><i class={`fa-solid ${it.icon}`}></i></span>
+					<p>{it.text}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+	.item { display: flex; align-items: center; gap: 18px; padding: 10px 24px; }
+	.ic {
+		flex: none; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+		background: linear-gradient(135deg, var(--brand-soft), #fff); color: var(--brand); font-size: 1.2rem;
+		border: 1px solid var(--line);
+	}
+	.item p { font-weight: 500; }
+	@media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+</style>

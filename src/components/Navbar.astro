@@ -1,0 +1,268 @@
+---
+const courses = [
+	{ name: 'Cloud, DevOps + AI Certification Program', href: '/awsdevops', icon: 'fa-cloud' },
+	{ name: 'Generative AI & Agentic AI Certification Program', href: '/genai', icon: 'fa-robot' },
+];
+const demos = [
+	{ name: 'Cloud & DevOps Free Demo', href: '/demopage?utm_source=website&utm_medium=organic&utm_campaign=demo_page&utm_content=navbar_form' },
+	{ name: 'Generative AI Free Demo', href: '/genaidemo' },
+];
+const tools = [
+	{ name: 'E-Learning', href: 'https://www.microdegree.work/learning', icon: 'fa-laptop-code' },
+	{ name: 'Tech. ಹರಟೆ', href: 'https://techharate.in/', icon: 'fa-microphone' },
+	{ name: 'Jobs', href: 'https://portal.microdegree.work', icon: 'fa-briefcase' },
+	{ name: 'Blogs', href: '/blog', icon: 'fa-newspaper' },
+	{ name: 'Resources', href: 'https://resources.microdegree.work/resources?utm_source=navbar', icon: 'fa-book-open' },
+	{ name: 'Mobile App', href: 'https://play.google.com/store/apps/details?id=work.microdegree.trainings&hl=en_IN', icon: 'fa-mobile-screen' },
+	{ name: 'IT Salary Growth Calculator', href: '/it-salary-growth-calculator', icon: 'fa-calculator' },
+	{ name: 'Cloud & DevOps Interview Questions', href: '/interviewquestions', icon: 'fa-circle-question' },
+];
+const login = 'https://courses.microdegree.work/users/sign_in';
+const phone = '0804-710-9999';
+---
+
+<header class="nav" id="site-nav">
+	<div class="bar wrap">
+		<a href="/" class="logo"><img src="/img/chrome/logo.webp" width="400" height="72" alt="MicroDegree Logo" /></a>
+
+		<nav class="desk" aria-label="Main">
+			<div class="dd">
+				<button type="button" aria-expanded="false">Courses <i class="fa-solid fa-chevron-down"></i></button>
+				<div class="menu w-lg">
+					{courses.map((c) => <a href={c.href} target="_blank" rel="noopener noreferrer">{c.name}</a>)}
+				</div>
+			</div>
+			<div class="dd">
+				<button type="button" aria-expanded="false">Tools <i class="fa-solid fa-chevron-down"></i></button>
+				<div class="menu right">
+					<p class="grp">Free Demo</p>
+					{demos.map((d) => <a class="sub" href={d.href} target="_blank" rel="noopener noreferrer">{d.name}</a>)}
+					{tools.map((t) => <a href={t.href} target="_blank" rel="noopener noreferrer">{t.name}</a>)}
+				</div>
+			</div>
+			<a class="phone" href="tel:08047109999"><i class="fa-solid fa-phone"></i> 0804-710-9999</a>
+			<a class="login" href={login} target="_blank" rel="noopener noreferrer">Login</a>
+		</nav>
+
+		<div class="mob-actions">
+			<a class="mlogin" href={login}>Login</a>
+			<button type="button" id="burger" aria-label="Open navigation menu" aria-controls="drawer" aria-expanded="false">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+		</div>
+	</div>
+
+	<div class="banner">
+		<div class="marquee">
+			<div class="group">
+				<span>
+					Join Our Free Masterclass &amp; Learn from Industry Experts! 🚀 |
+					&nbsp;<a href="https://resources.microdegree.work/resources/masterclass/masterclass?utm_source=navbar" target="_blank" rel="noopener noreferrer">Register For FREE</a>
+				</span>
+				<span class="gap">
+					🚀 Get ₹100 OFF on E-Learning Premium Plan | Code:&nbsp;
+					<button type="button" class="copy-code" title="Click to copy">SKILLS100</button>&nbsp;|&nbsp;
+					<a href="https://resources.microdegree.work/resources/elearning?utm_source=navbar" target="_blank" rel="noopener noreferrer">Enroll Now</a>
+				</span>
+			</div>
+			<div class="group" aria-hidden="true">
+				<span>
+					Join Our Free Masterclass &amp; Learn from Industry Experts! 🚀 |
+					&nbsp;<a tabindex="-1" href="https://resources.microdegree.work/resources/masterclass/masterclass?utm_source=navbar" target="_blank" rel="noopener noreferrer">Register For FREE</a>
+				</span>
+				<span class="gap">
+					🚀 Get ₹100 OFF on E-Learning Premium Plan | Code:&nbsp;
+					<button tabindex="-1" type="button" class="copy-code" title="Click to copy">SKILLS100</button>&nbsp;|&nbsp;
+					<a tabindex="-1" href="https://resources.microdegree.work/resources/elearning?utm_source=navbar" target="_blank" rel="noopener noreferrer">Enroll Now</a>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<aside id="drawer" class="drawer" aria-hidden="true" aria-label="Navigation menu">
+		<div class="d-head">
+			<a href="/" class="d-logo" aria-label="MicroDegree home"><img src="/img/chrome/logo.webp" width="400" height="72" alt="MicroDegree" /></a>
+			<button type="button" id="drawer-close" class="d-close" aria-label="Close navigation menu">
+				<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+			</button>
+		</div>
+
+		<nav class="d-nav" aria-label="Mobile">
+			<details class="d-grp">
+				<summary>
+					<span class="d-ico"><i class="fa-solid fa-graduation-cap"></i></span>
+					<span class="d-lbl">Courses</span>
+					<span class="d-chev" aria-hidden="true"></span>
+				</summary>
+				<div class="d-sub">
+					{courses.map((c) => (
+						<a href={c.href} target="_blank" rel="noopener"><i class={`fa-solid ${c.icon}`}></i><span>{c.name}</span></a>
+					))}
+				</div>
+			</details>
+
+			<details class="d-grp">
+				<summary>
+					<span class="d-ico"><i class="fa-solid fa-toolbox"></i></span>
+					<span class="d-lbl">Tools</span>
+					<span class="d-chev" aria-hidden="true"></span>
+				</summary>
+				<div class="d-sub">
+					<details class="inner">
+						<summary><i class="fa-solid fa-circle-play"></i><span>Free Demo</span><span class="d-chev" aria-hidden="true"></span></summary>
+						<div class="inner-list">
+							{demos.map((d) => <a href={d.href}><span>{d.name}</span></a>)}
+						</div>
+					</details>
+					{tools.map((t) => (
+						<a href={t.href}><i class={`fa-solid ${t.icon}`}></i><span>{t.name}</span></a>
+					))}
+				</div>
+			</details>
+		</nav>
+
+		<div class="d-foot">
+			<a class="d-call" href="tel:08047109999"><span class="d-ico sm"><i class="fa-solid fa-phone"></i></span><span>{phone}</span></a>
+			<a class="dlogin" href={login}><span>Login</span><i class="fa-solid fa-arrow-right"></i></a>
+		</div>
+	</aside>
+	<div class="scrim" id="scrim" hidden></div>
+</header>
+
+<style>
+	.nav { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--line); }
+	/* Opaque on purpose: a backdrop blur would be recomputed every frame while the banner ticker animates. */
+	.nav::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #fff; }
+	.banner { background: linear-gradient(90deg, #ff0055, #ef4444); color: #fff; overflow: hidden; font-size: .88rem; font-weight: 600; }
+	.marquee { display: flex; width: max-content; white-space: nowrap; padding: 5px 0; animation: ticker 40s linear infinite; }
+	.group { display: flex; align-items: center; flex-shrink: 0; }
+	.group > span { padding: 0 32px; }
+	.group > .gap { padding: 0 128px; }
+	.copy-code { color: #fde047; font-weight: 700; cursor: pointer; background: none; border: 0; font: inherit; font-weight: 700; padding: 0 2px; }
+	.marquee:hover { animation-play-state: paused; }
+	.marquee a { text-decoration: underline; }
+	.marquee a:hover { color: #fde68a; }
+	@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+	@media (max-width: 640px) { .marquee { animation-duration: 25s; } }
+	@media (prefers-reduced-motion: reduce) { .marquee { animation: none; width: auto; justify-content: center; white-space: normal; text-align: center; } .group[aria-hidden] { display: none; } }
+
+	/* Keep the dropdowns above the animated (transformed) banner that follows. */
+	.bar { position: relative; z-index: 2; max-width: none; padding: 0 clamp(16px, 3vw, 40px); height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+	.logo img { width: 200px; height: auto; }
+
+	.desk { display: none; align-items: center; gap: 8px; margin-left: auto; }
+	.dd { position: relative; }
+	.dd > button, .phone, .login {
+		display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 99px;
+		font-weight: 500; color: #374151; background: transparent; border: 1px solid transparent; transition: color .2s, background .2s, border-color .2s;
+	}
+	.dd > button:hover, .dd.open > button { background: rgba(255, 42, 103, .1); color: #ff2a67; }
+	.dd > button i { font-size: .7rem; transition: transform .2s; }
+	.dd.open > button i { transform: rotate(180deg); }
+	.phone, .login { border-color: var(--line); }
+	.phone:hover, .login:hover { border-color: #ff2a67; color: #ff2a67; }
+	.login { font-weight: 600; }
+	.desk .phone { margin-left: 16px; }
+
+	.menu {
+		position: absolute; top: calc(100% + 10px); min-width: 300px; padding: 8px 0; background: #fff; border: 1px solid var(--line);
+		border-radius: 16px; box-shadow: 0 20px 40px -12px rgba(65, 89, 236, .25); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: .18s;
+	}
+	.menu.w-lg { width: 380px; left: 0; }
+	.menu.right { right: 0; width: 320px; }
+	.dd.open .menu { opacity: 1; visibility: visible; transform: none; }
+	.menu a { display: block; padding: 10px 20px; font-size: .92rem; font-weight: 500; color: #374151; transition: background .15s, color .15s; }
+	.menu a:hover { background: #ff2a67; color: #fff; }
+	.menu .sub { padding-left: 36px; background: #f9fafb; color: #4b5563; }
+	.grp { padding: 8px 20px 4px; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9ca3af; }
+
+	.mob-actions { display: flex; align-items: center; gap: 14px; }
+	.mlogin { color: #4159ec; font-weight: 500; }
+	#burger { border: 0; background: none; font-size: 1.6rem; color: #1f2937; padding: 6px 8px; }
+
+	.drawer {
+		position: fixed; top: 0; left: 0; bottom: 0; width: min(340px, 88vw); z-index: 110; display: flex; flex-direction: column;
+		background: #fff; border-radius: 0 24px 24px 0; overflow: hidden;
+		transform: translateX(-100%); visibility: hidden; transition: transform .3s cubic-bezier(.22, .8, .3, 1), visibility .3s;
+	}
+	.drawer.open { transform: none; visibility: visible; box-shadow: 12px 0 40px -8px rgba(15, 23, 42, .35); }
+
+	.d-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; background: linear-gradient(135deg, #f5f7ff, #fff); border-bottom: 1px solid #e8ebf7; }
+	.d-logo img { width: 160px; height: auto; display: block; }
+	.d-close { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #e4e6f2; border-radius: 12px; background: #fff; color: #374151; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+	.d-close:hover { background: #ff2a67; border-color: #ff2a67; color: #fff; }
+
+	.d-nav { flex: 1; overflow-y: auto; padding: 14px 14px 8px; display: grid; gap: 10px; align-content: start; }
+	.drawer summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; }
+	.drawer summary::-webkit-details-marker { display: none; }
+	.d-chev { margin-left: auto; flex: none; width: 8px; height: 8px; border-right: 2px solid #94a3b8; border-bottom: 2px solid #94a3b8; transform: rotate(45deg) translate(-2px, -2px); transition: transform .2s, border-color .2s; }
+	.drawer details[open] > summary .d-chev { transform: rotate(-135deg) translate(-2px, -2px); border-color: #4159ec; }
+
+	.d-grp { border: 1px solid #e8ebf7; border-radius: 16px; background: #fff; transition: border-color .2s, box-shadow .2s; }
+	.d-grp[open] { border-color: #c7d2fe; box-shadow: 0 10px 24px -16px rgba(65, 89, 236, .45); }
+	.d-grp > summary { padding: 12px 14px; }
+	.d-lbl { font-size: 1.02rem; font-weight: 600; color: #12122b; }
+	.d-ico { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #eef2ff, #e0e7ff); color: #4159ec; font-size: .95rem; }
+	.d-ico.sm { width: 34px; height: 34px; }
+
+	.d-sub { padding: 2px 8px 10px; display: grid; gap: 2px; }
+	.d-sub a, .d-sub .inner > summary {
+		display: flex; align-items: center; gap: 12px; padding: 10px 10px; border-radius: 12px; font-size: .92rem; font-weight: 500; color: #334155; line-height: 1.35;
+		transition: background .15s, color .15s;
+	}
+	.d-sub a:hover, .d-sub .inner > summary:hover { background: #f3f5ff; color: #4159ec; }
+	.d-sub i.fa-solid { flex: none; width: 20px; text-align: center; font-size: .9rem; color: #6b7cf0; }
+	.d-sub .inner > summary { font-weight: 600; color: #12122b; }
+	.d-sub .inner[open] > summary { background: #f3f5ff; color: #4159ec; }
+	.inner-list { margin: 4px 0 4px 21px; padding-left: 12px; border-left: 2px solid #dbe2ff; display: grid; gap: 2px; }
+	.inner-list a { padding: 8px 10px; font-size: .88rem; color: #475569; }
+
+	.d-foot { padding: 14px; border-top: 1px solid #e8ebf7; background: #fafbff; display: grid; gap: 10px; }
+	.d-call { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 14px; font-weight: 600; font-size: .98rem; color: #12122b; }
+	.d-call:hover { background: #f3f5ff; }
+	.dlogin { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 13px; border-radius: 14px; background: linear-gradient(135deg, #151595, #4159ec); color: #fff; font-weight: 600; box-shadow: 0 12px 24px -12px rgba(21, 21, 149, .8); transition: transform .15s, box-shadow .15s; }
+	.dlogin:hover { transform: translateY(-1px); box-shadow: 0 16px 28px -12px rgba(21, 21, 149, .85); }
+	.dlogin i { font-size: .8rem; }
+
+	.scrim { position: fixed; inset: 0; background: rgba(15, 23, 42, .5); backdrop-filter: blur(2px); z-index: 105; }
+	.scrim[hidden] { display: none; }
+
+	@media (min-width: 1280px) {
+		.desk { display: flex; }
+		.mob-actions, .drawer, .scrim { display: none; }
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>('.copy-code').forEach((b) => b.addEventListener('click', async () => {
+		try { await navigator.clipboard.writeText('SKILLS100'); } catch { const t = document.createElement('textarea'); t.value = 'SKILLS100'; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
+		document.querySelectorAll('.copy-code').forEach((x) => (x.textContent = 'Copied! ✓'));
+		setTimeout(() => document.querySelectorAll('.copy-code').forEach((x) => (x.textContent = 'SKILLS100')), 2000);
+	}));
+	const dds = document.querySelectorAll<HTMLElement>('.nav .dd');
+	dds.forEach((dd) => {
+		const btn = dd.querySelector('button')!;
+		btn.addEventListener('click', (e) => {
+			e.stopPropagation();
+			const willOpen = !dd.classList.contains('open');
+			dds.forEach((o) => { o.classList.remove('open'); o.querySelector('button')!.setAttribute('aria-expanded', 'false'); });
+			dd.classList.toggle('open', willOpen);
+			btn.setAttribute('aria-expanded', String(willOpen));
+		});
+	});
+	document.addEventListener('click', () => dds.forEach((o) => o.classList.remove('open')));
+
+	const drawer = document.getElementById('drawer')!;
+	const scrim = document.getElementById('scrim')!;
+	const burger = document.getElementById('burger')!;
+	const setDrawer = (open: boolean) => {
+		drawer.classList.toggle('open', open);
+		scrim.hidden = !open;
+		drawer.setAttribute('aria-hidden', String(!open));
+		burger.setAttribute('aria-expanded', String(open));
+	};
+	burger.addEventListener('click', (e) => { e.stopPropagation(); setDrawer(!drawer.classList.contains('open')); });
+	scrim.addEventListener('click', () => setDrawer(false));
+	document.getElementById('drawer-close')!.addEventListener('click', () => setDrawer(false));
+	window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { setDrawer(false); dds.forEach((o) => o.classList.remove('open')); } });
+</script>

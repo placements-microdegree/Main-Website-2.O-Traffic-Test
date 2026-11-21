@@ -1,0 +1,168 @@
+---
+import Carousel from '../Carousel.astro';
+import Icon from '../Icon.astro';
+const slidesData = [
+{
+  avatar: "https://ik.imagekit.io/microdegree/Sandesh%20Kumar_ETLAs7BglZ.png?updatedAt=1730176691331",
+  name: "Sandesh Kumar",
+  rating: 5,
+  description:
+    "My experience at MicroDegree has been excellent. The courses in Python and MySQL are well-structured, with instructors who explain complex concepts clearly and focus on real-world applications. The hands-on projects allowed me to apply what I learned, boosting my skills and confidence. The supportive community and practical learning approach made it a valuable experience, preparing me well for a career in software development.",
+},
+{
+  avatar: "https://ik.imagekit.io/microdegree/Hitesh%20Hatwar%20B%20S_uwUT9C16NG.png?updatedAt=1730176691326",
+  name: "Hitesh Hatwar B S",
+  rating: 5,
+  description:
+    "Absolutely, well structured syllabus, and knowledgable trainer's, who just won't teach you everything, but they will teach you enough for us to start our journey into the world of AWS & Devops. Shout out to Sumeet Kulkerni Sir(literally a brother who will be there for you and makes DevOps concepts easy) and Kavya Gowda ma'am (our highly knowledgable AWS trainer who trained us the most important services of AWS).",
+},
+{
+  avatar: "https://ik.imagekit.io/microdegree/sowmya%20cta_pWIehjqZL.png?updatedAt=1730176691119",
+  name: "sowmya cta",
+  rating: 5,
+  description:
+    "I have joined micro degree with very less expectations but I am very much impressed with this institute, it is an excellent training center especially for the beginners. All trainers are well experienced being specific sumeet Kulkarni sir is wonderful human being who taught us Devops concepts in a very easy & excellent way really thankful to micro degree, Sumeet sir and Shidhar AWS sir",
+},
+{
+  avatar: "https://ik.imagekit.io/microdegree/Kavya%20Gowda_rO9v6GrcEr.png?updatedAt=1730176691115",
+  name: "Kavya Gowda",
+  rating: 5,
+  description:
+    "Today I completed my training in DevOps class taught by Sumeet Kulkarni sir, the training was excellent with good interaction, knowledge sharing.Sumeet Sir was enthusiastic and very good trainer i have ever seen and most supportive at all the time and making complex concepts much easier for students to understand and apply them in real-world scenarios. Overall, I would highly recommend microdegree & Sumeet Kulkarni sir as a DevOps teacher.",
+},
+];
+---
+<div class="review2-container">
+      <div class="slider-container">
+      <h1 class="font-poppins text-4xl font-semibold justify-center mb-10 tracking-tight hidden sm:flex">
+          Our Reviews
+        </h1>
+        <h1 class="font-poppins text-3xl font-semibold justify-center mb-10 tracking-tight xl:hidden sm:hidden md:hidden">
+          Our Reviews
+        </h1>
+        <Carousel show={3} showTablet={3} showMobile={1} autoplay={3000} loop>
+          {slidesData.map((slide, index) => (
+            <div class="slide-content">
+              <div class="card">
+                <div class="header">
+                  <img loading="lazy" decoding="async" src={slide.avatar} alt="Avatar" class="avatar" />
+                  <div class="info">
+                    <h4>{slide.name}</h4>
+                    <div class="rating">
+                      {[...Array(slide.rating)].map((_, i) => (
+                        <Icon name="FaStar" color="gold" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p class="text-justify mt-5">{slide.description}</p>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+      <hr class="h-px my-20 bg-gray-200 border-0 dark:bg-gray-700 w-[80%] mx-auto">
+    </div>
+
+<style is:global>
+.review2-container .slider-container {
+    width: 80%;
+    margin: auto;
+  }
+  .review2-container .slide-content {
+    padding: 10px;
+  }
+  .review2-container .card {
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 2px;
+    margin: auto;
+  }
+  .review2-container .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .review2-container .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .review2-container .info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .review2-container .rating {
+    display: flex;
+    margin-top: 4px;
+  }
+  .review2-container p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Custom arrow styles */
+
+
+
+
+  
+  /* Responsive styles */
+  @media (max-width: 1200px) {
+    .review2-container .card {
+      padding: 20px;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .review2-container .slider-container {
+      width: 90%;
+    }
+    .review2-container .card {
+      padding: 25px;
+      gap: 10px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .review2-container .slider-container {
+      width: 95%;
+    }
+    .review2-container .card {
+      padding: 15px;
+      font-size: 1rem;
+    }
+    .review2-container .info h4 {
+      font-size: 1rem;
+    }
+    .review2-container p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .review2-container .slider-container {
+      width: 90%;
+    }
+    .review2-container .card {
+      padding: 12px;
+      font-size: 1rem;
+    }
+    .review2-container .avatar {
+      width: 45px;
+      height: 45px;
+    }
+    .review2-container .info h4 {
+      font-size: 1.2rem;
+    }
+    .review2-container p {
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+import Icon from '../Icon.astro';
+const curriculumData = [
+  {
+    title: "Introduction",
+    preview: false,
+    videoUrl: "https://www.youtube.com/embed/_uQrJ0TkZlc",
+    desc: [
+      "Introduction to Cloud Computing and AWS Advantages of Cloud Computing",
+      "Introduction to ChatGPT",
+      "SaaS, IaaS & PaaS",
+      "Why we should care about AWS",
+      "Computer networks, Infrastructure of the company",
+      "IP addresses"
+    ]
+  },
+  {
+    title: "Networking",
+    preview: false,
+    videoUrl: "https://www.youtube.com/embed/_uQrJ0TkZlc",
+    desc: [
+      "Creating a VPC(Virtual Private Cloud)",
+      "Creating Private & Public Subnets Cloudfront",
+      "Route53 Securing VPC",
+      "VPC peering",
+      "Transit Gateway",
+      "Updating and working with domain names."
+    ]
+  },
+  {
+    title: "AWS - Solutions Architect Associate",
+    preview: false,
+    desc: [
+      "Introduction to Cloud Computing and AWS",
+      "EC2 (Elastic Compute Cloud)",
+      "Identity Access Management",
+      "ELB(Elastic Load Balancing)",
+      "Logging & Monitoring Tools",
+      "S3(Simple Storage Service)",
+      "Databases on AWS",
+      "Serverless Architectures",
+      "AI in AWS"
+    ]
+  },
+{
+  title: "DevOps",
+  preview: false,
+  desc: [
+    "DevOps Basics",
+    "GIT",
+    "Maven",
+    "Jenkins",
+    "Ansible",
+    "Docker",
+    "Kubernetes",
+    "Monitoring using Prometheus & Grafana",
+    "Provisioning using Terraform",
+    "AI on DevOps"
+  ]
+},
+  {
+  title: "Azure - Solutions Architect Associate Expert",
+  preview: false,
+  desc: [
+    "Cloud Concepts",
+    "Core Azure Services",
+    "Security, Privacy, Compliance, and Trust",
+    "Azure Pricing and Support",
+    "Manage Azure Identities and Governance",
+    "Implement & Manage Storage",
+    "Deploy and Manage Azure Compute Resources",
+    "Configure and Manage Virtual Networking",
+    "Monitor and Backup Azure Resources"
+  ]
+},
+{
+  title: "DevSecOps",
+  preview: false,
+  desc: [
+    "SAST",
+    "DAST",
+    "SCA",
+    "Git",
+    "Penetration testing",
+    "Vulnerability assessment",
+    "Key security principles",
+    "Confidentiality, Integrity, and Availability (CIA Triad)",
+    "OWASP & Security Standards and many more"
+  ]
+},
+{
+  title: "GenAI in Cloud & DevOps",
+  preview: false,
+  desc: [
+    "Foundations of Generative AI & No-Code Tools",
+    "AI for Cloud & Infrastructure",
+    "AI for DevOps & Automation",
+    "Advanced AI Integration & Programming"
+  ]
+},
+{
+  title: "Certified Kubernetes Administrator (CKA/CKAD)",
+  preview: false,
+  desc: [
+    "Kubernetes Deep Architecture & Control Plane",
+    "Kubernetes Installation with kubeadm",
+    "Managing Static Pods & Component Configurations",
+    "Pod Design (CKAD Focus)",
+    "Labels, Selectors & Annotations",
+    "Deployments, ReplicaSets, Rollouts",
+    "DaemonSets, Jobs & CronJobs",
+    "Namespaces & Resource Quotas",
+    "Security: TLS, RBAC, Service Accounts",
+    "Authentication, Authorization & Admission Controllers",
+    "Network Policies (CKA/CKAD)",
+    "Services & DNS",
+    "Ingress Controllers & Ingress Resources",
+    "ConfigMaps & Secrets",
+    "Resource Limits, Requests & Autoscaling",
+    "Probes (Liveness & Readiness)",
+    "Volumes, Persistent Volumes, PVCs",
+    "Storage Classes & StatefulSets",
+    "Logging & Monitoring in Kubernetes",
+    "Troubleshooting Cluster Issues (CKA Focus)",
+    "Upgrade Cluster using kubeadm",
+    "JSONPath & Advanced kubectl"
+  ]
+},
+
+];
+---
+
+<section class="w-full py-12 px-6 sm:px-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center sm:justify-between py-5">
+      <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 text-center sm:text-left tracking-tight">Course Curriculum</h2>
+      <a href="#" data-tally="mV2RpN" class="hidden sm:flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-black text-white font-semibold rounded-lg shadow-sm hover:shadow-lg text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+        <Icon name="FaDownload" class="text-white text-sm" />
+        Download Complete Curriculum
+      </a>
+    </div>
+
+    <div class="space-y-3">
+      {curriculumData.map((item) => (
+        <details class="lp-acc border rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+          <summary class="w-full flex justify-between items-center p-4 cursor-pointer text-left">
+            <div class="flex items-center space-x-3">
+              <span class="shrink-0 h-2 w-2 rounded-full bg-blue-600"></span>
+              <h3 class="font-medium text-gray-800">{item.title}</h3>
+            </div>
+            <Icon name="FiChevronDown" class="lp-acc-chevron text-gray-500" />
+          </summary>
+          <div class="px-6 pb-4 text-base text-gray-600 text-left">
+            <ul class="list-disc pl-6 space-y-1">
+              {item.desc.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="font-semibold text-md sm:text-xl text-center mt-5 mb-5">Download Complete Curriculum for more details.</div>
+
+    <div class="flex justify-center mt-6">
+      <a href="#" data-tally="mV2RpN" class="flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 hover:bg-black text-white font-semibold rounded-lg shadow-sm hover:shadow-lg text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+        <Icon name="FaDownload" class="text-white text-sm" />
+        Download Complete Curriculum
+      </a>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .lp-acc summary { list-style: none; }
+  .lp-acc summary::-webkit-details-marker { display: none; }
+  .lp-acc[open] .lp-acc-chevron { transform: rotate(180deg); }
+  .lp-acc-chevron { transition: transform .2s; flex: none; }
+</style>

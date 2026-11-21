@@ -1,0 +1,81 @@
+---
+import Carousel from '../Carousel.astro';
+
+---
+<div class="slider-container mx-10 my-20 md:mx-48">
+                    <p class='font-poppins text-4xl font-semibold justify-center mb-10 tracking-tight hidden sm:flex'>Our Success Stories</p>
+                    <p class='font-poppins text-3xl font-semibold justify-center mb-10 tracking-tight xl:hidden sm:hidden md:hidden'>Our Success Stories</p>
+      <Carousel show={3} showTablet={3} showMobile={1} autoplay={3000} loop>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0012_xD5bs4bg9W.jpg?updatedAt=1730265234273" alt="Image 1" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0009_ft67Tie1Ld.jpg?updatedAt=1730265234282" alt="Image 2" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0013_idUb-JkHS1.jpg?updatedAt=1730265234239" alt="Image 3" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0011_EXSLfHSFt.jpg?updatedAt=1730265234275" alt="Image 4" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0007_U_4Ph3nKYF.jpg?updatedAt=1730265234221" alt="Image 5" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0014_dSXRxO6vlj.jpg?updatedAt=1730265234206" alt="Image 6" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0008_Z1F5eQQzAs.jpg?updatedAt=1730265233976" alt="Image 7" class="slider-image" />
+        </div>
+        <div class="image-container">
+          <img loading="lazy" decoding="async" src="https://ik.imagekit.io/microdegree/IMG-20241030-WA0010_JVNfrK0BU.jpg?updatedAt=1730265233948" alt="Image 8" class="slider-image" />
+        </div>
+      </Carousel>
+      <div class="hidden sm:flex justify-center">
+  <a
+    class="px-4 py-2 h-[50px] w-80 mt-16 text-center text-white bg-[#FF0049] border-b-2 border-r-2 border-black rounded-3xl focus:outline-none focus:ring flex items-center justify-center gap-3 font-poppins font-semibold text-base hover:bg-black whitespace-nowrap"
+    href="https://www.microdegree.work/Testimonials"
+  >
+    View All
+  </a>
+</div>
+
+<div class="xl:hidden sm:hidden md:hidden justify-center">
+  <a
+    class="px-4 py-2 h-[50px] w-full mt-16 text-center text-white bg-[#FF0049] border-b-2 border-r-2 border-black rounded-3xl focus:outline-none focus:ring flex items-center justify-center gap-3 font-poppins font-semibold text-base hover:bg-black"
+    href="https://www.microdegree.work/Testimonials"
+  >
+    View All
+  </a>
+</div>
+
+    </div>
+
+<style is:global>
+.slider-container {
+    padding: 10px; /* Optional padding for the entire slider */
+  }
+  
+  .image-container {
+    padding: 20px; /* Padding between the images */
+  }
+  
+  .slider-image {
+    width: 100%; /* Make the image take full width of its container */
+    max-width: 280px; /* Limit the max size of the image (adjust as needed) */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Ensure the image is displayed as a block */
+    border-radius: 2px; /* Optional: Add rounded corners to the image */
+  }
+
+  /* Forcefully apply the arrow color change */
+
+  
+  /* Adjust the arrow position on mobile devices */
+  @media (max-width: 600px) {
+
+    
+
+  }
+</style>

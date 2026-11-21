@@ -1,0 +1,321 @@
+---
+import Icon from '../Icon.astro';
+const part1Data = [
+  {
+    title: "Module 1 – AI Foundations & Prompting for IT Professionals",
+    preview: false,
+    desc: [
+      "Program orientation and how LLMs really work: tokens, context window, training vs inference, why models hallucinate. Each learner states the one job task they will improve by the capstone.",
+      "The prompt pattern Task → Context → Input → Constraints → Output → Check; managing context across a conversation; AI as a tutor for any new tool or technology.",
+      "Validating output and handling data responsibly: what may and may not be pasted into an AI tool, company policy, citing sources."
+    ]
+  },
+  {
+    title: "Module 2 – Claude Environment: Chat, Projects & Artifacts",
+    preview: false,
+    desc: [
+      "Chat versus workspace: setting up a Project with instructions and reference files; what the AI sees and what it does not.",
+      "Document analysis: long documents, comparing versions, extracting tables, answering with citations.",
+      "Building a role assistant: instructions, a prompt library, a voice and limits; quality checklists and sharing it with a team.",
+      "Artifacts: editable documents, tables, Mermaid diagrams and simple interactive pages.",
+      "Professional documents and training content: proposals and policies in house style; turning an SOP into a course outline, job aid, quiz and slide deck as Word and PowerPoint files."
+    ]
+  },
+  {
+    title: "Module 3 – Data Views & Reports with AI",
+    preview: false,
+    desc: [
+      "Analysing data with AI: cleaning an export, grouping by week, month, quarter and year, and checking the totals.",
+      "Charts, dashboards and summaries: one chart and one paragraph per period, written for a manager."
+    ]
+  },
+  {
+    title: "Module 4 – Claude Skills, Connectors & Cowork",
+    preview: false,
+    desc: [
+      "Claude Skills: packaging a repeatable procedure so anyone can run it.",
+      "Connectors and their risks: drive, email, calendar, Jira, Confluence; read versus write access, least privilege, and an everyday introduction to prompt injection.",
+      "Claude Cowork and Claude in Chrome: multi-step tasks over files, apps and web pages, where they fail, where a human must approve."
+    ]
+  },
+  {
+    title: "Module 5 – Workflow Automation with Claude Cowork",
+    preview: false,
+    desc: [
+      "The pattern: trigger → AI transformation → approval → destination, and the six workflow patterns built on it. Building them with Cowork, Connectors and a Skill.",
+      "AI steps that do real work: classification, extraction, summarisation into fixed fields.",
+      "Ticket-to-Jira with human approval; documentation automation into Confluence; turning the flow into a scheduled task.",
+      "Testing workflows: edge cases, failures, usage limits and reliability; what Cowork cannot do yet, and where Part 2 code takes over."
+    ]
+  },
+  {
+    title: "Module 6 – No-Code AI Agents & Prototyping",
+    preview: false,
+    desc: [
+      "Agents versus workflows; giving Cowork two or three connected tools, an approval step and a schedule, so it drafts a business report from the 1.3 views.",
+      "Prototyping without deep coding: interactive and AI-powered prototypes in Artifacts, screens and clickable mock-ups in Claude Design, and a quick user test."
+    ]
+  },
+  {
+    title: "Module 7 – Role-Based AI Playbooks",
+    preview: false,
+    desc: [
+      "Role pods. Each pod works through its playbook with an instructor or senior peer.",
+      "Build your AI Work Kit for one real task: an SOP, a short presentation and a process diagram.",
+      "Cross-role showcase: each pod demos to the others. PMs see how QA uses AI, developers see how operations does, and so on."
+    ]
+  },
+  {
+    title: "Module 8 – Leading with AI",
+    preview: false,
+    desc: [
+      "AI strategy, governance and adoption for leaders: use-case portfolio, business case, team AI policy, data and risk basics, and presenting AI results to leadership."
+    ]
+  },
+  {
+    title: "Module 9 – AI Operating System & Capstone",
+    preview: false,
+    desc: [
+      "Your personal AI operating system and capstone clinic: prompt library, assistants, automations and a weekly routine; measuring impact; instructor review of each capstone plan.",
+      "Capstone demos."
+    ]
+  }
+];
+const part2Data = [
+  {
+    title: "Module 1 – Python for AI Engineering",
+    preview: false,
+    desc: [
+      "Setup: Python, Colab/Jupyter, VS Code; working with an AI coding assistant: asking for code, reading it, running it.",
+      "Python essentials in context: variables, strings, lists, dictionaries and loops, read and modified with AI help.",
+      "Functions, modules, virtual environments and pip; debugging with the assistant.",
+      "Files, JSON and CSV; classes and dataclasses.",
+      "Error handling and logging; reviewing AI-generated code for silent failures.",
+      "HTTP and REST with requests/httpx; authentication and API keys.",
+      "Environment variables, python-dotenv and secret hygiene; checking AI-written code for leaked keys.",
+      "Pydantic models and validation.",
+      "Structured outputs: parsing and validating JSON returned by an LLM.",
+      "Async basics with asyncio and httpx for concurrent calls.",
+      "Boto3 and Amazon Bedrock basics; packaging a reusable LLM helper with light pytest tests.",
+      "Mini-project."
+    ]
+  },
+  {
+    title: "Module 2 – LLM APIs & Structured AI Applications",
+    preview: false,
+    desc: [
+      "First calls with the Claude API: messages, system prompts, token limits; prototyping prompts in the Claude Console; model selection, token counting and cost.",
+      "Structured outputs and tool use.",
+      "Context management, prompt caching, streaming, retries, validation and error handling; running the same client on the Claude API or Amazon Bedrock."
+    ]
+  },
+  {
+    title: "Module 3 – AI Workflow Automation with n8n",
+    preview: false,
+    desc: [
+      "Webhooks, HTTP/API nodes and Claude nodes; from Part 1 Cowork tasks to event-driven, production-style flows.",
+      "Multi-step AI pipelines with classification, extraction, summarisation and approvals.",
+      "Error handling and team build: expose a Python service, written with Claude Code, and call it from the flow."
+    ]
+  },
+  {
+    title: "Module 4 – RAG Systems",
+    preview: false,
+    desc: [
+      "Why RAG; ingestion and document loaders.",
+      "Chunking and metadata.",
+      "Embeddings and vector stores: local versus managed.",
+      "Retrieval pipelines, context assembly and answers with Claude's citations.",
+      "Comparing strategies: quality, latency and cost; a simple UI."
+    ]
+  },
+  {
+    title: "Module 5 – Single-Agent AI Systems",
+    preview: false,
+    desc: [
+      "Agent architecture: the loop, tools, memory and state; a hand-written tool-use loop versus the Claude Agent SDK.",
+      "Planning and execution loops; human-in-the-loop before consequential actions."
+    ]
+  },
+  {
+    title: "Module 6 – Playwright & AI Browser Automation",
+    preview: false,
+    desc: [
+      "Playwright basics: setup, browsers, locators, actions and codegen; Claude Code writes and fixes the scripts. When Claude in Chrome is enough and when a script is needed.",
+      "Assertions, auto-waiting and test structure with pytest-playwright: fixtures, page objects, headless and parallel runs. Role-specific labs.",
+      "Debugging and reliability: trace viewer, screenshots and video, why tests flake; running the suite in CI with GitHub Actions; Claude Code diagnosing failures.",
+      "AI-assisted testing: Claude turning user stories into test cases; Claude Code with the Playwright MCP server exploring an app and drafting tests; reviewing AI-written tests.",
+      "Playwright as an agent tool; human approval for consequential browser actions."
+    ]
+  }
+];
+const part3Data = [
+  {
+    title: "Module 1 – Multi-Agent Systems",
+    preview: false,
+    desc: [
+      "When multiple agents help and when they only add cost and risk.",
+      "LangGraph fundamentals: state, nodes, edges.",
+      "Specialised agents and shared state; the same split with Claude Agent SDK subagents.",
+      "Sequential versus parallel execution.",
+      "Agent handoffs.",
+      "Failure handling and boundaries."
+    ]
+  },
+  {
+    title: "Module 2 – Agent Orchestration",
+    preview: false,
+    desc: [
+      "Router and controller agents.",
+      "Supervisor and hierarchical patterns.",
+      "Parallel workflows and human approval with interrupts.",
+      "Retries, recovery and checkpointing.",
+      "Long-running workflows with background workers and task queues; bulk jobs with the Message Batches API; hosted long-running agents with Claude Managed Agents."
+    ]
+  },
+  {
+    title: "Module 3 – MCP-Based Communication",
+    preview: false,
+    desc: [
+      "MCP architecture: hosts, clients, servers; tools, resources and prompts. Part 1 connectors are MCP servers.",
+      "Build an MCP server in Python that exposes your RAG and ticket tools.",
+      "Consume MCP from your Claude Agent SDK agent; context sharing.",
+      "Security and governance: authentication, least privilege, tool poisoning."
+    ]
+  },
+  {
+    title: "Module 4 – Advanced RAG Architecture",
+    preview: false,
+    desc: [
+      "Why basic RAG fails in enterprises; setting a retrieval baseline and metrics.",
+      "Advanced chunking: semantic, hierarchical, parent-document.",
+      "Hybrid retrieval and metadata filtering.",
+      "Reranking.",
+      "Query transformation and multi-query retrieval.",
+      "Architecture patterns: agentic RAG, graph-based retrieval and Anthropic's Contextual Retrieval with prompt caching; choosing with evidence."
+    ]
+  },
+  {
+    title: "Module 5 – LLM Evals, Security & Guardrails",
+    preview: false,
+    desc: [
+      "Evaluation fundamentals: datasets, metrics, baselines, quality gates; generating test cases in the Claude Console.",
+      "RAG evaluation with Ragas and Claude as the judge; agent evaluation with DeepEval or Promptfoo.",
+      "Regression evals in CI.",
+      "Prompt injection and agent security: direct and indirect attacks, data exfiltration.",
+      "Guardrails and tool/permission boundaries: a fast Claude Haiku screen on inputs and outputs, Agent SDK permission settings."
+    ]
+  },
+  {
+    title: "Module 6 – LLMOps, Observability & Production",
+    preview: false,
+    desc: [
+      "LLMOps and observability: tracing requests, tools, latency, cost and failures.",
+      "Cost and latency: caching, prompt caching, model routing, rate limiting.",
+      "Deployment: FastAPI and Docker on AWS EC2, calling Claude through the Claude API or Amazon Bedrock; Streamlit front end.",
+      "Production monitoring, maintenance and the final capstone demo."
+    ]
+  }
+];
+// Combine parts into one list, numbering the modules continuously
+const combineParts = (...parts) =>
+  parts.flat().map((m, i) => ({
+    ...m,
+    title: m.title.replace(/^Module \d+/, `Module ${i + 1}`),
+  }));
+
+const standardData = part1Data;
+const premiumData = combineParts(part1Data, part2Data);
+const premiumPlusData = combineParts(part1Data, part2Data, part3Data);
+const INITIAL_VISIBLE = 10;
+
+const planOptions = [
+  { value: "standard", label: "Standard", data: standardData },
+  { value: "premium", label: "Premium", data: premiumData },
+  { value: "premiumPlus", label: "Premium+", data: premiumPlusData },
+];
+---
+
+<section class="w-full py-12 px-6 sm:px-10" data-curriculum>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between py-5">
+      <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 text-left tracking-tight">Generative AI Course Curriculum</h2>
+
+      <div class="flex w-full sm:w-auto mt-4 sm:mt-0 bg-gray-200 p-1 rounded-full" role="tablist">
+        {planOptions.map((o) => (
+          <button type="button" role="tab" data-plan-tab={o.value} aria-selected={o.value === "premium"} class="plan-tab flex-1 sm:flex-none px-2 sm:px-5 py-2 rounded-full text-[13px] sm:text-sm font-medium whitespace-nowrap transition text-gray-700">
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {planOptions.map((o) => (
+      <div data-plan={o.value} hidden={o.value !== "premium"}>
+        <p class="text-sm font-medium text-blue-600 mb-3 text-left">{o.data.length} modules</p>
+        <div class="space-y-3">
+          {o.data.map((item, idx) => (
+            <details class:list={["lp-acc border rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300", idx >= INITIAL_VISIBLE && "hidden"]} data-extra={idx >= INITIAL_VISIBLE ? "" : undefined}>
+              <summary class="w-full flex justify-between items-start p-4 cursor-pointer text-left">
+                <div class="flex items-start space-x-3 w-full">
+                  <span class="h-2 w-2 rounded-full bg-blue-600 mt-2 shrink-0"></span>
+                  <span class="font-medium text-gray-800 text-left w-full leading-tight">{item.title}</span>
+                </div>
+                <Icon name="FiChevronDown" class="lp-acc-chevron" />
+              </summary>
+              <div class="px-6 pb-4 text-gray-600 text-left">
+                <ul class="list-disc pl-6 space-y-1 text-left w-full">
+                  {item.desc.map((point) => <li class="text-left">{point}</li>)}
+                </ul>
+              </div>
+            </details>
+          ))}
+        </div>
+        {o.data.length > INITIAL_VISIBLE && (
+          <div class="flex justify-center mt-5">
+            <button type="button" data-more data-count={o.data.length - INITIAL_VISIBLE} class="flex items-center gap-2 px-6 py-2.5 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold rounded-full text-sm transition">
+              Show {o.data.length - INITIAL_VISIBLE} more modules
+            </button>
+          </div>
+        )}
+      </div>
+    ))}
+
+    <div class="font-semibold text-md sm:text-xl text-center mt-5 mb-5">Download Complete Curriculum for more details.</div>
+
+    <div class="flex justify-center mt-6">
+      <a href="#" data-tally="mZ46gA" class="flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 hover:bg-black text-white font-semibold rounded-lg shadow-sm hover:shadow-lg text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+        <Icon name="FaDownload" class="text-white text-sm" />
+        Click here to Download
+      </a>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .lp-acc summary { list-style: none; }
+  .lp-acc summary::-webkit-details-marker { display: none; }
+  .lp-acc[open] .lp-acc-chevron { transform: rotate(180deg); }
+  .lp-acc-chevron { transition: transform .2s; flex: none; }
+  [data-curriculum] .plan-tab[aria-selected="true"] { background: #2563eb; color: #fff; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-curriculum]').forEach((root) => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>('[data-plan-tab]');
+    tabs.forEach((tab) =>
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+        root.querySelectorAll<HTMLElement>('[data-plan]').forEach((p) => (p.hidden = p.dataset.plan !== tab.dataset.planTab));
+      }),
+    );
+    root.querySelectorAll<HTMLButtonElement>('[data-more]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.dataset.open !== 'true';
+        btn.dataset.open = String(expanded);
+        btn.closest('[data-plan]')!.querySelectorAll('[data-extra]').forEach((el) => el.classList.toggle('hidden', !expanded));
+        btn.textContent = expanded ? 'Show less' : `Show ${btn.dataset.count} more modules`;
+      });
+    });
+  });
+</script>

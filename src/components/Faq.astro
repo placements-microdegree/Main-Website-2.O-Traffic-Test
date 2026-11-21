@@ -1,0 +1,65 @@
+<section class="section">
+	<div class="wrap">
+		<div class="section-head"><h2>Frequently Asked Questions</h2></div>
+
+		<div class="list">
+			<details class="card q">
+				<summary>What is the duration of dashboard access?</summary>
+				<div class="a"><p>All live sessions are recorded and uploaded daily. You will have access to these recordings for 1 year from your enrollment date.</p></div>
+			</details>
+
+			<details class="card q">
+				<summary>Is there flexibility in choosing batches?</summary>
+				<div class="a"><p>Yes! You can join any of our morning or evening batches. Within 1 year of your enrollment, you may switch batches and complete your program as per your convenience.</p></div>
+			</details>
+
+			<details class="card q">
+				<summary>What is the duration of the program?</summary>
+				<div class="a"><p>We offer multiple learning plans. Depending on the plan you choose, the program duration can range from 3 months to 6 months.</p></div>
+			</details>
+
+			<details class="card q">
+				<summary>How does career assistance work?</summary>
+				<div class="a">
+					<ul class="bul">
+						<li>We organize a Placement Drive every 2nd &amp; 4th Saturday.</li>
+						<li>During the drive, we assess your hands-on skills.</li>
+						<li>Our team will line up interview opportunities for you within 6 months of clearing the placement drive.</li>
+					</ul>
+				</div>
+			</details>
+
+			<details class="card q">
+				<summary>What is your refund policy?</summary>
+				<div class="a">
+					<p>We follow a session-based + time-based refund system to ensure fairness for students and protect against misuse.</p>
+					<p>Refund Timeline:</p>
+					<ol class="num">
+						<li>100% Refund – Request within 24 hours of payment</li>
+						<li>50% Refund – Request within 4 days of batch start OR before attending up to 2 sessions (whichever is earlier)</li>
+						<li>25% Refund – Request within 7 days of batch start OR before attending up to 5 sessions (whichever is earlier)</li>
+					</ol>
+				</div>
+			</details>
+		</div>
+	</div>
+</section>
+
+<style>
+	.list { display: grid; gap: 14px; }
+	.q:hover { transform: none; }
+	summary {
+		list-style: none; cursor: pointer; padding: 20px 24px; font-weight: 600; font-size: 1.05rem;
+		display: flex; justify-content: space-between; align-items: center; gap: 16px;
+	}
+	summary::-webkit-details-marker { display: none; }
+	summary::after {
+		content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+		background: var(--brand-soft); color: var(--brand); font-size: 1.3rem; line-height: 1; transition: transform .3s, background .3s, color .3s;
+	}
+	details[open] { border-color: rgba(65, 89, 236, .35); box-shadow: var(--shadow); }
+	details[open] summary::after { transform: rotate(45deg); background: var(--brand); color: #fff; }
+	.a { padding: 0 24px 22px; color: var(--muted); display: grid; gap: 12px; }
+	.bul { list-style: disc; padding-left: 20px; display: grid; gap: 6px; }
+	.num { list-style: decimal; padding-left: 20px; display: grid; gap: 8px; }
+</style>

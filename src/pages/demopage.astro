@@ -1,0 +1,19 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import Hero from '../components/lp/demo/Hero.astro';
+import Review from '../components/lp/demo/Review.astro';
+import Logo from '../components/lp/demo/Logo.astro';
+
+const description =
+	"Watch MicroDegree's free Cloud & DevOps demo for working IT professionals.";
+---
+
+<LPLayout
+	title="Free Cloud & DevOps Demo | MicroDegree"
+	description={description}
+	path="/demopage"
+>
+	<Hero />
+	<Review />
+	<Logo />
+</LPLayout>

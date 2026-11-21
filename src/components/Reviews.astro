@@ -1,0 +1,87 @@
+---
+const google = [
+	{ name: 'Avila BS', href: 'https://maps.app.goo.gl/EukFobi2aAscwU4a8', text: 'I had a great experience attending the AWS session. The content was well structured, practical and easy to understand. A special mention to Chitharanjan, who is an excellent trainer.' },
+	{ name: 'Vineeth Shetty', href: 'https://maps.app.goo.gl/XDEhcoF8WKwVDge3A', text: 'I had a great learning experience with MicroDegree while completing the AWS Solutions Architect and DevOps Engineer Trainee program. The training is highly practical and easy to apply to real-world scenarios.' },
+	{ name: 'Varun BC', href: 'https://maps.app.goo.gl/A7RzvmJ23EM9UJ697', text: 'AWS class from Chitharanjan K sir. The trainer was knowledgeable, interactive, and explained the topics clearly. The practical examples and hands-on exercises made the sessions very effective.' },
+	{ name: 'Tejas P', href: 'https://maps.app.goo.gl/THzrKUeTtsfgdccL6', text: 'Chithranjan sir explained the concepts of AWS very well and made us understand it, with live examples and live scenarios, which eventually made it easy for me to understand.' },
+	{ name: 'Sindhu Shree', href: 'https://maps.app.goo.gl/omUcWiJTnN1Sa41y6', text: 'My mentor during my AWS learning journey was Chitharanjan. I had always been interested in learning AWS but never really pursued it, until now. His ability to simplify complex concepts was inspiring.' },
+	{ name: 'Satish Pujari', href: 'https://maps.app.goo.gl/6GP7NTJqBXSRNhaZA', text: 'I am grateful to have completed my AWS DevOps course through MicroDegree. Special thanks to Mr. Sumeet Kulkarni for his excellent teaching. His explanations were clear and practical.' },
+].map((r) => ({ ...r, kind: 'google', stars: 5 }));
+
+const linkedinReviews = [
+	{ name: 'Praveen V', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7444647632452370432/', text: "I'm happy to share that I have successfully completed the AWS Solution Architect certification from MicroDegree. This journey helped me strengthen my understanding of cloud computing concepts including AWS services, architecture design, and best practices." },
+	{ name: 'Rahul I', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7442167457772969985/', text: "Excited to share that I've successfully completed the Azure Solutions Architect Expert MicroDegree! This journey strengthened my skills in cloud architecture, hands-on labs, and real-world project implementation." },
+	{ name: 'Ramachandrarao Mane', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7448357654952853504/', text: "Excited to share a milestone! I'm happy to announce that I've successfully completed the GenAI Live Certification from MicroDegree. This journey helped me gain hands-on knowledge in Generative AI concepts and real-world applications." },
+	{ name: 'Vismaya BV', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7437205069025935360/', text: 'Excited to share that I have successfully completed my AWS & DevOps Internship Program at MicroDegree! During this internship, I gained practical knowledge in AWS Cloud Services, DevOps Fundamentals, CI/CD Concepts, Cloud Infrastructure & Deployment.' },
+	{ name: 'Sachin R', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7440620217216700416/', text: "Excited to share a milestone in my learning journey! I have successfully completed the GenAI for Cloud & DevOps program at MicroDegree. Through this program, I gained hands-on experience with labs and real-world projects." },
+	{ name: 'Sagar P.', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7438086161031438336/', text: "I'm happy to share that I have successfully completed my DevOps Course at MicroDegree. I gained hands-on knowledge across multiple DevOps tools and practices, working with Git, GitHub, Docker, Jenkins, Kubernetes, and monitoring systems." },
+];
+const certs = [
+	['Archana B S — DevOps Engineer', 1], ['Savio Rebello — Azure Solutions Architect', 2], ['Teja S B — AWS Solutions Architect', 3],
+	['Varshith A P — AWS Solutions Architect', 4], ['Lavanya B — DevOps Engineer', 5], ['Manjunath Jantagal — Generative AI Engineer', 6],
+] as const;
+
+// Interleave a certificate image after each LinkedIn post
+const linkedin = linkedinReviews.flatMap((r, i) => [
+	{ ...r, kind: 'linkedin' as const },
+	{ kind: 'cert' as const, label: certs[i][0], src: `/img/certs/linkedin-cert-${certs[i][1]}.webp` },
+]);
+
+const rows = [
+	{ items: google, reverse: false },
+	{ items: linkedin, reverse: true },
+];
+---
+
+<section class="section reviews" aria-labelledby="learner-review-heading">
+	<div class="wrap"><div class="section-head"><h2 id="learner-review-heading">Learner Success Stories</h2></div></div>
+
+	{rows.map((row) => (
+		<div class="marquee">
+			<div class:list={['track', { rev: row.reverse }]}>
+				{[0, 1].map((copy) =>
+					row.items.map((it: any) =>
+						it.kind === 'cert' ? (
+							<div class="card cert" aria-hidden={copy ? 'true' : undefined}><img src={it.src} alt={it.label} loading="lazy" decoding="async" /></div>
+						) : (
+							<a class="card rv" href={it.href} target="_blank" rel="noreferrer" aria-hidden={copy ? 'true' : undefined} tabindex={copy ? -1 : undefined}>
+								<div class="top">
+									<div>
+										<div class="name">{it.name}</div>
+										{it.stars && <div class="stars">{'★'.repeat(it.stars)}</div>}
+									</div>
+									<span class:list={['src', it.kind]}><i class={it.kind === 'google' ? 'fa-brands fa-google' : 'fa-brands fa-linkedin-in'}></i></span>
+								</div>
+								<p>{it.text}</p>
+							</a>
+						)
+					)
+				)}
+			</div>
+		</div>
+	))}
+</section>
+
+<style>
+	.marquee {
+		overflow: hidden; margin-top: 20px;
+		mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+		-webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+	}
+	.track { display: flex; gap: 18px; width: max-content; padding: 8px 0; animation: scroll 60s linear infinite; }
+	.track.rev { animation-direction: reverse; }
+	.track:hover { animation-play-state: paused; }
+	.rv, .cert { flex: 0 0 330px; width: 330px; }
+	.rv { padding: 22px 22px 20px; display: block; }
+	.top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+	.name { font-weight: 600; }
+	.stars { color: #f4b400; letter-spacing: 2px; font-size: .85rem; }
+	.src { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); flex: none; }
+	.src.google { color: #0a66c2; } .src.linkedin { color: #0a66c2; }
+	.rv p { font-size: .92rem; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+	.cert { aspect-ratio: 1.08 / 1; overflow: hidden; background: #fff; }
+	.cert img { width: 100%; height: 100%; object-fit: contain; }
+	@keyframes scroll { to { transform: translateX(-50%); } }
+	@media (max-width: 640px) { .rv, .cert { flex-basis: 82vw; width: 82vw; } }
+	@media (prefers-reduced-motion: reduce) { .track { animation: none; } .marquee { overflow-x: auto; } }
+</style>

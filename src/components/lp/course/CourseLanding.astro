@@ -1,0 +1,392 @@
+---
+// Shared landing-page body for the live-recorded course pages (/PowerBi, /dockerandkubernetes, /java-at),
+// built in the same design language as /awsdevops. Each page passes only its own copy; shared copy lives in ./data.ts.
+import Icon from '../Icon.astro';
+import Carousel from '../Carousel.astro';
+import { reviews, awards, testimonials, successStories, trainerFeedback, companyLogos, newsImage, newsVideos, team, supportedBy, pricing, stats } from './data';
+
+interface Props {
+	title: string;
+	subtitle: string;
+	tags: string[];
+	heroVideo: string;
+	joinLabel: string;
+	/** Text of the hero button only; defaults to joinLabel. */
+	heroJoinLabel?: string;
+	enrollHref: string;
+	apply: string[];
+	highlights: { icon: string; label: string }[];
+	jobs: { icon: string; title: string }[];
+	courseVideos: string[];
+	questions?: { question: string; answer: string[] }[];
+	/** Google review badge shown under the reviews (Docker & Kubernetes page only). */
+	googleReview?: boolean;
+	/** Heading above the highlights grid (the Java and Power BI pages carry a trailing colon). */
+	highlightsTitle?: string;
+}
+const { title, subtitle, tags, heroVideo, joinLabel, enrollHref, apply, highlights, jobs, courseVideos, questions = [], googleReview = false, highlightsTitle = 'Course Highlights', heroJoinLabel = joinLabel } = Astro.props;
+
+const JOIN_HREF = '#tally-open=3XYG2O&tally-emoji-text=👋&tally-emoji-animation=wave';
+const tel = 'tel:08047109999';
+
+const h2 = 'text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight text-center';
+const eyebrow = 'text-xs font-semibold uppercase tracking-[0.18em] text-blue-600 text-center';
+const primary = 'inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#FF0049] hover:bg-black text-white font-semibold rounded-lg shadow-sm hover:shadow-lg text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0';
+const outline = 'group inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#151595] bg-white/40 backdrop-blur-md text-[#151595] font-semibold rounded-lg hover:bg-[#151595] hover:text-white text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg';
+const blue = 'inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-black text-white font-semibold rounded-lg shadow-sm hover:shadow-lg text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0';
+const card = 'rounded-3xl border border-[#e4e6f2] bg-white shadow-[0_10px_30px_-22px_rgba(65,89,236,0.2)]';
+const tile = 'bg-white rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300';
+---
+
+<div class="cl">
+	{/* HERO */}
+	<section class="relative w-full gap-4 p-6 mt-5 sm:p-8 lg:p-12 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-shadow duration-300 max-w-7xl mx-auto bg-white/70 backdrop-blur-xl border border-white/60 ring-1 ring-black/5 overflow-hidden">
+		<div class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/50 via-white/0 to-transparent"></div>
+		{/* Mobile order: title, topics, video, buttons. Desktop: copy and buttons on the left, video on the right. */}
+		<div class="relative grid gap-x-10 gap-y-6 lg:grid-cols-[1fr_32rem] lg:gap-y-4 lg:items-center">
+			<div class="space-y-4 text-center lg:text-left lg:col-start-1 lg:row-start-1 lg:self-end">
+				<h1 class="text-3xl sm:text-4xl font-semibold text-gray-900 leading-tight tracking-tight">{title}</h1>
+				<p class="text-base sm:text-lg text-gray-600 leading-relaxed">{subtitle}</p>
+				<ul class="flex flex-wrap justify-center lg:justify-start gap-2" aria-label="Topics covered">
+					{tags.map((t) => <li class="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">{t}</li>)}
+				</ul>
+			</div>
+			<div class="relative w-full rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5 border border-gray-200 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+				<div class="relative pb-[56%]">
+					<iframe class="absolute inset-0 h-full w-full" src={heroVideo} title={`${title} introduction`} frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+			</div>
+			<div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center lg:justify-start lg:col-start-1 lg:row-start-2 lg:self-start [&>a]:whitespace-nowrap">
+				<a href={JOIN_HREF} class={primary}><Icon name="FaPlay" class="text-white text-sm" />{heroJoinLabel}</a>
+				<a href={tel} class={outline}><Icon name="FaPhoneAlt" class="text-[#151595] group-hover:text-white transition" />Talk to our Career Counsellor</a>
+			</div>
+		</div>
+	</section>
+
+	{/* HIGHLIGHTS + WHO CAN APPLY */}
+	<section class="w-full py-12 px-6 sm:px-10 mt-5">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>{highlightsTitle}</h2>
+			<div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-gray-700">
+				{highlights.map((h) => (
+					<div class="flex items-center gap-4 text-left leading-relaxed">
+						<span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-600 text-2xl"><i class={h.icon}></i></span>
+						<span class="text-base sm:text-lg text-gray-800 font-medium">{h.label}</span>
+					</div>
+				))}
+			</div>
+			<div class="mt-10 flex justify-center">
+				<a href={enrollHref} target="_blank" rel="noopener noreferrer" class={primary}>Reserve Your Seat Now <Icon name="FaPlay" class="text-sm" /></a>
+			</div>
+
+			<div class="mt-16">
+				<h2 class={h2}>Who can Apply?</h2>
+				<ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					{apply.map((a) => (
+						<li class={`${tile} flex items-center gap-3 p-5 text-left`}>
+							<Icon name="FaCheckCircle" class="text-green-500 text-xl shrink-0" />
+							<span class="text-base font-medium text-gray-800">{a}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	{/* STATS */}
+	<section class="mx-4 py-6 sm:py-8">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<h2 class="font-poppins text-3xl sm:text-4xl font-semibold text-center tracking-tight">ಕನ್ನಡದ <span class="text-green-600">No.1</span> Tech-Skilling Platform❤️</h2>
+			<dl class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 text-center">
+				{stats.map((s) => (
+					<div class="mx-auto flex max-w-xs flex-col rounded-xl">
+						<dd class="order-first"><i class={`${s.icon} text-5xl`}></i></dd>
+						<dd class="mt-4 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl"><span data-countup={s.value} data-locale="en-US">{s.value.toLocaleString('en-US')}</span> +</dd>
+						<dt class="font-poppins tracking-tight text-base leading-7 text-gray-600">{s.label}</dt>
+					</div>
+				))}
+			</dl>
+			<p class="mt-8 text-center font-poppins tracking-tight text-gray-600 text-base xl:text-2xl leading-7">Our Mission: Skill 5 lakh Students by 2027 <i class="fa-solid fa-medal text-yellow-500"></i></p>
+		</div>
+	</section>
+
+	{/* COURSE CONTENT (courses that publish a syllabus) */}
+	{questions.length > 0 && (
+		<section class="w-full py-12 px-6 sm:px-10">
+			<div class="max-w-6xl mx-auto">
+				<h2 class={h2}>Course content</h2>
+				<div class="mt-8 space-y-3">
+					{questions.map((item) => (
+						<details name="course-content" class="cl-acc border rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+							<summary class="w-full flex justify-between items-center p-4 cursor-pointer text-left">
+								<span class="flex items-center space-x-3">
+									<span class="shrink-0 h-2 w-2 rounded-full bg-blue-600"></span>
+									<h3 class="font-medium text-gray-800">{item.question}</h3>
+								</span>
+								<Icon name="FiChevronDown" class="cl-chev text-gray-500" />
+							</summary>
+							<div class="px-6 pb-4 text-base text-gray-600 text-left">
+								<ul class="list-disc pl-6 space-y-1">{item.answer.map((a) => <li>{a}</li>)}</ul>
+							</div>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	{/* JOB OPPORTUNITIES */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Job Opportunities</h2>
+			<div class="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
+				{jobs.map((j) => (
+					<div class="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] px-4 py-3 sm:px-6 sm:py-3.5 border-l-4 border-blue-600 bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 sm:gap-4">
+						<span class="grid h-10 w-10 sm:h-12 sm:w-12 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 text-lg sm:text-xl"><i class={j.icon}></i></span>
+						<h3 class="font-semibold text-lg text-gray-900 text-left">{j.title}</h3>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	{/* COURSE VIDEOS */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Course Videos</h2>
+			<div class:list={['mt-10 grid gap-6 mx-auto', courseVideos.length > 1 ? 'md:grid-cols-2' : 'max-w-2xl']}>
+				{courseVideos.map((src) => (
+					<div class="relative overflow-hidden rounded-2xl bg-black shadow-lg ring-1 ring-black/5 pb-[56.25%]">
+						<iframe class="absolute inset-0 h-full w-full" src={src} title="Course video" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				))}
+			</div>
+			<div class="mt-8 flex justify-center">
+				<a href={tel} class={blue}><Icon name="FaPhoneAlt" class="text-sm" />Talk to our Career Counsellor</a>
+			</div>
+		</div>
+	</section>
+
+	{/* PRICING */}
+	<section class="px-4 sm:px-6 my-14">
+		<div class={`${card} max-w-6xl mx-auto p-6 sm:p-10 lg:p-14`}>
+			<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+				<div class="text-center lg:text-left">
+					<h2 class="font-poppins text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">Pricing Plan</h2>
+					<span class="mt-4 mx-auto lg:mx-0 block h-1 w-14 rounded-full bg-blue-600"></span>
+					<p class="mt-8 text-5xl md:text-6xl font-bold text-green-600">{pricing.price} <sup class="text-xl text-gray-400">{pricing.gst}</sup></p>
+					<p class="mt-2 text-3xl text-red-500 font-semibold line-through">{pricing.strike}</p>
+				</div>
+				<div class="flex flex-col items-center lg:items-start">
+					<ul class="space-y-4 text-left">
+						{pricing.points.map((p) => (
+							<li class="flex items-start gap-3"><Icon name="FaCheckCircle" class="mt-1 text-green-500 shrink-0" /><span class="text-base sm:text-lg font-medium text-gray-900">{p}</span></li>
+						))}
+					</ul>
+					<a href={enrollHref} target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[#ff0055] px-8 py-3.5 text-base font-semibold text-white shadow-[0_12px_24px_-10px_rgba(255,0,85,0.7)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+						<Icon name="FaPlay" class="text-sm" />Enroll Now
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* CERTIFICATE */}
+	<section class="px-4 sm:px-6 my-14">
+		<div class={`${card} max-w-6xl mx-auto p-6 sm:p-10 lg:p-14`}>
+			<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+				<div class="flex justify-center">
+					<div class="w-full max-w-lg rounded-2xl bg-white p-2 sm:p-3 shadow-[0_24px_50px_-20px_rgba(18,18,43,0.35)] ring-1 ring-black/5 lg:-rotate-2 transition-transform duration-300 hover:rotate-0 hover:-translate-y-1">
+						<img loading="lazy" decoding="async" src="/img/courses/certificates/certificate.webp" alt=" " class="h-auto w-full rounded-xl" />
+					</div>
+				</div>
+				<div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+					<h2 class="font-poppins text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-gray-900">Get Course Completion Certificate</h2>
+					<span class="mt-4 block h-1 w-14 rounded-full bg-blue-600"></span>
+					<a href={enrollHref} target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[#ff0055] px-7 py-3.5 text-sm sm:text-base font-semibold text-white shadow-[0_12px_24px_-10px_rgba(255,0,85,0.7)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+						<Icon name="FaPlay" class="text-sm" />{joinLabel}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* SUCCESS STORIES */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Our Success Stories</h2>
+			<div class="mt-8">
+				<Carousel show={3} showTablet={2} showMobile={1} autoplay={3000} loop>
+					{successStories.map((src, i) => (
+						<div class="p-3"><img loading="lazy" decoding="async" src={src} alt={`Image ${i + 1}`} class="mx-auto w-full max-w-[280px] h-auto rounded-2xl border border-gray-200 shadow-sm" /></div>
+					))}
+				</Carousel>
+			</div>
+			<div class="mt-6 flex justify-center">
+				<a href="https://www.microdegree.work/Testimonials" target="_blank" rel="noopener noreferrer" class={primary}>View All</a>
+			</div>
+		</div>
+	</section>
+
+	{/* AWARDS */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Our Award's &amp; Recognition</h2>
+			<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+				{awards.map((a) => (
+					<div class={`${tile} overflow-hidden shadow-md hover:shadow-xl`}>
+						<div class="relative pb-[56.25%] bg-gray-100"><img loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover" src={a.imageUrl} alt={a.title1} /></div>
+						<div class="p-5 text-left">
+							<h3 class="text-xl font-semibold text-gray-900">{a.title1}</h3>
+							<p class="mt-2 text-base text-gray-600 leading-relaxed">{a.title2}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	{/* STUDENT VIDEOS */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>What Our Students Say</h2>
+			<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+				{testimonials.map((v) => (
+					<div class={`${tile} overflow-hidden shadow-md hover:shadow-xl`}>
+						<div class="relative pb-[56.25%] bg-black"><iframe class="absolute inset-0 h-full w-full" src={`https://www.youtube.com/embed/${v.videoId}`} title={v.title1} frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+						<div class="p-5 text-left">
+							<h3 class="text-xl font-semibold text-gray-900">{v.title1}</h3>
+							<p class="text-lg font-semibold text-[#151595]">{v.title2}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	{/* TRAINER FEEDBACK */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Trainers Feedback Stories</h2>
+			<div class="mt-10 grid grid-cols-1 sm:grid-cols-2 items-start gap-6">
+				{trainerFeedback.map((src) => (
+					<div class="overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"><img loading="lazy" decoding="async" src={src} alt=" " class="block h-auto w-full" /></div>
+				))}
+			</div>
+			<div class="mt-8 flex justify-center">
+				<a href={enrollHref} target="_blank" rel="noopener noreferrer" class={primary}><Icon name="FaPlay" class="text-sm" />Enroll Now</a>
+			</div>
+		</div>
+	</section>
+
+	{/* REVIEWS */}
+	<section class="cl-rv" aria-labelledby="cl-rv-heading">
+		<div class="cl-rv-wrap">
+			<h2 id="cl-rv-heading" class={h2}>Our Reviews</h2>
+			<div class="cl-rv-carousel">
+				<Carousel show={2} showTablet={2} showMobile={1} dots>
+					{reviews.map((r) => (
+						<div class="cl-rv-slide">
+							<figure class="cl-rv-card">
+								<svg class="cl-rv-quote" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M9.6 4.5C6.1 6 3.5 9.3 3.5 13.4V19.5h6.6v-6.6H6.7c.2-2 1.4-3.6 3.4-4.5L9.6 4.5zm10.4 0c-3.5 1.5-6.1 4.8-6.1 8.9v6.1h6.6v-6.6h-3.4c.2-2 1.4-3.6 3.4-4.5L20 4.5z" /></svg>
+								<blockquote class="cl-rv-text">{r.text}</blockquote>
+								<figcaption class="cl-rv-author">
+									<img loading="lazy" decoding="async" src={r.avatar} alt="Profile Picture" class="cl-rv-avatar" />
+									<div>
+										<p class="cl-rv-name">{r.name}</p>
+										<div class="cl-rv-stars" aria-label="5 out of 5 stars">{[...Array(5)].map(() => <Icon name="FaStar" />)}</div>
+									</div>
+								</figcaption>
+							</figure>
+						</div>
+					))}
+				</Carousel>
+			</div>
+			{googleReview && (
+				<div class="mt-6 flex justify-center"><img loading="lazy" decoding="async" src="/img/courses/google-review/review.jpeg" alt=" " class="h-[68px] w-[370px] max-w-full object-contain" /></div>
+			)}
+			<div class="mt-8 flex justify-center">
+				<a href={tel} class={blue}><Icon name="FaPhoneAlt" class="text-sm" />Talk to a Advisor</a>
+			</div>
+		</div>
+	</section>
+
+	{/* TRAINER COMPANIES */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Your Expert Trainers are from</h2>
+			<div class="relative mt-8 flex overflow-x-hidden">
+				<div class="animate-marquee whitespace-nowrap flex items-center py-4">
+					{companyLogos.map((src) => <img loading="lazy" decoding="async" src={src} alt="" class="mx-8 h-10 w-36 object-contain sm:h-12" />)}
+				</div>
+				<div class="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center py-4" aria-hidden="true">
+					{companyLogos.map((src) => <img loading="lazy" decoding="async" src={src} alt="" class="mx-8 h-10 w-36 object-contain sm:h-12" />)}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* NEWS */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>ಕನ್ನಡದ <span class="text-green-600">No.1</span> Tech-Skilling Platform❤️</h2>
+			<div class="mt-10 grid gap-6 lg:grid-cols-5 lg:items-stretch">
+				<img decoding="async" loading="lazy" src={newsImage} alt="" class="w-full rounded-2xl object-cover shadow-lg ring-1 ring-black/5 lg:col-span-3" />
+				<div class="grid gap-6 lg:col-span-2">
+					{newsVideos.map((src) => (
+						<div class="relative overflow-hidden rounded-2xl bg-black shadow-lg ring-1 ring-black/5 pb-[56.25%] lg:pb-0 lg:min-h-[180px]"><iframe class="absolute inset-0 h-full w-full" src={src} title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* TEAM */}
+	<section class="w-full py-12 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Meet Our Stellar Team</h2>
+			<div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+				{team.map((src, i) => (
+					<div class:list={['group relative flex h-48 items-end overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5 md:h-72', (i === 1 || i === 2) && 'sm:col-span-2']}>
+						<img decoding="async" loading="lazy" src={src} alt="" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-105" />
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	{/* SUPPORTED BY + FINAL CTA */}
+	<section class="w-full py-12 px-6 sm:px-10 mb-6">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>We are supported by</h2>
+			<div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 lg:gap-x-24 2xl:gap-x-32">
+				{supportedBy.map((src) => <img decoding="async" loading="lazy" src={src} alt="" class="w-24 sm:w-32 2xl:w-36 object-contain" />)}
+			</div>
+			<div class="mt-10 flex justify-center">
+				<a href={enrollHref} target="_blank" rel="noopener noreferrer" class={primary}><Icon name="FaPlay" class="text-sm" />{joinLabel}</a>
+			</div>
+		</div>
+	</section>
+</div>
+
+<style is:global>
+	.cl { text-align: center; font-family: 'Poppins', sans-serif; overflow-x: clip; }
+	.cl-acc summary { list-style: none; }
+	.cl-acc summary::-webkit-details-marker { display: none; }
+	.cl-acc[open] .cl-chev { transform: rotate(180deg); }
+	.cl-chev { transition: transform .2s; flex: none; }
+
+	.cl-rv { padding: 32px 24px 40px; }
+	.cl-rv-wrap { max-width: 72rem; margin: 0 auto; }
+	.cl-rv-carousel { margin-top: 20px; }
+	.cl-rv-slide { padding: 8px 12px 12px; display: flex; }
+	.cl-rv-card { margin: 0; width: 100%; display: flex; flex-direction: column; gap: 10px; position: relative; padding: 20px 24px 18px; background: #fff; border: 1px solid #e4e6f2; border-radius: 22px; transition: border-color .25s, transform .25s; }
+	.cl-rv-card:hover { border-color: #c9d0fb; transform: translateY(-3px); }
+	.cl-rv-quote { color: #c9d0fb; flex: none; }
+	.cl-rv-text { margin: 0; flex: 1; font-size: .92rem; line-height: 1.6; color: #4b5068; text-align: left; }
+	.cl-rv-author { display: flex; align-items: center; gap: 14px; padding-top: 12px; border-top: 1px solid #eceefa; }
+	.cl-rv-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 3px #eef0ff; }
+	.cl-rv-name { margin: 0; font-weight: 600; font-size: 1rem; color: #12122b; line-height: 1.3; text-align: left; }
+	.cl-rv-stars { display: flex; gap: 2px; margin-top: 3px; color: #fbbf24; font-size: .95rem; }
+	@media (max-width: 768px) { .cl-rv { padding: 28px 16px 36px; } .cl-rv-card { padding: 18px 18px 16px; } }
+</style>

@@ -1,0 +1,43 @@
+---
+// Shell for the course, demo and thank-you pages: the site layout plus navbar/footer and the shared landing-page script.
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	path: string;
+	keywords?: string;
+	/** JSON-LD for the page. */
+	schema?: Record<string, unknown>;
+	/** Thank-you pages should not be indexed. */
+	noindex?: boolean;
+	/** Hide navbar and footer. */
+	bare?: boolean;
+}
+const { title, description, path, keywords, schema, noindex = false, bare = false } = Astro.props;
+const canonical = `https://www.microdegree.work${path}`;
+---
+
+<Layout title={title} description={description} canonical={canonical} preloadHero={false} robots={noindex ? 'noindex, nofollow' : 'index, follow'}>
+	<Fragment slot="head">
+		{keywords && <meta name="keywords" content={keywords} />}
+		<meta name="author" content="MicroDegree" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="MicroDegree" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+		<slot name="head" />
+	</Fragment>
+	{!bare && <Navbar />}
+	<main class="lp">
+		<slot />
+	</main>
+	{!bare && <Footer />}
+	<script>
+		import '../scripts/lp';
+	</script>
+</Layout>

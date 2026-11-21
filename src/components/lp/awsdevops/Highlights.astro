@@ -1,0 +1,134 @@
+---
+import Icon from '../Icon.astro';
+const highlightsData = [
+    {
+      icon: "HiOutlineCalendar",
+      text: "3-8 month program depending on the plan.",
+    },
+    {
+      icon: "HiOutlineSpeakerphone",
+      text: "Instructor led Live online classes",
+    },
+    {
+      icon: "HiClock",
+      text: "Morning & Evening batches focused for IT professionals",
+    },
+    {
+      icon: "HiTranslate",
+      text: "The only platform to teach in kannada",
+    },
+    {
+      icon: "HiOutlinePaperAirplane",
+      text: "Community support for doubt clarification",
+    },
+    {
+      icon: "LiaCertificateSolid",
+      text: "Course Completion / Internship Certificate",
+    },
+    {
+      icon: "HiCube",
+      text: "Career training for resume building & mock interviews.",
+    },
+    {
+      icon: "MdSupportAgent",
+      text: "Assured interview opportunities*.",
+    },
+  ];
+---
+
+<div class="w-full py-12 px-6 mt-5 mb-5 sm:px-10">
+      <div class="max-w-6xl mx-auto">
+        {/* 🔹 Title */}
+        <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-8 text-center lg:text-left tracking-tight">
+          Key Highlights
+        </h2>
+
+        {/* 🔹 Highlights Grid */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 text-gray-700">
+          {highlightsData.map((item, idx) => (
+            <div
+             
+              class="flex items-start sm:items-center space-x-3 text-left leading-relaxed"
+            >
+              <div class="flex-shrink-0 mt-1 sm:mt-0 text-blue-600 text-3xl sm:text-3xl">
+                <Icon name={item.icon} />
+              </div>
+              <span class="text-base sm:text-base text-gray-700">
+                {item.text}
+              </span>
+            </div>
+          ))}
+        </div>
+
+         {/* 🔹 Ratings Section */}
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          <div class="p-6 rounded-2xl border border-gray-200 shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative">
+            <div class="absolute top-0 left-0 w-full h-1 bg-orange-400 rounded-t-2xl"></div>
+            <div class="flex flex-col items-center">
+              <p class="text-xl font-bold text-gray-900">4.7</p>
+              <div class="flex text-[#FFB800] my-1">
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStarHalfAlt" />
+              </div>
+
+              <p class="text-gray-700 font-medium">Google Reviews</p>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-gray-200 shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative">
+            <div class="absolute top-0 left-0 w-full h-1 bg-green-500 rounded-t-2xl"></div>
+            <div class="flex flex-col items-center">
+              <p class="text-xl font-bold text-gray-900">4.8</p>
+              <div class="flex text-[#FFB800] my-1">
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStarHalfAlt" />
+              </div>
+              <p class="text-gray-700 font-medium">Glassdoor</p>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-gray-200 shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative">
+            <div class="absolute top-0 left-0 w-full h-1 bg-yellow-400 rounded-t-2xl"></div>
+            <div class="flex flex-col items-center">
+              <p class="text-xl font-bold text-gray-900">4.8</p>
+              <div class="flex text-[#FFB800] my-1">
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStar" />
+                <Icon name="FaStarHalfAlt" />
+              </div>
+              <p class="text-gray-700 font-medium">Shiksha</p>
+            </div>
+          </div>
+        </div>
+
+        {/* 🔹 Advisor Box (Optional) */}
+        {/* 
+        <div className="p-6 sm:p-8 rounded-lg border border-gray-200 bg-orange-50 shadow-sm flex flex-col sm:flex-row items-center sm:items-start justify-between">
+          <div className="flex items-center space-x-4">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/8/8e/EY_logo_2019.svg"
+              alt="EY Logo"
+              className="h-12 sm:h-16"
+            />
+            <div>
+              <p className="text-sm text-gray-500 font-medium">Process Advisors</p>
+              <p className="text-gray-700 text-base sm:text-lg font-medium mt-1">
+                53% of learners received 50% and above salary hike post completion of the program*
+              </p>
+            </div>
+          </div>
+          <p className="text-xs text-gray-500 mt-4 sm:mt-0 sm:ml-6">
+            *Subject to Terms and Conditions
+          </p>
+        </div>
+        */}
+      </div>
+    </div>

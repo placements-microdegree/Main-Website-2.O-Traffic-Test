@@ -1,0 +1,19 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import Hero from '../components/lp/genaidemo/Hero.astro';
+import Review from '../components/lp/genaidemo/Review.astro';
+import Logo from '../components/lp/genaidemo/Logo.astro';
+
+const description =
+	"Join MicroDegree's free Gen AI demo class for working IT professionals. Learn AI tools, prompt engineering, AI agents, and future-proof your IT career.";
+---
+
+<LPLayout
+	title="Free Gen AI Demo for IT Professionals | MicroDegree"
+	description={description}
+	path="/genaidemo"
+>
+	<Hero />
+	<Review />
+	<Logo />
+</LPLayout>

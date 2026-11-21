@@ -1,0 +1,60 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import Herox from '../components/lp/awsdevops/Herox.astro';
+import Highlights from '../components/lp/awsdevops/Highlights.astro';
+import Counter from '../components/lp/Counter.astro';
+import JobRolesAndSkills from '../components/lp/awsdevops/JobRolesAndSkills.astro';
+import Compare from '../components/lp/awsdevops/Compare.astro';
+import Tools from '../components/lp/awsdevops/Tools.astro';
+import Cert from '../components/lp/awsdevops/Cert.astro';
+import CurriculumSection from '../components/lp/awsdevops/CurriculumSection.astro';
+import Demo from '../components/lp/awsdevops/Demo.astro';
+import Pricing from '../components/lp/awsdevops/Pricing.astro';
+import Certificate from '../components/lp/awsdevops/Certificate.astro';
+import Trainers from '../components/lp/awsdevops/Trainers.astro';
+import CareerServices from '../components/lp/awsdevops/CareerServices.astro';
+import Demovideo from '../components/lp/awsdevops/Demovideo.astro';
+import Awards from '../components/Awards.astro'; // the home page's Awards & Recognition section
+import Reviews from '../components/lp/awsdevops/Reviews.astro';
+import Logoslider from '../components/Trainers.astro'; // the home page's company-logo marquee
+import Supportedby from '../components/lp/awsdevops/Supportedby.astro';
+import Faq from '../components/lp/Faq.astro';
+
+const description =
+	"Become a certified Cloud & DevOps professional with MicroDegree — Karnataka's No.1 tech skilling platform. Master Linux, Docker, Kubernetes, CI/CD & AWS Cloud.";
+---
+
+<LPLayout
+	title="AWS & DevOps Course in Bangalore | MicroDegree"
+	description={description}
+	path="/awsdevops"
+	keywords="AWS course, DevOps course, AWS DevOps training, cloud computing course Bangalore, DevOps certification, Docker, Kubernetes, CI/CD, Linux, MicroDegree"
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'Course',
+		name: 'AWS & DevOps Course',
+		description,
+		provider: { '@type': 'Organization', name: 'MicroDegree', sameAs: 'https://www.microdegree.work' },
+		url: 'https://www.microdegree.work/awsdevops',
+	}}
+>
+	<Herox />
+	<Highlights />
+	<Counter />
+	<JobRolesAndSkills />
+	<Compare />
+	<Tools />
+	<Cert />
+	<CurriculumSection />
+	<Demo />
+	<Pricing />
+	<Certificate />
+	<Trainers />
+	<CareerServices />
+	<Demovideo />
+	<Awards hideBrands />
+	<Reviews />
+	<Logoslider hideRule />
+	<Supportedby />
+	<Faq />
+</LPLayout>

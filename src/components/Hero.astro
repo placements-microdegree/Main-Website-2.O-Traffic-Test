@@ -1,0 +1,120 @@
+---
+const skills = ['GenAI', 'CKA', 'GCP', 'MLOps', 'AWS', 'Azure', 'Networking', 'Linux', 'DevOps', 'CI/CD', 'DevSecOps', '+More'];
+const bgDesktop = '/img/hero/ZDI.webp';
+const bgMobile = '/img/hero/ZDI-mobile.webp';
+---
+
+<section id="hero">
+	<div class="relative w-full">
+		<ol id="hero-slides" class="scrollbar-hide flex overflow-x-scroll snap-x snap-mandatory">
+			<!-- Slide 1: hero -->
+			<li class="relative w-full flex-shrink-0 snap-center">
+				<div class="bg-[#f9f8fd]">
+					<section class="relative bg-[#f9f8fd] text-gray-900 pt-2 sm:pt-12 lg:pt-16 pb-4 sm:pb-20 px-6 sm:px-12 lg:px-20 overflow-hidden">
+						<picture class="absolute inset-0 z-0">
+							<source media="(min-width: 640px)" srcset={bgDesktop} width="1672" height="941" />
+							<img src={bgMobile} alt="" width="720" height="1279" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+						</picture>
+
+						<div class="relative max-w-7xl mx-auto flex flex-col sm:flex-row items-center gap-10 z-20">
+							<div class="flex-[0.6] text-left space-y-6 order-1 sm:order-1">
+								<h1 class="text-[38px] text-[#151595] sm:text-4xl lg:text-[38px] font-semibold leading-tight">
+									Kannada's <span class="text-[#151595]">No.1 Tech Skilling Platform</span>
+								</h1>
+								<p class="text-2xl sm:text-xl lg:text-3xl font-semibold">
+									Master Cloud, DevOps, GenAI &amp; Transition into <span class="font-semibold">4X Salary Roles</span>
+								</p>
+
+								<div class="hidden sm:block mt-0 2xl:!mt-12">
+									<p class="hidden sm:block text-lg sm:text-xl lg:text-2xl text-gray-800 font-medium mb-2">Skills Covered</p>
+									<div class="hidden sm:flex flex-wrap gap-2 mb-5">
+										{skills.map((skill) => (
+											<span class:list={['inline-flex items-center rounded-2xl bg-gray-100 px-3 py-1 text-base text-blue-700 ring-1 ring-inset ring-blue-700/10 backdrop-blur-sm', skill === '+More' ? 'font-bold' : 'font-semibold']}>{skill}</span>
+										))}
+									</div>
+								</div>
+
+								<!-- Mobile spacer: reveals the person's face in the background -->
+								<div class="block sm:hidden h-80"></div>
+
+								<div class="flex flex-col sm:flex-row gap-4 justify-start -mt-8 sm:mt-6 2xl:!mt-14">
+									<a href="#form" data-modal="curriculum" class="mt-5 sm:mt-0 flex items-center justify-center gap-2 bg-[#FF0049] text-white font-semibold px-6 sm:px-4 lg:px-6 py-3 sm:text-sm lg:text-base whitespace-nowrap rounded-lg  hover:bg-[#FF0049] transition transform hover:scale-105">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-6 h-6 fill-current">
+											<path d="M320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64zM308.7 451.3L204.7 347.3C200.1 342.7 198.8 335.8 201.2 329.9C203.6 324 209.5 320 216 320L272 320L272 224C272 206.3 286.3 192 304 192L336 192C353.7 192 368 206.3 368 224L368 320L424 320C430.5 320 436.3 323.9 438.8 329.9C441.3 335.9 439.9 342.8 435.3 347.3L331.3 451.3C325.1 457.5 314.9 457.5 308.7 451.3z" />
+										</svg>
+										Download Curriculum
+									</a>
+									<a href="/demopage" class="flex items-center justify-center gap-2 bg-transparent sm:bg-[#151595] lg:bg-transparent border-2 border-[#151595] text-[#151595] sm:text-white lg:text-[#151595] font-semibold px-6 sm:px-4 lg:px-6 py-3 sm:text-sm lg:text-base whitespace-nowrap rounded-lg hover:bg-[#151595] hover:text-white transition  transform hover:scale-105 mb-4 sm:mb-0">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-current"><path d="M8 5v14l11-7z" /></svg>
+										Join Free Demo Session
+									</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</li>
+
+			<!-- Slide 2: E-Learning banner -->
+			<li class="relative w-full flex-shrink-0 snap-center bg-[#faf6fc]">
+				<a href="https://www.microdegree.work/learning" target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10" aria-label="MicroDegree E Learn programme banner"></a>
+				<img src="/img/hero/EL.webp" class="hidden sm:block absolute inset-0 w-full h-full object-contain md:object-cover" alt="MicroDegree E Learn programme banner" loading="lazy" />
+				<img src="/img/hero/EL-mobile.webp" class="sm:hidden absolute inset-0 w-full h-full object-cover" alt="MicroDegree E Learn programme banner" loading="lazy" />
+				<div class="absolute inset-0 z-20 flex items-end justify-center sm:justify-start pb-16 sm:pb-10 px-4 sm:px-24 pointer-events-none">
+					<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+						<a href="https://www.microdegree.work/learning" target="_blank" rel="noopener noreferrer" class="pointer-events-auto w-full sm:w-auto whitespace-nowrap text-center px-6 py-3 rounded-lg backdrop-blur-lg border border-white/50 font-semibold transition hover:-translate-y-[1px] bg-[linear-gradient(120deg,#4B1BE0_0%,#FA1055_100%)] text-white">Enroll Now @ ₹399</a>
+					</div>
+				</div>
+			</li>
+		</ol>
+
+		<button id="hero-prev" aria-label="Previous slide" class="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 z-50 w-9 h-9 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white">
+			<i class="fa-solid fa-chevron-left"></i>
+		</button>
+		<button id="hero-next" aria-label="Next slide" class="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 z-50 w-9 h-9 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white">
+			<i class="fa-solid fa-chevron-right"></i>
+		</button>
+		<div id="hero-dots" class="absolute right-4 bottom-3 z-50 flex items-center gap-2"></div>
+	</div>
+</section>
+
+<script>
+	const track = document.getElementById('hero-slides') as HTMLElement;
+	const dotsEl = document.getElementById('hero-dots') as HTMLElement;
+	const slides = Array.from(track.children) as HTMLElement[];
+	let current = 0;
+
+	const paint = () =>
+		Array.from(dotsEl.children).forEach((d, i) => {
+			const el = d as HTMLElement;
+			const on = i === current;
+			el.style.width = on ? '25px' : '8px';
+			el.style.background = on ? (current === 0 ? '#4159ec' : '#4B1BE0') : '#9ca3af';
+		});
+	const goTo = (i: number) => {
+		current = (i + slides.length) % slides.length;
+		track.scrollTo({ left: track.offsetWidth * current, behavior: 'smooth' });
+		paint();
+	};
+
+	slides.forEach((_, i) => {
+		const d = document.createElement('div');
+		d.style.cssText = 'height:8px;border-radius:999px;cursor:pointer;transition:width .3s';
+		d.addEventListener('click', () => goTo(i));
+		dotsEl.appendChild(d);
+	});
+	paint();
+
+	document.getElementById('hero-prev')!.addEventListener('click', () => goTo(current - 1));
+	document.getElementById('hero-next')!.addEventListener('click', () => goTo(current + 1));
+
+	let t: number;
+	track.addEventListener('scroll', () => {
+		clearTimeout(t);
+		t = window.setTimeout(() => {
+			const i = Math.round(track.scrollLeft / track.offsetWidth);
+			if (i !== current) { current = i; paint(); }
+		}, 90);
+	}, { passive: true });
+	window.addEventListener('resize', () => { track.scrollLeft = track.offsetWidth * current; });
+</script>

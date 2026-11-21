@@ -1,0 +1,60 @@
+---
+const Aws = '/lp/awsdevops/logo/aws.webp';
+const Azure = '/lp/awsdevops/logo/azure.webp';
+const Ansible = '/lp/awsdevops/logo/ansible.webp';
+const Docker = '/lp/awsdevops/logo/docker.webp';
+const Linux = '/lp/awsdevops/logo/linux.webp';
+const Grafana = '/lp/awsdevops/logo/grafana.webp';
+const Kubernetes = '/lp/awsdevops/logo/kubernetes.webp';
+const Maven = '/lp/awsdevops/logo/maven.webp';
+const Terraform = '/lp/awsdevops/logo/terraform.webp';
+const Jenkins = '/lp/awsdevops/logo/jenkins.webp';
+const Git = '/lp/awsdevops/logo/git.webp';
+const ChatGPT = '/lp/awsdevops/logo/chatgpt.webp';
+const CodeRabbit = '/lp/awsdevops/logo/coderabbit.webp';
+const Bedrock = '/lp/awsdevops/logo/bedrock.webp';
+const Prometheus = '/lp/awsdevops/logo/prometheus.webp';
+const tools = [
+  { name: "AWS", logo: Aws },
+  { name: "Azure", logo: Azure },
+  { name: "Docker", logo: Docker },
+  { name: "Linux", logo: Linux },
+  { name: "Grafana", logo: Grafana },
+  { name: "Prometheus", logo: Prometheus },
+  { name: "Kubernetes", logo: Kubernetes },
+  { name: "Maven", logo: Maven },
+  { name: "Terraform", logo: Terraform },
+  { name: "Ansible", logo: Ansible },
+  { name: "Jenkins", logo: Jenkins },
+  { name: "Git", logo: Git },
+  { name: "ChatGPT", logo: ChatGPT },
+  { name: "Bedrock", logo: Bedrock },
+  { name: "CodeRabbit", logo: CodeRabbit },
+];
+---
+
+<div class="w-full py-12 px-6 sm:px-10">
+      {/* Title */}
+      <h2 class="font-poppins text-3xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-center mb-10">
+        Tools Used
+      </h2>
+
+      {/* Tools Grid */}
+      <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map((tool, idx) => (
+          <div
+           
+            class="bg-white rounded-2xl flex items-center px-4 py-2 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          >
+            <img loading="lazy" decoding="async"
+              src={tool.logo}
+              alt={`${tool.name} logo`}
+              class="w-12 h-12 mr-4"
+            />            
+            <span class="font-poppins tracking-tight font-medium text-lg sm:text-xl">
+              {tool.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>

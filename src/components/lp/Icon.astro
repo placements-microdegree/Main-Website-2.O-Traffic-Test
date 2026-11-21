@@ -1,0 +1,10 @@
+---
+import { icons } from './icons';
+
+interface Props { name: string; class?: string; color?: string; }
+const { name, class: cls = '', color } = Astro.props;
+const style = color ? ` style="color:${color}"` : '';
+const svg = (icons[name] ?? '').replace('<svg', `<svg width="1em" height="1em" aria-hidden="true" focusable="false" class="${cls}"${style}`);
+---
+
+<Fragment set:html={svg} />

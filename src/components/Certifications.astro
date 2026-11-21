@@ -1,0 +1,44 @@
+---
+const certs = [
+	{ name: 'AWS Solutions Architect', img: 'ASC' },
+	{ name: 'AWS Cloud Practitioner', img: 'ACP' },
+	{ name: 'AWS SysOps Administrator', img: 'ASA' },
+	{ name: 'Azure Associate', img: 'AZA' },
+	{ name: 'Azure Solutions Architect', img: 'AZSA' },
+	{ name: 'Azure Fundamentals', img: 'AZF' },
+	{ name: 'Certified Kubernetes Administrator', img: 'CKA' },
+];
+---
+
+<section class="section">
+	<div class="wrap">
+		<div class="section-head"><h2>Crack Multiple Global Certifications</h2></div>
+		<div class="grid">
+			{certs.map((c) => (
+				<div class="card cert reveal">
+					<img src={`/img/cloud/${c.img}.png`} alt={`${c.name} course certification`} loading="lazy" decoding="async" />
+					<h3>{c.name}</h3>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	/* 24-col grid: 4 equal cards on the first row, 3 same-size cards centred on the second */
+	.grid { display: grid; grid-template-columns: repeat(24, 1fr); gap: 20px; }
+	.cert { grid-column: span 6; padding: 22px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+	.cert:nth-child(5) { grid-column: 4 / span 6; }
+	.cert img { width: 130px; height: 130px; object-fit: contain; }
+	.cert h3 { margin-top: 14px; font-size: 1rem; font-weight: 600; }
+	/* 24 tracks + 23 gaps need ~460px of gutter alone, so below desktop switch to a plain 2- then 1-column grid. */
+	@media (max-width: 900px) {
+		.grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.cert, .cert:nth-child(5) { grid-column: auto; }
+		.cert:nth-child(7) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 10px); }
+	}
+	@media (max-width: 520px) {
+		.grid { grid-template-columns: minmax(0, 1fr); }
+		.cert:nth-child(7) { width: 100%; }
+	}
+</style>

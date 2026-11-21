@@ -1,0 +1,130 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import CourseLanding from '../components/lp/course/CourseLanding.astro';
+
+const description =
+	"Master Business Intelligence with Power BI from industry experts and become a solid professional in data visualization and reporting. Learn in Kannada with MicroDegree.";
+
+const questions = [
+    {
+        question: "Power BI Fundamentals",
+        answer: [
+            "Introduction 1",
+            "Introduction 2",
+            "Fundamentals of data science and data analytics"
+        ]
+    },
+    {
+        question: "Introduction to power BI",
+        answer: [
+            "Introduction to power BI",
+            "Get data SQL server and excel",
+            "Components & Architecture of Power BI",
+            "Overview of PBI desktop Different Data sources in Power BI",
+            "Getting data from SQL server"
+        ]
+    },
+    {
+        question: "Introduction to Visualization",
+        answer: [
+            "Introduction to Visualizations and types of Visualizations",
+            "Types of visualizations contd and case study using different visualizations",
+            "Getting data from web services and visualizations",
+            "Advanced visualizations in power BI"
+        ]
+    },
+    {
+        question: "Introduction to Power Query",
+        answer: [
+            "introduction to Power Query Editor",
+            "Power query transformations",
+            "Conditional formatting and merge and append queries",
+            "Drill down and Conditional formatting in Power BI",
+            "Text and date related transformations"
+        ]
+    },
+    {
+        question: "Text and date related transformations",
+        answer: [
+            "Introduction to Data Analysis Expressions (DAX)",
+            "A AND X Dax measures And calculated columns using DAX",
+            "Introduction to time intelligence DAX function",
+            "Case study of E commerce Industry",
+            "Calculate DAX function And modified filter context"
+        ]
+    },
+    {
+        question: "Creating Data Table & Dashboards",
+        answer: [
+            "Creating a Date Table using power BI",
+            "Introduction to Power BI service and creating dashboards",
+            "Introduction to Dashboard and Edit tile details & add widget",
+            "Live class study of US Superstore Dataset",
+            "Case study - sports Analytics using Power BI",
+            "Dateadd , Datesbetween"
+        ]
+    },
+    {
+        question: "Introduction to Data Modelling",
+        answer: [
+            "Introduction to Data Modelling in Power BI",
+            "Case Study on HR analytics using Power BI",
+            "Buttons in Power BI, App creation in Power BI service, Intro to Tableau",
+            "Filter DAX function in Power BI, Tableau Dashboard and storage points",
+            "RLS, Field Parameter, AI capabilities & USERELATIONSHIP DAX"
+        ]
+    },
+    {
+        question: "Resume Building Session",
+        answer: [
+            "Resume building Session"
+        ]
+    },
+    {
+        question: "Notes",
+        answer: [
+            "Power BI Notes"
+        ]
+    }
+
+];
+
+const highlights = [
+	{ icon: 'fa-solid fa-laptop', label: 'Build Interactive Projects' },
+	{ icon: 'fa-solid fa-chalkboard-user', label: 'Learn easy in Kannada' },
+	{ icon: 'fa-solid fa-award', label: 'Completion Certificate' },
+	{ icon: 'fa-solid fa-clock-rotate-left', label: '65 Hours of Live Recorded Videos' },
+	{ icon: 'fa-solid fa-building-user', label: 'Trained Experts from Top Product Companies' },
+	{ icon: 'fa-solid fa-users', label: 'Interview Preparation' },
+	{ icon: 'fa-solid fa-desktop', label: 'Resume Building' },
+	{ icon: 'fa-solid fa-paper-plane', label: 'Telegram Doubt Clarification' },
+];
+const jobs = [
+	{ icon: 'fa-solid fa-laptop', title: 'Tableau Developer' },
+	{ icon: 'fa-solid fa-database', title: 'Data Scientists' },
+	{ icon: 'fa-solid fa-arrow-trend-up', title: 'Business Analyst' },
+	{ icon: 'fa-solid fa-chart-pie', title: 'Power BI Developer' },
+	{ icon: 'fa-solid fa-chart-column', title: 'Data Analyst' },
+];
+---
+
+<LPLayout
+	title="Power BI Certification Course | MicroDegree"
+	description={description}
+	path="/PowerBi"
+>
+	<CourseLanding
+		title="Power BI Certification"
+		subtitle="Master Business Intelligence with Power BI from Industry Experts to become a solid Professional in Data Visualization & Reporting"
+		tags={['Visualization', 'Power Query', 'Data Modelling', 'Case Study', 'DAX', 'HR Analytics']}
+		heroVideo="https://www.youtube.com/embed/iHSojRh9Axg?autoplay=1&loop=1&playlist=iHSojRh9Axg&si=KevFNkGwzIC9_ni8"
+		joinLabel="Join Power BI Certification"
+		enrollHref="https://rzp.io/rzp/4VtHY4x"
+		apply={['Project Managers', 'Data Scientists', 'Product Owners', 'Freshers', 'Early Professionals', 'Any Degree Professionals']}
+		highlightsTitle="Course Highlights:"
+		highlights={highlights}
+		jobs={jobs}
+		courseVideos={['https://www.youtube.com/embed/Jlm-UUjWgcw', 'https://www.youtube.com/embed/iHSojRh9Axg']}
+		questions={questions}
+	/>
+</LPLayout>

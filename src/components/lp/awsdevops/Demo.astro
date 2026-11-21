@@ -1,0 +1,81 @@
+---
+import Icon from '../Icon.astro';
+
+const DemoImage = '/lp/awsdevops/logo/demo.webp';
+const DemoGif = '/lp/demo/gif2.mp4';
+const points = [
+  'Roadmap to become Cloud & DevOps Professional',
+  'How to switch from your current role to Cloud & Devops role',
+  'How your current Experience will help in Switching career',
+  'Salary and Growth Opportunities',
+];
+---
+
+<section class="px-4 sm:px-6 mt-16 mb-12" id="section2">
+  <div class="max-w-6xl mx-auto rounded-3xl border border-[#e4e6f2] bg-white p-4 sm:p-6 lg:p-8 shadow-[0_10px_30px_-22px_rgba(65,89,236,0.2)]">
+    <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+      {/* Left: what you will learn */}
+      <div class="lg:col-span-7 rounded-2xl bg-white border border-[#e4e6f2] p-6 sm:p-8 flex flex-col">
+        <div class="w-full">
+          <h2 id="demo-session-heading" class="font-poppins tracking-tight text-3xl lg:text-4xl font-semibold text-gray-900 text-center lg:text-left">
+            Take a Free Demo today
+          </h2>
+          <p class="mt-3 font-poppins text-gray-600 text-base sm:text-lg text-center lg:text-left">
+            In this Power Packed Demo Session, you will learn:
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-1 flex-col lg:flex-row items-center lg:items-end gap-6 lg:gap-8">
+          <div class="hidden lg:block lg:w-[34%] shrink-0">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={DemoImage}
+              alt="Cloud and DevOps demo session preview"
+              class="w-full h-auto max-h-[330px] object-contain object-bottom"
+            />
+          </div>
+
+          <ul class="w-full space-y-4 text-left lg:self-center">
+            {points.map((point) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#eef0ff] text-[#4159ec]">
+                  <Icon name="FaCheckCircle" class="h-4 w-4" />
+                </span>
+                <span class="font-poppins text-[16px] sm:text-[17px] leading-snug text-gray-800">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Right: video + CTA */}
+      <div class="lg:col-span-5 rounded-2xl bg-white border border-[#e4e6f2] shadow-[0_12px_30px_-18px_rgba(18,18,43,0.25)] p-5 sm:p-6 flex flex-col">
+        <h3 class="font-poppins tracking-tight text-lg sm:text-xl font-semibold text-gray-900 leading-snug">
+          How IT professionals are moving to Cloud &amp; DevOps in 2026
+        </h3>
+
+        <div class="mt-4 relative overflow-hidden rounded-xl pb-[56.25%] bg-gray-100 ring-1 ring-black/5">
+          <video
+            src={DemoGif}
+            aria-label="Cloud, DevOps and AI free demo session"
+            class="absolute inset-0 h-full w-full object-cover"
+            autoplay
+            loop
+            muted
+            playsinline
+          ></video>
+        </div>
+
+        <a
+          href="https://www.microdegree.work/demopage?utm_source=website&utm_medium=organic&utm_campaign=demo_page&utm_content=cloud_section"
+          class="mt-auto pt-0 block"
+        >
+          <span class="mt-5 flex items-center justify-center gap-2 rounded-xl bg-[#ff0055] px-6 py-3.5 font-poppins text-lg font-semibold text-white shadow-[0_12px_24px_-10px_rgba(255,0,85,0.7)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+            Take a Free Demo
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

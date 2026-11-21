@@ -1,0 +1,57 @@
+---
+const programs = [
+	{
+		img: '/img/misc/cloud-devops.webp',
+		alt: 'Cloud, DevOps and AI Certification Program by MicroDegree',
+		title: 'Cloud, DevOps + AI Certification Program',
+		desc: 'Master Cloud & DevOps with hands-on labs, real projects, and job-ready skills.',
+		tags: ['Cloud', 'DevOps', 'AI'],
+		href: '/awsdevops',
+	},
+	{
+		img: '/img/misc/genai.webp',
+		alt: 'Generative AI course covering LLMs, RAG and Prompt Engineering',
+		title: 'Generative AI & Agentic AI Certification Program',
+		desc: 'Master Generative AI, LLMs, Prompt Engineering, RAG, and Agentic AI Systems.',
+		tags: ['RAG', 'LLMs', 'MCP'],
+		href: '/genai',
+	},
+];
+---
+
+<section class="section" id="courses">
+	<div class="wrap">
+		<div class="section-head"><h2>Our Cloud Programs</h2></div>
+		<div class="grid">
+			{programs.map((p) => (
+				<article class="card prog reveal">
+					<div class="media"><img src={p.img} alt={p.alt} loading="lazy" decoding="async" /></div>
+					<div class="body">
+						<h3>{p.title}</h3>
+						<p>{p.desc}</p>
+						<div class="foot">
+							<ul>{p.tags.map((t) => <li>{t}</li>)}</ul>
+							<a class="btn btn-primary" href={p.href}>Know More</a>
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+	.prog { overflow: hidden; display: flex; flex-direction: column; }
+	.media { overflow: hidden; height: 220px; }
+	.media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+	.prog:hover .media img { transform: scale(1.06); }
+	.body { padding: 24px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+	h3 { font-size: 1.25rem; font-weight: 600; }
+	.body p { color: var(--muted); font-size: .95rem; }
+	.foot { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+	ul { display: flex; gap: 8px; flex-wrap: wrap; }
+	li { padding: 4px 12px; border-radius: 99px; background: var(--brand-soft); color: var(--brand); font-size: .78rem; font-weight: 600; }
+	.btn { padding: 9px 22px; font-size: .9rem; }
+	@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+</style>

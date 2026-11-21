@@ -1,0 +1,59 @@
+---
+const videos = [
+  { id: 'gQ7Kb8Vzgh4', title: 'AI Agents vs Generative AI vs Agentic AI' },
+  { id: 'ltaorALQulw', title: 'Gen AI Roadmap for 2026' },
+];
+---
+
+<section class="px-4 sm:px-6 my-14">
+  <div class="yt-section max-w-6xl mx-auto rounded-3xl border border-[#e4e6f2] bg-white p-6 sm:p-10 shadow-[0_10px_30px_-22px_rgba(65,89,236,0.2)]">
+    <div class="text-center">
+      <h2 class="font-poppins text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-gray-900">
+        Checkout our GenAI Videos
+      </h2>
+      <span class="mt-4 mx-auto block h-1 w-14 rounded-full bg-blue-600"></span>
+      <p class="mt-5 font-poppins text-base leading-relaxed text-gray-600">
+        Start learning Generative AI in Kannada, from the roadmap to building AI agents.
+      </p>
+    </div>
+
+    <div class="mt-8 mx-auto max-w-3xl grid sm:grid-cols-2 gap-5 sm:gap-8">
+      {videos.map((v) => (
+        <figure class="m-0">
+          <div class="yt-card">
+            <button type="button" class="yt-play" data-yt={v.id} aria-label={`Play video: ${v.title}`}>
+              <img src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" />
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <figcaption class="mt-3 font-poppins text-sm sm:text-base font-medium text-gray-800 leading-snug text-center">{v.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .yt-section .yt-card { position: relative; width: 100%; overflow: hidden; border-radius: 14px; background: #000; aspect-ratio: 16 / 9; transition: transform .3s ease, box-shadow .3s ease; }
+  .yt-section .yt-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0, 0, 0, .22); }
+  .yt-section .yt-play { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
+  .yt-section .yt-play img { width: 100%; height: 100%; object-fit: cover; }
+  .yt-section .yt-play span { position: absolute; top: 50%; left: 50%; width: 68px; height: 48px; transform: translate(-50%, -50%); border-radius: 12px; background: #f00; }
+  .yt-section .yt-play span::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-35%, -50%); border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; }
+  .yt-section iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>
+
+<script>
+  // Load the YouTube player only when a thumbnail is clicked.
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.yt-section [data-yt]');
+    if (btn) {
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube.com/embed/${btn.dataset.yt}?autoplay=1`;
+      frame.title = 'YouTube video player';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      btn.replaceWith(frame);
+    }
+  });
+</script>

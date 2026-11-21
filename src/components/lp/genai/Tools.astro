@@ -1,0 +1,50 @@
+---
+const OpenAI = '/lp/genai/logo/openai.webp';
+const Bedrock = '/lp/awsdevops/logo/bedrock.webp';
+const MCP = '/lp/genai/logo/mcp.webp';
+const CrewAI = '/lp/genai/logo/crewai.webp';
+const Dotenv = '/lp/genai/logo/dotenv.webp';
+const Chroma = '/lp/genai/logo/chroma.webp';
+const Gradio = '/lp/genai/logo/gradio.webp';
+const Pinecone = '/lp/genai/logo/pinecone.webp';
+const Pydantic = '/lp/genai/logo/pydantic.webp';
+const Jsonschema = '/lp/genai/logo/json.webp';
+const Docker = '/lp/genai/logo/docker.webp';
+const Streamlit = '/lp/genai/logo/streamlit.webp';
+const tools = [
+  { name: "OpenAI", logo: OpenAI },
+  { name: "Bedrock", logo: Bedrock },
+  { name: "MCP", logo: MCP },
+  { name: "CrewAI", logo: CrewAI },
+  { name: "Dotenv", logo: Dotenv },
+  { name: "Chroma", logo: Chroma },
+  { name: "Gradio", logo: Gradio },
+  { name: "Pinecone", logo: Pinecone },
+  { name: "Pydantic", logo: Pydantic },
+  { name: "Jsonschema", logo: Jsonschema },
+  { name: "Docker", logo: Docker },
+  { name: "Streamlit", logo: Streamlit },
+];
+---
+
+<div class="w-full py-12 px-6 sm:px-10">
+      {/* Title */}
+      <h2 class="font-poppins text-3xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-center mb-10">
+        Tools Used
+      </h2>
+
+      {/* Tools Grid */}
+      <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map((tool, idx) => (
+          <div
+           
+            class="bg-white rounded-2xl flex items-center px-4 py-2 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          >
+            <img loading="lazy" decoding="async" src={tool.logo} alt={`${tool.name} logo used in the Generative AI course`} class="w-12 h-12 mr-4" />
+            <span class="font-poppins tracking-tight font-medium text-lg sm:text-xl">
+              {tool.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>

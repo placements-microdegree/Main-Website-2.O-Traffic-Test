@@ -1,0 +1,59 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import Herox from '../components/lp/genai/Herox.astro';
+import Highlights from '../components/lp/genai/Highlights.astro';
+import Counter from '../components/lp/Counter.astro';
+import Trainers from '../components/lp/genai/Trainers.astro';
+import JobRolesAndSkills from '../components/lp/genai/JobRolesAndSkills.astro';
+import Compare from '../components/lp/genai/Compare.astro';
+import Tools from '../components/lp/genai/Tools.astro';
+import CurriculumSection from '../components/lp/genai/CurriculumSection.astro';
+import Demo from '../components/lp/genai/Demo.astro';
+import CareerServices from '../components/lp/genai/CareerServices.astro';
+import Certificate from '../components/lp/genai/Certificate.astro';
+import Pricing from '../components/lp/genai/Pricing.astro';
+import Demovideo from '../components/lp/genai/Demovideo.astro';
+import Awards from '../components/Awards.astro'; // the home page's Awards & Recognition section
+import Reviews from '../components/lp/genai/Reviews.astro';
+import Logoslider from '../components/Trainers.astro'; // the home page's company-logo marquee
+import Supportedby from '../components/lp/genai/Supportedby.astro';
+import Faq from '../components/lp/Faq.astro';
+
+const description =
+	'Future-proof your tech career with Generative AI Certification. Learn LLMs, Prompt Engineering & AI tools in Kannada — by industry experts.';
+---
+
+<LPLayout
+	title="GenAI Course for IT Professionals | MicroDegree"
+	description={description}
+	path="/genai"
+	keywords="GenAI course, Generative AI certification, LLM training, Prompt Engineering, AI tools course, GenAI for IT professionals, AI course Kannada, MicroDegree GenAI, AI training Bangalore"
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'Course',
+		name: 'Generative AI Course for IT Professionals',
+		description,
+		inLanguage: 'kn',
+		provider: { '@type': 'Organization', name: 'MicroDegree', sameAs: 'https://www.microdegree.work' },
+		url: 'https://www.microdegree.work/genai',
+	}}
+>
+	<Herox />
+	<Highlights />
+	<Counter />
+	<Trainers />
+	<JobRolesAndSkills />
+	<Compare />
+	<Tools />
+	<CurriculumSection />
+	<Demo />
+	<CareerServices />
+	<Certificate />
+	<Pricing />
+	<Demovideo />
+	<Awards hideBrands />
+	<Reviews />
+	<Logoslider hideRule />
+	<Supportedby />
+	<Faq />
+</LPLayout>

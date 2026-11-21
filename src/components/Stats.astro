@@ -1,0 +1,64 @@
+---
+const stats = [
+	{ icon: 'fa-solid fa-users', color: '#a855f7', end: 100000, label: 'Active Learners' },
+	{ icon: 'fa-brands fa-youtube', color: '#dc2626', end: 87000, label: 'YouTube Subscribers' },
+	{ icon: 'fa-brands fa-instagram', color: '#db2777', end: 52000, label: 'Instagram Followers' },
+	{ icon: 'fa-brands fa-telegram', color: '#38bdf8', end: 40000, label: 'Telegram Followers' },
+];
+---
+
+<section class="section stats">
+	<div class="wrap">
+		<div class="section-head">
+			<h2><img src="/img/misc/Karnatakaflag.png" alt="Karnataka Flag" width="53" height="45" class="flag" /> ಕನ್ನಡದ No.1 Tech-Skilling Platform</h2>
+		</div>
+
+		<dl class="grid">
+			{stats.map((s) => (
+				<div class="card stat">
+					<dd class="icon"><i class={s.icon} style={`color:${s.color}`}></i></dd>
+					<dd class="num"><span data-count={s.end}>0</span>+</dd>
+					<dt>{s.label}</dt>
+				</div>
+			))}
+		</dl>
+
+		<p class="mission">Our Mission: Skill 5 lakh Learners by 2027 <i class="fa-solid fa-medal"></i></p>
+		<div class="center"><a href="#courses" class="btn btn-primary">Explore Courses <i class="fa-solid fa-angles-right"></i></a></div>
+	</div>
+</section>
+
+<style>
+	.flag { display: inline-block; height: 44px; width: auto; vertical-align: middle; margin-right: 8px; }
+	.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 0; }
+	.stat { padding: 16px; text-align: center; display: flex; flex-direction: column; background: none; border: 0; box-shadow: none; border-radius: 0; }
+	.icon { order: -1; margin: 0; font-size: 2.4rem; }
+	.num { margin: 14px 0 0; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 600; font-variant-numeric: tabular-nums; }
+	dt { color: var(--muted); }
+	.mission { text-align: center; margin: 40px 0 24px; font-size: 1.3rem; color: var(--muted); }
+	.mission i { color: #eab308; }
+	.center { display: flex; justify-content: center; }
+	@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+	@media (max-width: 480px) { .flag { height: 34px; } .grid { grid-template-columns: 1fr; gap: 28px; } }
+</style>
+
+<script>
+	const fmt = new Intl.NumberFormat('en-IN');
+	const io = new IntersectionObserver((entries) => {
+		for (const e of entries) {
+			if (!e.isIntersecting) continue;
+			const el = e.target as HTMLElement;
+			io.unobserve(el);
+			const end = Number(el.dataset.count);
+			const start = performance.now();
+			const dur = 2500;
+			const tick = (now: number) => {
+				const p = Math.min((now - start) / dur, 1);
+				el.textContent = fmt.format(Math.round(end * (1 - Math.pow(1 - p, 3))));
+				if (p < 1) requestAnimationFrame(tick);
+			};
+			requestAnimationFrame(tick);
+		}
+	}, { threshold: 0.5 });
+	document.querySelectorAll('[data-count]').forEach((el) => io.observe(el));
+</script>

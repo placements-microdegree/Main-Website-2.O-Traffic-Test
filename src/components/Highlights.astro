@@ -1,0 +1,60 @@
+---
+const items = [
+	{ v: 'Project', t: '3-8 month program depending on the plan.' },
+	{ v: 'Tech', t: 'Morning & Evening batches focused for IT professionals' },
+	{ v: 'learn', t: 'Instructor led Live online classes' },
+	{ v: 'Fast', t: 'The only platform to teach in kannada' },
+	{ v: 'Live', t: 'Assured interview opportunities' },
+	{ v: 'Industry', t: 'Community support for doubt clarification' },
+	{ v: 'Collab', t: 'Career assistance training for resume, mock interviews & scenario based.' },
+	{ v: 'Support', t: 'Trained by Experts from Google, Flipkart, Walmart & more' },
+	{ v: 'certificate', t: 'Course Completion Certificate' },
+];
+---
+
+<section class="section highlights">
+	<div class="wrap">
+		<div class="section-head"><h2>Program Highlights</h2></div>
+		<div class="grid">
+			{items.map((it, i) => (
+				<div class="card item reveal" style={`transition-delay:${(i % 3) * 70}ms`}>
+					<video autoplay loop muted playsinline preload="none" aria-hidden="true">
+						<source data-src={`/img/gifs/${it.v}.mp4`} type="video/mp4" />
+					</video>
+					<span>{it.t}</span>
+				</div>
+			))}
+		</div>
+		<div class="actions">
+			<a class="btn btn-primary" href="/awsdevops">Start Learning Today <i class="fa-solid fa-angles-right"></i></a>
+			<a class="btn btn-outline" href="#form" data-modal="counsellor"><i class="fa-solid fa-phone-volume"></i> Talk to our Career Counsellor</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+	.item { display: flex; align-items: center; gap: 16px; padding: 8px 20px; }
+	video { flex: none; width: 56px; height: 56px; padding: 8px; border-radius: 50%; background: var(--brand-soft); object-fit: contain; }
+	span { font-weight: 500; }
+	.actions { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-top: 48px; }
+	@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+	@media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .actions .btn { width: 100%; text-align: center; font-size: .92rem; padding: 13px 16px; } }
+</style>
+
+<script>
+	// Fetch each highlight clip only when it is about to scroll into view.
+	const clips = document.querySelectorAll<HTMLVideoElement>('.highlights video');
+	const io = new IntersectionObserver((entries) => {
+		for (const e of entries) {
+			if (!e.isIntersecting) continue;
+			const v = e.target as HTMLVideoElement;
+			const src = v.querySelector<HTMLSourceElement>('source[data-src]')!;
+			src.src = src.dataset.src!;
+			v.load();
+			v.play().catch(() => {});
+			io.unobserve(v);
+		}
+	}, { rootMargin: '300px' });
+	clips.forEach((v) => io.observe(v));
+</script>

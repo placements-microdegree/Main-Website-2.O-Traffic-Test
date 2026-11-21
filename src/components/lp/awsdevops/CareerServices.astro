@@ -1,0 +1,54 @@
+
+
+
+
+
+
+
+
+
+
+---
+import Icon from '../Icon.astro';
+const services = [
+  { icon: "FaBriefcase", text: "Placement Assistance" },
+  { icon: "FaComments", text: "150+ placement related trainings every year" },
+  { icon: "FaChalkboardTeacher", text: "Mock Interview Preparation" },
+  { icon: "FaCertificate", text: "Internship Certificates" },
+  { icon: "FaUserTie", text: "Career Oriented Sessions" },
+  { icon: "FaLinkedin", text: "Resume & LinkedIn Profile Building" },
+];
+---
+
+<div class="w-full py-12 px-6 sm:px-10 flex justify-center">
+      <div class="w-full max-w-6xl">
+        {/* Section Title */}
+        <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-10 text-center tracking-tight">
+          Career Services
+        </h2>
+
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          {/* Left Image (Fixed size & position) */}
+          <div class="lg:col-span-5 w-full">
+            <img loading="lazy" decoding="async"
+              src="https://main-website-images.s3.ap-south-1.amazonaws.com/Td+(1).jpg"
+              alt="Career Services"
+              class="rounded-2xl shadow-lg ring-1 ring-black/5 w-full object-cover"
+            />
+          </div>
+
+          {/* Right Services - Moved closer to image */}
+          <div class="lg:col-span-7 w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {services.map((service, idx) => (
+              <div
+               
+                class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div class="p-2 bg-purple-100 rounded-full shrink-0"><Icon name={service.icon} class="w-6 h-6 text-blue-600" /></div>
+                <p class="text-base text-gray-700 font-medium text-left">{service.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>

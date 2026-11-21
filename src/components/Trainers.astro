@@ -1,0 +1,38 @@
+---
+interface Props { /** Hide the gradient rule under the heading. */ hideRule?: boolean; }
+const { hideRule = false } = Astro.props;
+const logos = [
+	['flipcart', 'Flipkart'], ['accenture', 'Accenture'], ['adobe', 'Adobe'], ['airbus', 'Airbus'], ['ey', 'EY'],
+	['harman', 'Harman'], ['walmart', 'Walmart'], ['matchmove', 'MatchMove'], ['tcs', 'TCS'],
+];
+// Rendered twice so the track loops seamlessly at -50%.
+const loop = [...logos, ...logos];
+---
+
+<section class:list={['section trainers', { 'no-rule': hideRule }]}>
+	<div class="wrap"><div class="section-head"><h2>Our Expert Trainers are from</h2></div></div>
+	<div class="marquee">
+		<div class="track">
+			{loop.map(([f, n], i) => (
+				<div class="logo"><img src={`/img/logos/${f}.png`} alt={`${n} company logo`} loading="lazy" decoding="async" aria-hidden={i >= logos.length ? 'true' : undefined} /></div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.trainers { padding-top: 40px; }
+	.no-rule .section-head::after { display: none; }
+	.marquee {
+		overflow: hidden;
+		mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+		-webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+	}
+	.track { display: flex; width: max-content; align-items: center; animation: scroll 35s linear infinite; }
+	.marquee:hover .track { animation-play-state: paused; }
+	.logo { flex: none; width: 190px; height: 84px; margin: 0 14px; display: grid; place-items: center; padding: 0 24px; }
+	.logo img { max-height: 46px; width: 100%; object-fit: contain; filter: grayscale(1); opacity: .75; transition: filter .3s, opacity .3s; }
+	.logo:hover img { filter: none; opacity: 1; }
+	@keyframes scroll { to { transform: translateX(-50%); } }
+	@media (prefers-reduced-motion: reduce) { .track { animation: none; } }
+</style>

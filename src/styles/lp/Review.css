@@ -1,0 +1,159 @@
+.review2-container .slider-container {
+  width: 80%;
+  margin: auto;
+}
+
+.review2-container .slide-content {
+  padding: 10px;
+  display: flex; /* cards stretch to the tallest one in the row */
+}
+
+.review2-container .card {
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 16px;
+  margin: auto;
+  transition: transform 0.3s ease;
+}
+
+.review2-container .card:hover {
+  transform: translateY(-2px);
+}
+
+.review2-container .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review2-container .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.review2-container .info h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.review2-container .rating {
+  display: flex;
+  margin-top: 4px;
+}
+
+.review2-container p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Custom arrow styles */
+.review2-container .slick-prev,
+.review2-container .slick-next {
+  width: 30px;
+  height: 30px;
+  color: #333;
+  z-index: 1;
+}
+
+.review2-container .slick-prev {
+  left: -10px;
+}
+
+.review2-container .slick-next {
+  right: -10px;
+}
+
+.review2-container .slick-prev:before,
+.review2-container .slick-next:before {
+  font-size: 30px;
+  color: #333;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .review2-container .card {
+    padding: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .review2-container .slider-container {
+    width: 90%;
+  }
+  .review2-container .card {
+    padding: 25px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .review2-container .slider-container {
+    width: 95%;
+  }
+  .review2-container .card {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  .review2-container .info h4 {
+    font-size: 1rem;
+  }
+  .review2-container p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .review2-container .slider-container {
+    width: 90%;
+  }
+  .review2-container .card {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  .review2-container .avatar {
+    width: 45px;
+    height: 45px;
+  }
+  .review2-container .info h4 {
+    font-size: 1.2rem;
+  }
+  .review2-container p {
+    font-size: 1rem;
+  }
+}
+
+/* Force equal height for all slides */
+.review2-container .slick-track {
+  display: flex !important;
+}
+
+.review2-container .slick-slide {
+  height: inherit !important;
+  display: flex !important;
+}
+
+.review2-container .slide-content {
+  display: flex;
+  height: auto; /* an explicit height would stop the slide stretching to the tallest in the row */
+}
+
+.review2-container .card {
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 16px;
+  margin: 0 auto; /* vertical auto margins would stop the card stretching */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: stretch; /* equal height across the row */
+  transition: transform 0.3s ease;
+}

@@ -1,0 +1,153 @@
+---
+import DemoForm from '../DemoForm.astro';
+const gif1 = '/lp/demo/gif2.mp4';
+const gif2 = '/lp/demo/gif1.mp4';
+---
+
+<Fragment>
+
+    <div class="py-16 px-4 bg-neutral-50">
+
+      <div class="max-w-7xl mx-auto">
+
+        {/* HERO TEXT */}
+        <div class="text-center max-w-7xl mx-auto mb-14">
+
+          <h1 class="text-3xl text-[#151595] sm:text-5xl font-semibold leading-tight tracking-tight mb-5">
+            Still stuck in low paying IT roles?
+          </h1>
+
+          <h2 class="text-lg sm:text-2xl text-neutral-600 font-medium mb-8 max-w-3xl mx-auto">
+            Master Cloud & DevOps and Transition into 4x Salary Roles
+          </h2>
+
+          <p class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-neutral-900 border border-neutral-300 rounded-full px-6 py-2.5 bg-white shadow-sm">
+            Take a Free Demo Now 👇🏼
+          </p>
+
+        </div>
+
+        {/* VIDEO CARDS */}
+        <div class="relative">
+
+          {/* AMBIENT GLASS ORBS */}
+          <div class="pointer-events-none absolute inset-0 overflow-visible -z-10">
+            <div class="absolute -top-10 left-10 w-72 h-72 bg-blue-300/30 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 right-10 w-80 h-80 bg-indigo-300/25 rounded-full blur-3xl"></div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+            {/* CARD 1 */}
+            <div class="bg-white/50 backdrop-blur-xl rounded-2xl border border-white/60 shadow-[0_20px_50px_-15px_rgba(31,38,135,0.18),inset_0_1px_0_rgba(255,255,255,0.6)] hover:shadow-[0_25px_60px_-15px_rgba(31,38,135,0.25),inset_0_1px_0_rgba(255,255,255,0.6)] transition-shadow duration-300 overflow-hidden">
+
+              <div class="relative aspect-video overflow-hidden">
+
+                <video
+                  src={gif1}
+                  aria-label="Cloud and DevOps free demo session for IT professionals"
+                  class="w-full h-full object-cover"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                />
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+
+                <div class="absolute top-4 left-4 bg-black/30 backdrop-blur-md border border-white/30 text-white text-xs tracking-wide uppercase px-3 py-1 rounded-full shadow">
+                  Free Demo
+                </div>
+
+              </div>
+
+              <div class="p-8 text-center">
+
+                <h3 class="text-lg sm:text-xl font-semibold text-neutral-900 mb-6 leading-snug">
+                  How IT professionals are moving to Cloud & DevOps in 2026
+                </h3>
+
+                <button type="button" data-open-modal="modal-form1" class="bg-blue-500/90 backdrop-blur-md border border-white/30 text-white px-8 py-3 rounded-full font-semibold tracking-wide shadow-[0_8px_24px_rgba(59,130,246,0.35),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_12px_28px_rgba(59,130,246,0.45),inset_0_1px_0_rgba(255,255,255,0.4)] hover:bg-blue-600/90 transition">
+                  Watch Free Demo →
+                </button>
+
+              </div>
+
+            </div>
+
+            {/* CARD 2 */}
+            <div class="bg-white/50 backdrop-blur-xl rounded-2xl border border-white/60 shadow-[0_20px_50px_-15px_rgba(31,38,135,0.18),inset_0_1px_0_rgba(255,255,255,0.6)] hover:shadow-[0_25px_60px_-15px_rgba(31,38,135,0.25),inset_0_1px_0_rgba(255,255,255,0.6)] transition-shadow duration-300 overflow-hidden">
+
+              <div class="relative aspect-video overflow-hidden">
+                <video
+                  src={gif2}
+                  aria-label="DevOps engineer career roadmap, tools and salary overview"
+                  class="w-full h-full object-cover"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+
+                <div class="absolute top-4 left-4 bg-black/30 backdrop-blur-md border border-white/30 text-white text-xs tracking-wide uppercase px-3 py-1 rounded-full shadow">
+                  Free Demo
+                </div>
+
+              </div>
+
+              <div class="p-8 text-center">
+
+                <h3 class="text-lg sm:text-xl font-semibold text-neutral-900 mb-6 leading-snug">
+                  DevOps Engineer Job 2026 | Real Work, Tools & Salary
+                </h3>
+
+                <button type="button" data-open-modal="modal-form2" class="bg-blue-500/90 backdrop-blur-md border border-white/30 text-white px-8 py-3 rounded-full font-semibold tracking-wide shadow-[0_8px_24px_rgba(59,130,246,0.35),inset_0_1px_0_rgba(255,255,255,0.4)] hover:shadow-[0_12px_28px_rgba(59,130,246,0.45),inset_0_1px_0_rgba(255,255,255,0.4)] hover:bg-blue-600/90 transition">
+                  Watch Free Demo →
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <dialog id="modal-form1" class="demo-modal">
+      <div class="relative w-full">
+        <button type="button" data-close-modal aria-label="Close" class="absolute -top-3 -right-3 z-10 bg-white border border-neutral-200 rounded-full w-9 h-9 shadow-md flex items-center justify-center text-neutral-500 hover:text-neutral-900 transition">✕</button>
+        <DemoForm table="demo_cloud" redirect="/demovideo1" heading="How IT professionals are moving to Cloud & DevOps in 2026" />
+      </div>
+    </dialog>
+
+      <dialog id="modal-form2" class="demo-modal">
+      <div class="relative w-full">
+        <button type="button" data-close-modal aria-label="Close" class="absolute -top-3 -right-3 z-10 bg-white border border-neutral-200 rounded-full w-9 h-9 shadow-md flex items-center justify-center text-neutral-500 hover:text-neutral-900 transition">✕</button>
+        <DemoForm table="demo_devops" redirect="/demovideo2" heading="DevOps Engineer Job 2026 | Real Work, Tools & Salary" />
+      </div>
+    </dialog>
+
+    </div>
+    </Fragment>
+
+<script>
+  // Open/close the demo-form dialogs (native <dialog>: focus trap + Escape for free).
+  document.querySelectorAll<HTMLElement>('[data-open-modal]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      (document.getElementById(btn.dataset.openModal!) as HTMLDialogElement | null)?.showModal();
+    });
+  });
+  document.querySelectorAll<HTMLDialogElement>('dialog.demo-modal').forEach((dlg) => {
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.querySelector('[data-close-modal]')?.addEventListener('click', () => dlg.close());
+  });
+</script>
+
+<style is:global>
+  dialog.demo-modal { padding: 16px; background: transparent; border: 0; max-width: 28rem; width: 100%; overflow: visible; }
+  dialog.demo-modal::backdrop { background: rgba(23, 23, 23, .6); backdrop-filter: blur(6px); }
+  body:has(dialog.demo-modal[open]) { overflow: hidden; }
+</style>

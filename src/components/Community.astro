@@ -1,0 +1,260 @@
+---
+const photos = Array.from({ length: 14 }, (_, i) => ({
+	src: `/img/th/Im${i + 1}.webp`,
+	alt: [
+		'Tech Harate community event', 'Tech Harate community learning session', 'Tech Harate community members', 'Tech Harate technology community',
+		'Tech Harate meetup moment', 'Tech Harate attendees networking', 'Tech Harate session in progress', 'Tech Harate community discussion',
+		'Tech Harate speaker session', 'Tech Harate community gathering', 'Tech Harate group photo', 'Tech Harate audience',
+		'Tech Harate event highlights', 'Tech Harate community members',
+	][i],
+}));
+const shorts = ['9Y2gLHJgLu8', 'rGfFyrDcDYA', 'UpmTAS_Vbtk', 'DJN7D4CCmNc'];
+---
+
+<section class="section community">
+	<div class="wrap">
+		<div class="section-head">
+			<h2 id="community-events-heading">Community &amp; Events</h2>
+		</div>
+		<a class="brand" href="https://techharate.in" target="_blank" rel="noreferrer" aria-label="Visit Tech Harate website">
+			<span class="a">Tech.</span><span class="b">ಹರಟೆ</span><span class="b" aria-hidden="true">→</span>
+			<em>Building Karnataka's largest tech community</em>
+		</a>
+
+		<div class="tabs" role="tablist">
+			<button role="tab" class="on" data-tab="photos" aria-selected="true">Photos</button>
+			<button role="tab" data-tab="shorts" aria-selected="false">Highlights</button>
+		</div>
+
+		<div id="tab-photos">
+		<div class="marquee">
+			<div class="track">
+				{[0, 1].map((c) => photos.map((p) => (
+					<button type="button" class="ph" data-src={p.src} data-alt={p.alt} aria-hidden={c ? 'true' : undefined} tabindex={c ? -1 : undefined}>
+						<img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+					</button>
+				)))}
+			</div>
+		</div>
+
+		<div class="gal" data-gal>
+			<div class="gal-main">
+				<img id="gal-img" src={photos[0].src} alt={photos[0].alt} width="800" height="560" decoding="async" />
+				<span class="gal-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><circle cx="12" cy="13" r="3.5" /></svg> <b id="gal-n">1</b> <span>/{photos.length}</span></span>
+				<button type="button" class="gal-arrow gal-prev" aria-label="Previous photo">&#10094;</button>
+				<button type="button" class="gal-arrow gal-next" aria-label="Next photo">&#10095;</button>
+			</div>
+			<div class="gal-thumbs" id="gal-thumbs">
+				{photos.map((p, i) => (
+					<button type="button" class:list={['gal-t', { on: i === 0 }]} data-i={i} aria-label={`Show photo ${i + 1}`}>
+						<img src={p.src} alt="" loading="lazy" decoding="async" />
+					</button>
+				))}
+			</div>
+		</div>
+		</div>
+
+		<div id="tab-shorts" class="shorts" hidden>
+			{shorts.map((id, i) => (
+				<button type="button" class="sh" data-video={id} data-alt={`Tech Harate highlights — YouTube Short ${i + 1}`}>
+					<img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} alt={`Tech Harate highlights — YouTube Short ${i + 1}`} loading="lazy" />
+					<span class="tag">Shorts</span>
+					<span class="play"><i class="fa-solid fa-play"></i></span>
+				</button>
+			))}
+		</div>
+
+		<p class="note">Monthly offline events in Bengaluru and Mangaluru. Free and Open community where Kannada IT professionals learn, build, grow and unlock better opportunities.</p>
+	</div>
+
+	<div class="lb" id="lb" hidden role="dialog" aria-modal="true">
+		<button class="x" aria-label="Close">&times;</button>
+		<div class="stage" id="lb-stage"></div>
+	</div>
+</section>
+
+<style>
+	.brand { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 4px 10px; margin: -24px auto 36px; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 600; }
+	.brand .a { color: #000092; } .brand .b { color: #ff4700; }
+	.brand em { flex-basis: 100%; text-align: center; font-style: normal; font-size: 1.1rem; color: var(--muted); font-weight: 500; }
+	.tabs { display: flex; width: 280px; margin: 0 auto 36px; padding: 4px; border-radius: 99px; background: #fff; border: 1px solid var(--line); }
+	.tabs button { flex: 1; padding: 9px 0; border: 0; border-radius: 99px; background: transparent; color: var(--muted); font-weight: 600; transition: background .25s, color .25s; }
+	.tabs button.on { background: var(--brand-dark); color: #fff; }
+
+	.marquee { overflow: hidden; margin: 0 -24px; mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); }
+	.track { display: flex; gap: 18px; width: max-content; animation: scroll 70s linear infinite; }
+	.marquee:hover .track { animation-play-state: paused; }
+	.ph { flex: none; width: 310px; height: 220px; padding: 0; border: 0; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: var(--shadow); transition: transform .4s; }
+	.ph:hover { transform: translateY(-6px); }
+	.ph img { width: 100%; height: 100%; object-fit: cover; }
+	@keyframes scroll { to { transform: translateX(-50%); } }
+
+	.shorts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 980px; margin: 0 auto; }
+	.shorts[hidden], #tab-photos[hidden], .lb[hidden] { display: none; }
+	.gal { display: none; }
+	.sh { position: relative; aspect-ratio: 9 / 16; padding: 0; border: 0; border-radius: 22px; overflow: hidden; background: #000; box-shadow: var(--shadow); transition: transform .4s; }
+	.sh:hover { transform: translateY(-6px); }
+	.sh :global(.pv) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; opacity: 0; transition: opacity .12s; }
+	.sh :global(.pv.ready) { opacity: 1; }
+	.sh.live .play, .sh.live .tag { opacity: 0; transition: opacity .2s; }
+	.sh img { width: 100%; height: 100%; object-fit: cover; opacity: .9; }
+	.tag { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 99px; background: rgba(255,255,255,.2); color: #fff; font-size: .65rem; font-weight: 600; text-transform: uppercase; backdrop-filter: blur(6px); }
+	.play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 1.1rem; }
+	.play::before { content: ""; position: absolute; width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,.25); backdrop-filter: blur(6px); }
+	.play i { position: relative; margin-left: 3px; }
+
+	.note { max-width: 880px; margin: 48px auto 0; padding-top: 32px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 1.1rem; }
+
+	.lb { position: fixed; inset: 0; z-index: 9999; background: rgba(8,8,24,.88); backdrop-filter: blur(8px); display: grid; place-items: center; padding: 16px; }
+	.x { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 1.6rem; line-height: 1; }
+	.stage :global(img) { max-height: 85vh; border-radius: 24px; object-fit: contain; }
+	.stage :global(iframe) { height: 80vh; aspect-ratio: 9 / 16; border: 0; border-radius: 24px; max-width: 100%; }
+
+	@media (max-width: 760px) {
+		.shorts { grid-template-columns: repeat(2, 1fr); }
+		.marquee { display: none; }
+		.brand { margin-top: -12px; }
+		.gal { display: block; }
+		.gal-main { position: relative; aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; background: #0b0b1e; box-shadow: var(--shadow); }
+		.gal-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.gal-count { position: absolute; top: 12px; right: 12px; display: flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 99px; background: rgba(0, 0, 0, .55); color: #fff; font-size: .78rem; backdrop-filter: blur(6px); }
+		.gal-count span { opacity: .7; }
+		.gal-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgba(0, 0, 0, .55); color: #fff; font-size: 13px; display: grid; place-items: center; }
+		.gal-prev { left: 10px; } .gal-next { right: 10px; }
+		.gal-thumbs { display: flex; gap: 8px; overflow-x: auto; margin-top: 12px; padding: 2px; scrollbar-width: none; }
+		.gal-thumbs::-webkit-scrollbar { display: none; }
+		.gal-t { flex: 0 0 calc((100% - 24px) / 4); aspect-ratio: 4 / 3; padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; opacity: .65; background: #fff; transition: opacity .2s, border-color .2s; }
+		.gal-t img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.gal-t.on { opacity: 1; border-color: var(--brand-dark); }
+	}
+	@media (prefers-reduced-motion: reduce) { .track { animation: none; } .marquee { overflow-x: auto; } }
+</style>
+
+<script>
+	const q = <T extends Element>(s: string) => document.querySelector<T>(s)!;
+	const photos = q('#tab-photos'), shorts = q('#tab-shorts');
+
+	document.querySelectorAll<HTMLButtonElement>('.community .tabs button').forEach((b) =>
+		b.addEventListener('click', () => {
+			const isPhotos = b.dataset.tab === 'photos';
+			photos.toggleAttribute('hidden', !isPhotos);
+			shorts.toggleAttribute('hidden', isPhotos);
+			document.querySelectorAll('.community .tabs button').forEach((o) => {
+				o.classList.toggle('on', o === b);
+				o.setAttribute('aria-selected', String(o === b));
+			});
+		})
+	);
+
+	const galImg = q<HTMLImageElement>('#gal-img'), galN = q('#gal-n'), thumbs = q<HTMLElement>('#gal-thumbs');
+	const items = Array.from(thumbs.querySelectorAll<HTMLButtonElement>('.gal-t'));
+	let gi = 0;
+	const show = (i: number) => {
+		gi = (i + items.length) % items.length;
+		const t = items[gi].querySelector('img')!;
+		galImg.src = t.src; galImg.alt = (document.querySelectorAll<HTMLElement>('.ph')[gi]?.dataset.alt) || '';
+		galN.textContent = String(gi + 1);
+		items.forEach((b, k) => b.classList.toggle('on', k === gi));
+		thumbs.scrollTo({ left: items[gi].offsetLeft - thumbs.offsetLeft - (thumbs.clientWidth - items[gi].offsetWidth) / 2, behavior: 'smooth' });
+	};
+	items.forEach((b, k) => b.addEventListener('click', () => show(k)));
+	q('.gal-prev').addEventListener('click', () => show(gi - 1));
+	q('.gal-next').addEventListener('click', () => show(gi + 1));
+	let sx = 0;
+	const gm = q<HTMLElement>('.gal-main');
+	gm.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+	gm.addEventListener('touchend', (e) => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) show(gi + (dx < 0 ? 1 : -1)); }, { passive: true });
+
+	// Auto-advance on phones; pauses while the user touches the gallery or the tab is hidden.
+	if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		let hold = false, timer: number | undefined;
+		const gal = q<HTMLElement>('[data-gal]');
+		const bump = () => { hold = true; clearTimeout(timer); timer = window.setTimeout(() => (hold = false), 6000); };
+		gal.addEventListener('touchstart', bump, { passive: true });
+		gal.addEventListener('click', bump);
+		setInterval(() => {
+			if (!hold && !document.hidden && gal.offsetParent && !photos.hasAttribute('hidden')) show(gi + 1);
+		}, 3000);
+	}
+
+	const lb = q<HTMLElement>('#lb'), stage = q<HTMLElement>('#lb-stage');
+	document.body.appendChild(lb); // .section uses content-visibility (contains fixed + stacking), which would trap the overlay under the navbar
+	const close = () => { lb.hidden = true; stage.replaceChildren(); document.body.style.overflow = ''; };
+	const open = (node: HTMLElement) => { stage.replaceChildren(node); lb.hidden = false; document.body.style.overflow = 'hidden'; };
+
+	document.querySelectorAll<HTMLElement>('.ph').forEach((el) =>
+		el.addEventListener('click', () => {
+			const img = new Image();
+			img.src = el.dataset.src!; img.alt = el.dataset.alt!;
+			open(img);
+		})
+	);
+	// Desktop hover: preview plays inside the card. Players are created (paused, hidden) as soon as the Highlights tab opens,
+	// so hovering only sends play/pause and starts instantly. The click still opens the full lightbox.
+	if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+		const cards = Array.from(document.querySelectorAll<HTMLElement>('.sh'));
+		const cmd = (f: HTMLIFrameElement, func: string) => f.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args: [] }), '*');
+		const frames = new Map<HTMLElement, { f: HTMLIFrameElement; el: HTMLElement; loaded: boolean; want: boolean; playing: boolean }>();
+		const build = (el: HTMLElement) => {
+			if (frames.has(el)) return frames.get(el)!;
+			const id = el.dataset.video!;
+			const f = document.createElement('iframe');
+			const st = { f, el, loaded: false, want: false, playing: false };
+			f.className = 'pv';
+			f.tabIndex = -1;
+			f.setAttribute('aria-hidden', 'true');
+			f.allow = 'autoplay; encrypted-media';
+			f.src = `https://www.youtube.com/embed/${id}?enablejsapi=1&mute=1&controls=0&loop=1&playlist=${id}&playsinline=1&modestbranding=1&rel=0&disablekb=1`;
+			f.addEventListener('load', () => {
+				st.loaded = true;
+				f.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }), '*');
+				if (st.want) cmd(f, 'playVideo');
+			});
+			el.appendChild(f);
+			frames.set(el, st);
+			return st;
+		};
+		const sync = (st: { f: HTMLIFrameElement; el: HTMLElement; want: boolean; playing: boolean }) => {
+			const on = st.want && st.playing;
+			st.f.classList.toggle('ready', on);
+			st.el.classList.toggle('live', on);
+		};
+		// Reveal the player only once it reports it is really playing, so the card never flashes black.
+		window.addEventListener('message', (e) => {
+			if (!/youtube\.com$/.test(new URL(e.origin).hostname)) return;
+			let d: any; try { d = JSON.parse(e.data); } catch { return; }
+			const state = d.event === 'onStateChange' ? d.info : d.info?.playerState;
+			if (state === undefined) return;
+			for (const st of frames.values()) if (st.f.contentWindow === e.source) { st.playing = state === 1; sync(st); }
+		});
+		document.querySelector('[data-tab="shorts"]')!.addEventListener('click', () => cards.forEach(build), { once: true });
+		cards.forEach((el) => {
+			el.addEventListener('mouseenter', () => {
+				const st = build(el);
+				st.want = true;
+				if (st.loaded) cmd(st.f, 'playVideo');
+				sync(st);
+			});
+			el.addEventListener('mouseleave', () => {
+				const st = frames.get(el);
+				if (!st) return;
+				st.want = false;
+				if (st.loaded) cmd(st.f, 'pauseVideo');
+				sync(st);
+			});
+		});
+	}
+
+	document.querySelectorAll<HTMLElement>('.sh').forEach((el) =>
+		el.addEventListener('click', () => {
+			const f = document.createElement('iframe');
+			f.src = `https://www.youtube.com/embed/${el.dataset.video}?autoplay=1&mute=1&playsinline=1`;
+			f.title = el.dataset.alt!;
+			f.allow = 'autoplay; encrypted-media; fullscreen';
+			f.allowFullscreen = true;
+			open(f);
+		})
+	);
+	lb.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('x')) close(); });
+	window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
+</script>

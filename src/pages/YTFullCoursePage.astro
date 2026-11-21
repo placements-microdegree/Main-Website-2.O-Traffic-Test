@@ -1,0 +1,293 @@
+---
+// Free full-course videos. Ported from the old React YTFullCoursePage: same sections, videos, copy and enquiry prompts.
+import LPLayout from '../layouts/LPLayout.astro';
+import Icon from '../components/lp/Icon.astro';
+
+const description =
+	'Learn Cloud Computing, AWS, DevOps, Docker, Kubernetes, Python, React, AI, Data Science, Testing and more with free IT courses from MicroDegree.';
+
+const ENQUIRY_URL = 'https://mdegree.in/free_course_enq';
+
+const courseData = {
+    cloudComputing: [
+      { id: 1, videoUrl: "https://www.youtube.com/embed/sVlo7W3iDDQ", name: "DevOps - Basics to Advanced",
+        description: "Learn how to speed up software development and operations with DevOps. Perfect for beginners and beyond!"
+      },
+      { id: 2, videoUrl: "https://www.youtube.com/embed/6ZGtOe---X8", name: "AWS - Basics to Advanced",
+        description: "Discover how to use Amazon Web Services to build and manage apps in the cloud, from start to finish."
+      },
+      { id: 3, videoUrl: "https://www.youtube.com/embed/1ciWsHm-fS4", name: "Azure - Basics to Advanced",
+        description: "Get started with Microsoft Azure and learn how to deploy and manage cloud apps easily"
+      },
+      { id: 4, videoUrl: "https://www.youtube.com/embed/vAy7rhoBa_E", name: "Docker - Basics to Advanced",
+        description: "See how Docker makes apps easy to deploy and move, from basics to more advanced topics."
+      },
+      { id: 5, videoUrl: "https://www.youtube.com/embed/zSrVfT_W7PQ", name: "Kubernetes - Basics to Advanced",
+        description: "Master Kubernetes and learn how to manage your app containers automatically."
+      },
+      { id: 6, videoUrl: "https://www.youtube.com/embed/fWXoRyzKjlY", name: "Terraform: Basics to Advanced",
+        description: "Learn how Terraform automates and manages infrastructure easily."
+      },
+      { id: 7, videoUrl: "https://www.youtube.com/embed/eg39UDZpMPc", name: "Jenkins: Basics to Advanced",
+        description: "See how Jenkins automates software builds and deployments effortlessly."
+      },
+    ],
+    webDevelopment: [
+      { id: 8, videoUrl: "https://www.youtube.com/embed/y6fzqBsi1-Y", name: "HTML and CSS - Basics to Advanced",
+        description: "Create beautiful websites by learning HTML and CSS, from the basics to advanced designs."
+      },
+      { id: 9, videoUrl: "https://www.youtube.com/embed/ULzUzc0gMfI", name: "JavaScript - Basics to Advanced",
+        description: "Make your web pages interactive with JavaScript, starting from the basics to advanced features."
+      },
+      { id: 10, videoUrl: "https://www.youtube.com/embed/-tzG0bjZV7A", name: "React JS - Basics to Advanced",
+        description: "Build dynamic web apps with React, a powerful tool for creating interactive user interfaces."
+      },
+      { id: 11, videoUrl: "https://www.youtube.com/embed/PV4P3_gSgrE", name: "Node JS: Basics to Advanced",
+        description: "Build fast, scalable apps with Node JS from start to finish."
+      },
+      { id: 12, videoUrl: "https://www.youtube.com/embed/l_zeLWFOqgA", name: "MongoDB: Basics to Advanced",
+        description: "Discover how MongoDB handles data storage and retrieval smoothly."
+      },
+      { id: 13, videoUrl: "https://www.youtube.com/embed/nYU_ZBITFpo", name: "Python Full Stack: Basics to Advanced",
+        description: "Learn to build web apps using Python for both front-end and back-end."
+      },
+    ],
+    MERNStack: [
+      { id: 14, videoUrl: "https://www.youtube.com/embed/o1GWE34J8ZY", name: "Part 1: MERN Stack HTML & CSS",
+        description: "Create the structure and style of web pages using HTML & CSS."
+      },
+      { id: 15, videoUrl: "https://www.youtube.com/embed/57YHC5E3HMw", name: "Part 2: MERN Stack JavaScript",
+        description: "Add dynamic interactivity to your MERN apps with JavaScript."
+      },
+      { id: 16, videoUrl: "https://www.youtube.com/embed/cUBvriog0og", name: "Part 3: MERN Stack To-Do App",
+        description: "Build a functional To-Do App using the MERN stack, combining MongoDB, Express.js, ReactJS, and Node.js."
+      },
+      { id: 17, videoUrl: "https://www.youtube.com/embed/R8qiO-MB6lI", name: "Part 4: MERN Stack ReactJS",
+        description: "Learn ReactJS in the MERN stack and create dynamic user interfaces with ease."
+      },
+    ],
+    dataScience: [
+      { id: 18, videoUrl: "https://www.youtube.com/embed/KpiSRshpIy0", name: "AI and ML - Basics to Advanced",
+        description: "Explore the basics of AI and Machine Learning, and learn how to apply them to real-world problems."
+      },
+      { id: 19, videoUrl: "https://www.youtube.com/embed/AsghfLOROuY", name: "Data Analytics - Basics to Advanced",
+        description: "Learn to analyze data effectively, starting from the basics and moving to advanced techniques."
+      },
+      { id: 20, videoUrl: "https://www.youtube.com/embed/Jlm-UUjWgcw", name: "Power BI - Basics to Advanced",
+        description: "Learn Power BI basics and how to use it to create useful visualizations and reports for better decisions."
+      },
+      { id: 21, videoUrl: "https://www.youtube.com/embed/exqFMNJKDOE", name: "MySQL - Basics to Advanced",
+        description: "Manage databases with MySQL, from beginner level to advanced database operations."
+      },
+    ],
+    softwareTesting: [
+      { id: 22, videoUrl: "https://www.youtube.com/embed/XI6AcMG4inw", name: "Manual Testing - Basics to Advanced",
+        description: "Ensure software quality with manual testing, covering everything from the basics to advanced methods."
+      },
+      { id: 23, videoUrl: "https://www.youtube.com/embed/qqaYA6Erbb8", name: "Selenium Testing - Basics to Advanced",
+        description: "Automate web testing with Selenium, from getting started to more advanced techniques."
+      },
+    ],
+    programmingLanguages: [
+      { id: 24, videoUrl: "https://www.youtube.com/embed/i5B9JPq3MbI", name: "Python - Basics to Advanced",
+        description: "Start coding with Python, an easy-to-learn language that’s great for beginners and experts alike."
+      },
+      { id: 25, videoUrl: "https://www.youtube.com/embed/2w2ggu8vUc0", name: "Java - Basics to Advanced",
+        description: "Learn Java programming, a popular language for building all kinds of applications."
+      },
+      { id: 26, videoUrl: "https://www.youtube.com/embed/jaodrLJle-M", name: "PHP: Basics to Advanced",
+        description: "Learn how PHP powers dynamic websites, from simple scripts to advanced web applications"
+      },
+    ],
+    systemadministration: [
+      { id: 27, videoUrl: "https://www.youtube.com/embed/oB6koGfNSg8", name: "Linux: Basics to Advanced",
+        description: "Explore Linux basics and advanced skills. Perfect for learning how to use and manage this OS."
+      },
+      { id: 28, videoUrl: "https://www.youtube.com/embed/q_VmwX8nGcg", name: "Networking - Basics to Advanced",
+        description: "Understand how networks work, from basic concepts to more advanced networking skills."
+      },
+    ],
+    others: [
+      { id: 29, videoUrl: "https://www.youtube.com/embed/kBtq6XjCE7s", name: "Aptitude - Basics to Advanced",
+        description: "Improve your problem-solving skills with this guide to mastering aptitude tests."
+      },
+    ],
+};
+
+const sections = [
+	{ title: 'Cloud Computing', videos: courseData.cloudComputing },
+	{ title: 'Web Development', videos: courseData.webDevelopment },
+	{ title: 'MERN Stack', videos: courseData.MERNStack },
+	{ title: 'Data Science', videos: courseData.dataScience },
+	{ title: 'Software Testing & QA', videos: courseData.softwareTesting },
+	{ title: 'Programming Languages', videos: courseData.programmingLanguages },
+	{ title: 'System Administration', videos: courseData.systemadministration },
+	{ title: 'Others', videos: courseData.others },
+];
+
+const ytId = (url: string) => url.split('/embed/')[1];
+const slug = (t: string) => `sec-${t.replace(/[^a-z]/gi, '')}`;
+---
+
+<LPLayout title="Free IT Courses | Cloud, DevOps, Python, AWS & AI | MicroDegree" description={description} path="/YTFullCoursePage">
+	<div class="yt-page w-full pb-24 sm:pb-0">
+		{/* Hero */}
+		<section class="px-4 sm:px-6 pt-6">
+			<div class="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-white/60 bg-gradient-to-br from-[#eef2ff] via-white to-[#fff1f5] px-6 py-10 text-center shadow-[0_8px_30px_rgba(0,0,0,0.08)] ring-1 ring-black/5 sm:py-14">
+				<div class="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-blue-200/40 blur-3xl"></div>
+				<div class="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-pink-200/40 blur-3xl"></div>
+				<div class="relative">
+					<p class="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">Videos</p>
+					<h1 class="mt-3 text-4xl font-semibold leading-tight tracking-tight text-gray-900 sm:text-5xl">Free Courses</h1>
+				</div>
+			</div>
+		</section>
+
+		{/* Sticky category bar */}
+		<nav id="yt-cats" class="sticky z-30 mt-6 border-y border-[#e4e6f2] bg-white/90 backdrop-blur" style="top: var(--nav-h, 108px)" aria-label="Course categories">
+			<ul class="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3 sm:justify-center sm:px-6 [scrollbar-width:none]">
+				{sections.map((s) => (
+					<li class="shrink-0"><a href={`#${slug(s.title)}`} data-cat={slug(s.title)} class="yt-cat block rounded-full px-4 py-2 text-sm font-medium text-gray-600 ring-1 ring-inset ring-gray-200 transition hover:bg-blue-50 hover:text-blue-700">{s.title}</a></li>
+				))}
+			</ul>
+		</nav>
+
+		{sections.map((s, i) => (
+			<section class:list={['w-full px-6 py-14 sm:px-10', i % 2 === 1 && 'bg-[#f6f8ff]']} aria-labelledby={slug(s.title)}>
+				<div class="mx-auto max-w-6xl">
+					<div class="border-b border-[#e4e6f2] pb-4">
+						<h2 id={slug(s.title)} class="yt-h2 text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">{s.title}</h2>
+					</div>
+					<div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+						{s.videos.map((v) => (
+							<article class="yt-card group flex flex-col overflow-hidden rounded-2xl border border-[#e4e6f2] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+								<div class="yt-frame" data-yt={ytId(v.videoUrl)}>
+									<button type="button" class="yt-thumb" aria-label={`Play ${v.name}`}>
+										<img src={`https://i.ytimg.com/vi/${ytId(v.videoUrl)}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" onerror={`this.onerror=null;this.src='https://img.youtube.com/vi/${ytId(v.videoUrl)}/0.jpg'`} />
+										<span class="yt-shade" aria-hidden="true"></span>
+										<span class="yt-play" aria-hidden="true"></span>
+									</button>
+								</div>
+								<div class="flex flex-1 flex-col p-5 text-left">
+									<h3 class="text-lg font-semibold leading-snug text-gray-900">{v.name}</h3>
+									<p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{v.description}</p>
+									<button type="button" class="yt-watch mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#FF0049] px-5 py-2.5 text-sm font-semibold text-[#FF0049] transition-all duration-200 hover:bg-[#FF0049] hover:text-white">
+										<Icon name="FaPlay" class="text-xs" />Watch
+									</button>
+								</div>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+		))}
+
+		{/* Video player overlay */}
+		<div id="yt-modal" class="fixed inset-0 z-[2000] hidden items-center justify-center bg-black/90 p-3 sm:p-8" role="dialog" aria-modal="true" aria-label="Video player">
+			<button type="button" id="yt-modal-close" class="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/15 text-3xl leading-none text-white transition hover:bg-white/30" aria-label="Close video">&times;</button>
+			<div class="w-full max-w-6xl">
+				<div id="yt-modal-frame" class="yt-modal-frame overflow-hidden rounded-xl bg-black shadow-2xl"></div>
+				<p id="yt-modal-title" class="mt-4 text-center text-base font-semibold text-white sm:text-lg"></p>
+			</div>
+		</div>
+
+		{/* Enquiry: popup + button on desktop, banner on mobile */}
+		<div class="hidden md:block">
+			<div id="yt-popup" class="fixed bottom-28 left-5 z-[900] w-64 rounded-2xl bg-white p-4 pt-9 shadow-xl ring-1 ring-black/5">
+				<button type="button" id="yt-popup-close" class="absolute right-2 top-1 text-2xl leading-none text-gray-700" aria-label="Close">&times;</button>
+				<img src="/img/courses/enquiry.webp" alt="MicroDegree course enquiry illustration" loading="lazy" decoding="async" class="absolute -top-2 left-2 h-11 w-11" />
+				<p class="text-sm text-gray-700">Have any questions about our courses? Reach out to us! 👋</p>
+				<a href={ENQUIRY_URL} target="_blank" rel="noopener noreferrer" class="mt-3 block rounded-lg bg-[#FF0049] px-3 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-black">Click Here to Enquire</a>
+			</div>
+			<button type="button" id="yt-popup-toggle" class="fixed bottom-12 left-5 z-[900] rounded-lg bg-[#ff0049] px-4 py-3 text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-black">Enquire Now</button>
+		</div>
+		<div class="md:hidden fixed inset-x-0 bottom-0 z-[900] bg-[#ff0049] px-4 py-3 text-white shadow-[0_-2px_8px_rgba(0,0,0,0.25)]">
+			<div class="flex items-center justify-between gap-3">
+				<p class="text-sm leading-snug">This is an enquiry field for our Free Course webpage.<br />Have questions? Contact us!</p>
+				<a href={ENQUIRY_URL} target="_blank" rel="noopener noreferrer" class="shrink-0 rounded-md bg-white px-4 py-2 text-sm font-bold text-[#ff0049]">Enquire Now</a>
+			</div>
+		</div>
+	</div>
+</LPLayout>
+
+<style is:global>
+	.yt-page .yt-h2 { scroll-margin-top: calc(var(--nav-h, 108px) + 72px); }
+	.yt-frame { position: relative; aspect-ratio: 16 / 9; flex: none; background: linear-gradient(135deg, #1e1b4b, #4159ec); overflow: hidden; }
+	.yt-thumb { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }
+	.yt-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+	.yt-card:hover .yt-thumb img { transform: scale(1.05); }
+	.yt-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / .35)); }
+	.yt-play { position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; transform: translate(-50%, -50%); border-radius: 50%; background: rgb(255 255 255 / .95); box-shadow: 0 10px 24px rgb(0 0 0 / .3); transition: transform .2s, background .2s; }
+	.yt-play::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-35%, -50%); border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #ff0049; }
+	.yt-thumb:hover .yt-play { transform: translate(-50%, -50%) scale(1.1); background: #fff; }
+	/* Player frame: 16:9, as large as fits the window (leaves room for the title and close button). */
+	.yt-modal-frame { position: relative; margin: 0 auto; width: min(100%, calc((100vh - 8rem) * 16 / 9)); aspect-ratio: 16 / 9; }
+	.yt-cat.active { background: #151595; color: #fff; --tw-ring-color: #151595; }
+</style>
+
+<script>
+	// Clicking a thumbnail or its Watch button opens the video in a full-window overlay.
+	const modal = document.getElementById('yt-modal')!;
+	const frameBox = document.getElementById('yt-modal-frame')!;
+	const titleEl = document.getElementById('yt-modal-title')!;
+
+	const closeModal = () => {
+		frameBox.innerHTML = ''; // removing the iframe stops playback
+		modal.classList.add('hidden');
+		modal.classList.remove('flex');
+		document.body.style.overflow = '';
+	};
+
+	const openModal = (id: string, title: string) => {
+		const frame = document.createElement('iframe');
+		frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+		frame.title = title;
+		frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+		frame.allowFullscreen = true;
+		frame.className = 'absolute inset-0 h-full w-full border-0';
+		frameBox.replaceChildren(frame);
+		titleEl.textContent = title;
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		document.body.style.overflow = 'hidden';
+	};
+
+	document.addEventListener('click', (e) => {
+		const target = e.target as HTMLElement;
+		const card = target.closest<HTMLElement>('.yt-card');
+		if (card && (target.closest('.yt-thumb') || target.closest('.yt-watch'))) {
+			openModal(card.querySelector<HTMLElement>('.yt-frame')!.dataset.yt!, card.querySelector('h3')?.textContent || 'YouTube video player');
+			return;
+		}
+		if (target === modal || target.closest('#yt-modal-close')) closeModal();
+	});
+	window.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+	});
+
+	// Keep the sticky category bar below the (sticky) site header and highlight the category in view.
+	const nav = document.getElementById('site-nav');
+	const setNavH = () => document.documentElement.style.setProperty('--nav-h', `${nav ? nav.offsetHeight : 108}px`);
+	setNavH();
+	window.addEventListener('resize', setNavH);
+	const links = document.querySelectorAll<HTMLAnchorElement>('.yt-cat');
+	const io = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((en) => {
+				if (!en.isIntersecting) return;
+				links.forEach((l) => {
+					const on = l.dataset.cat === en.target.id;
+					l.classList.toggle('active', on);
+					if (on) l.scrollIntoView({ inline: 'center', block: 'nearest' });
+				});
+			});
+		},
+		{ rootMargin: '-35% 0px -60% 0px' }
+	);
+	document.querySelectorAll('.yt-h2').forEach((h) => io.observe(h));
+
+	// Desktop enquiry popup
+	const popup = document.getElementById('yt-popup');
+	document.getElementById('yt-popup-toggle')?.addEventListener('click', () => popup?.classList.toggle('hidden'));
+	document.getElementById('yt-popup-close')?.addEventListener('click', () => popup?.classList.add('hidden'));
+</script>

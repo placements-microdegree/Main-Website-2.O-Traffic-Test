@@ -1,0 +1,46 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import CourseLanding from '../components/lp/course/CourseLanding.astro';
+
+const description =
+	"Master Docker and Kubernetes with hands-on training from industry experts. Learn container orchestration in Kannada with MicroDegree.";
+
+
+
+const highlights = [
+	{ icon: 'fa-solid fa-laptop', label: 'Work on Assignments & Projects' },
+	{ icon: 'fa-solid fa-chalkboard-user', label: 'Learn easy in Kannada' },
+	{ icon: 'fa-solid fa-award', label: 'Completion Certificate' },
+	{ icon: 'fa-solid fa-clock-rotate-left', label: '70 Hours of Live Recorded Videos' },
+	{ icon: 'fa-solid fa-building-user', label: 'Trained Experts from Top Product Companies' },
+	{ icon: 'fa-solid fa-users', label: 'Interview Preparation' },
+	{ icon: 'fa-solid fa-desktop', label: 'Resume Building' },
+	{ icon: 'fa-solid fa-paper-plane', label: 'Telegram Doubt Clarification' },
+];
+const jobs = [
+	{ icon: 'fa-solid fa-cloud', title: 'Cloud Professional' },
+	{ icon: 'fa-solid fa-infinity', title: 'DevOps Engineer' },
+	{ icon: 'fa-solid fa-laptop', title: 'Test Engineer' },
+];
+---
+
+<LPLayout
+	title="Docker & Kubernetes Certification Course | MicroDegree"
+	description={description}
+	path="/dockerandkubernetes"
+>
+	<CourseLanding
+		title="Docker & Kubernetes Certification"
+		subtitle="Master Docker & Kubernetes from Industry Experts to become a Certified Professional with MicroDegree"
+		tags={['Load Balancing', 'CI/CD', 'Container', 'Docker Engine', 'Storage', 'Images']}
+		heroVideo="https://www.youtube.com/embed/or_6-KB9Eyg?autoplay=1&loop=1&playlist=or_6-KB9Eyg&mute=1"
+		joinLabel="Join Docker & Kubernetes Certification"
+		heroJoinLabel="Join Certification"
+		enrollHref="https://pages.razorpay.com/pl_OyUPiUel6YWIZB/view"
+		apply={['Project Managers', 'Data Scientists', 'Product Owners', 'Freshers', 'Early Professionals', 'Any Degree Professionals']}
+		highlights={highlights}
+		jobs={jobs}
+		courseVideos={['https://www.youtube.com/embed/vAy7rhoBa_E?loop=1&playlist=vAy7rhoBa_E', 'https://www.youtube.com/embed/zSrVfT_W7PQ?loop=1&playlist=zSrVfT_W7PQ']}
+		googleReview
+	/>
+</LPLayout>

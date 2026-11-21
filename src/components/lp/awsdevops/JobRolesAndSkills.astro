@@ -1,0 +1,86 @@
+---
+const jobRoles = [
+  {
+    title: "Cloud Engineer",
+    description:
+      "Builds and manages cloud systems using AWS, Azure, or GCP for computing, storage, and networking.",
+  },
+  {
+    title: "Cloud Administrator",
+    description:
+      "Maintains daily cloud operations. Manages user access, monitors performance, and ensures security.",
+  },
+  {
+    title: "Cloud Solutions Architect",
+    description:
+      "Designs end-to-end cloud systems for scalability, cost efficiency, and security. Works closely with business and tech teams.",
+  },
+  {
+    title: "Cloud DevOps Engineer",
+    description:
+      "Builds CI/CD pipelines, automates infrastructure, and handles container management with Jenkins, Docker, and Kubernetes.",
+  },
+  {
+    title: "Cloud Security Engineer",
+    description:
+      "Implements and monitors cloud security policies. Protects data and resources with IAM, encryption, and best practices.",
+  },
+  {
+    title: "Cloud Data Engineer",
+    description:
+      "Builds cloud data pipelines and workflows. Works with data lakes, warehouses, and tools like Redshift or BigQuery.",
+  },
+    {
+    title: "Site Reliability Engineer (SRE)",
+    description:
+      "Ensures reliability, scalability, and performance of systems. Uses automation, monitoring, and incident management to keep cloud services stable and efficient.",
+  },
+    {
+    title: "Platform Engineer",
+    description:
+      "Builds and maintains internal platforms for developers. Focuses on automation, CI/CD pipelines, and tools that make infrastructure scalable and efficient.",
+  },
+    {
+    title: "DevOps Engineer",
+    description:
+      "Automates software delivery & infrastructure management. Builds CI/CD pipelines, manages containers, & integrates tools like Jenkins, Ansible, and Terraform.",
+  },
+];
+const skills = [
+  "Generative AI",
+  "Prompt Engineering",
+  "ChatGPT",
+  "Explainable AI",
+  "Large Language Models",
+  "Generative AI Architectures",
+  "Generative AI Models",
+  "Machine Learning Algorithms",
+  "Model Training and Optimization",
+  "Ensemble Methods",
+];
+---
+
+<div class="w-full py-12 px-6 sm:px-10">
+      <div class="max-w-6xl mx-auto"> {/* 🔹 Constrain width */}
+        {/* Section: Job Roles */}
+        <h2 class="text-3xl sm:text-4xl text-center font-semibold text-gray-900 mb-10 tracking-tight">
+          What are the top job roles for Cloud & Devops?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {jobRoles.map((role, idx) => (
+            <div
+             
+              class="p-6 border-l-4 border-blue-600 bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+              <h3 class="font-semibold text-lg text-gray-900 mb-2">
+                {role.title}
+              </h3>
+              <p class="text-gray-600 text-base leading-relaxed">
+                {role.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>

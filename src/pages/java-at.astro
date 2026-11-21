@@ -1,0 +1,84 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+import CourseLanding from '../components/lp/course/CourseLanding.astro';
+
+const description =
+	"Learn Java Automation Testing with Selenium from industry experts and become a job-ready automation tester. Learn in Kannada with MicroDegree.";
+
+const questions = [
+    {
+        question: "Automation Testing - JAVA",
+        answer: [
+            "JAVA Automation Testing - (Introduction)",
+            "JAVA Automation Testing - (Java Tools, Installation)",
+            "JAVA Automation Testing - (Java Basics Part-1)",
+            "JAVA Automation Testing - (Java Basics Part-2)",
+            "JAVA Automation Testing - (statements, strings)",
+            "JAVA Automation Testing - (class variables, Object reference variable)",
+            "JAVA Automation Testing - (Inheritance & types, data types)",
+            "JAVA Automation Testing - (Keywords: Final, Interface)",
+            "JAVA Automation Testing - (Exception types, Exception Handling)",
+            "JAVA Automation Testing - (Client-Server Architecture, Database)",
+            "JAVA Automation Testing - (Database Part-1)-1",
+            "JAVA Automation Testing - (Strings types, Program Execution)-2",
+            "JAVA Automation Testing - (SQL,SQL Commands)",
+            "JAVA Automation Testing - (Conditional Statement, Selenium)",
+            "JAVA Automation Testing - (Selenium Basics, Steps, Frameworks)",
+            "JAVA Automation Testing - (Inbuilt Commands, Selenium, Java)",
+            "JAVA Automation Testing - (Maven Project, Driver, Repositories)",
+            "JAVA Automation Testing - (Maven Installation & Hands on)",
+            "JAVA Automation Testing - (Maven Part-1)",
+            "JAVA Automation Testing - (Maven Project)",
+            "JAVA Automation Testing - (Project Creation)",
+            "JAVA Automation Testing - (Annotation, Frameworks, Project)",
+            "JAVA Automation Testing - (Script writing, Java, Selenium project)",
+            "JAVA Automation Testing - (Cross-Browse Site Testing)",
+            "JAVA Automation Testing - (Encoding Program, MYSQL)",
+            "JAVA Automation Testing - (MySQL Installation, Interview preparation)",
+            "JAVA Automation Testing - (MySQL Connection, JDBC, Screenshot)",
+            "JAVA Automation Testing - (Data Driven Framework)",
+            "JAVA Automation Testing - (Browser Testing, Resume Building)",
+            "JAVA Automation Testing - (Extent Report)",
+            "JAVA Automation Testing - (Project Creation)",
+        ]
+    }
+];
+
+const highlights = [
+	{ icon: 'fa-solid fa-laptop', label: 'Build Interactive Projects' },
+	{ icon: 'fa-solid fa-chalkboard-user', label: 'Learn easy in Kannada' },
+	{ icon: 'fa-solid fa-award', label: 'Completion Certificate' },
+	{ icon: 'fa-solid fa-clock-rotate-left', label: '30 Hours of Live Recorded Videos' },
+	{ icon: 'fa-solid fa-building-user', label: 'Trained Experts from Top Product Companies' },
+	{ icon: 'fa-solid fa-users', label: 'Covers, Java, Selenium, Automation Testing' },
+	{ icon: 'fa-solid fa-desktop', label: 'Resume Building' },
+	{ icon: 'fa-solid fa-paper-plane', label: 'Telegram Doubt Clarification' },
+];
+const jobs = [
+	{ icon: 'fa-solid fa-laptop', title: 'Test Engineer' },
+	{ icon: 'fa-solid fa-database', title: 'Automation Engineer' },
+	{ icon: 'fa-solid fa-arrow-trend-up', title: 'Manual Test Engineer' },
+	{ icon: 'fa-solid fa-chart-pie', title: 'SDET' },
+];
+---
+
+<LPLayout
+	title="Java Automation Testing Course | MicroDegree"
+	description={description}
+	path="/java-at"
+>
+	<CourseLanding
+		title="Automation Testing - JAVA Certification"
+		subtitle="Master Automation Testing and learn most in-demand skills like Core Java, Selenium & Automation testing to become a solid QA Professional"
+		tags={['Selenium', 'Maven', 'Framework', 'Browser Testing', 'Annotation', 'Resume Building']}
+		heroVideo="https://www.youtube.com/embed/5I24Xi3Ee2U?autoplay=1&loop=1&playlist=5I24Xi3Ee2U&si=OmqMFs5v5Si_8DaV"
+		joinLabel="Join JAVA Automation Testing"
+		enrollHref="https://pages.razorpay.com/pl_JTqvD0Sdy2QcLn/view"
+		apply={['Any Degree, Engineering', 'Students/Freshers', 'Early Professionals', 'No prior coding experience required']}
+		highlightsTitle="Course Highlights:"
+		highlights={highlights}
+		jobs={jobs}
+		courseVideos={['https://www.youtube.com/embed/2w2ggu8vUc0']}
+		questions={questions}
+	/>
+</LPLayout>

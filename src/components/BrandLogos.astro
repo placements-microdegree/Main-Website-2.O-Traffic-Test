@@ -1,0 +1,28 @@
+---
+// The four partner logos (100X, Startup Karnataka, riidl, Somaiya) on the same 4-column grid as the award cards.
+interface Props { /** Add the gap the Awards section needs before its cards. */ spaced?: boolean; }
+const { spaced = false } = Astro.props;
+const IK = 'https://ik.imagekit.io/MicroDegree/Website/homeWebp/Section3';
+const brands = [
+	{ src: `${IK}/brandLogo1.png?updatedAt=1681880924879`, alt: 'Karnataka Digital Economy Mission recognition' },
+	{ src: `${IK}/brandLogo2.png?updatedAt=1681880925403`, alt: 'Startup Karnataka Recognition' },
+	{ src: `${IK}/brandLogo3.png?updatedAt=1681880926709`, alt: 'IEEE Recognition' },
+	{ src: `${IK}/brandLogo5.png?updatedAt=1681880927885`, alt: 'TiECon Recognition for MicroDegree' },
+];
+---
+
+<div class:list={['brands', { spaced }]}>
+	{brands.map((b) => <img src={b.src} alt={b.alt} loading="lazy" decoding="async" />)}
+</div>
+
+<style>
+	.brands { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; gap: 22px; }
+	.brands.spaced { margin-bottom: 56px; }
+	.brands img { display: block; width: 80%; height: 72px; margin: 0 auto; object-fit: contain; transition: transform .3s; }
+	.brands img:hover { transform: scale(1.08); }
+	/* Optical balance: the first logo fills its image, the third has a lot of padding. */
+	.brands img:nth-child(1) { width: 56%; }
+	.brands img:nth-child(3) { width: 105%; height: 90px; margin-left: -2.5%; }
+	@media (max-width: 1000px) { .brands { grid-template-columns: repeat(2, 1fr); } }
+	@media (max-width: 560px) { .brands { gap: 16px; } .brands img { height: 52px; } .brands img:nth-child(3) { height: 64px; } }
+</style>

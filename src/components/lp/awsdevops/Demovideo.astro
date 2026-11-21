@@ -1,0 +1,56 @@
+---
+import Carousel from '../Carousel.astro';
+
+const videos = ['6ZGtOe---X8', '1ciWsHm-fS4', 'sVlo7W3iDDQ', 'eg39UDZpMPc', 'bPT9ETxtwpg'];
+---
+
+<div class="yt-section">
+  <div class="yt-slider">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-10 mt-10 text-center tracking-tight">
+      Checkout our Full Course Videos
+    </h2>
+
+    <Carousel show={3} showTablet={2} showMobile={1} autoplay={3000} loop>
+      {videos.map((id, i) => (
+        <div class="yt-slide">
+          <div class="yt-card">
+            <button type="button" class="yt-play" data-yt={id} aria-label={`Play video ${i + 1}`}>
+              <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" />
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      ))}
+    </Carousel>
+  </div>
+</div>
+
+<style is:global>
+  .yt-section { width: 100%; margin: 0 auto 20px; padding: 40px 0; }
+  /* Card edges line up with the sections above: same max width (72rem) and page gutters (px-6 / sm:px-10). */
+  .yt-section .yt-slider { width: min(calc(72rem + 24px), calc(100% - 56px)); margin: auto; }
+  @media (max-width: 639px) { .yt-section .yt-slider { width: calc(100% - 24px); } }
+  .yt-section .yt-slide { padding: 12px; }
+  .yt-section .yt-card { position: relative; width: 100%; margin: 0 auto; overflow: hidden; border-radius: 14px; background: #000; aspect-ratio: 16 / 9; transition: transform .3s ease, box-shadow .3s ease; }
+  .yt-section .yt-card:hover { transform: scale(1.03); box-shadow: 0 12px 30px rgba(0, 0, 0, .25); }
+  .yt-section .yt-play { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
+  .yt-section .yt-play img { width: 100%; height: 100%; object-fit: cover; }
+  .yt-section .yt-play span { position: absolute; top: 50%; left: 50%; width: 68px; height: 48px; transform: translate(-50%, -50%); border-radius: 12px; background: #f00; }
+  .yt-section .yt-play span::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-35%, -50%); border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; }
+  .yt-section iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>
+
+<script>
+  // Load the YouTube player only when a thumbnail is clicked.
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.yt-section [data-yt]');
+    if (btn) {
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube.com/embed/${btn.dataset.yt}?autoplay=1`;
+      frame.title = 'YouTube video player';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      btn.replaceWith(frame);
+    }
+  });
+</script>

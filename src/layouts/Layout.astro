@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import '../styles/icons.css';
+
+interface Props {
+	title: string;
+	description: string;
+	canonical?: string;
+	/** The home page preloads its hero image; other pages should not. */
+	preloadHero?: boolean;
+	robots?: string;
+}
+const { title, description, canonical = 'https://www.microdegree.work/', preloadHero = true, robots } = Astro.props;
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'EducationalOrganization',
+	name: 'MicroDegree',
+	url: 'https://www.microdegree.work/',
+	contactPoint: {
+		'@type': 'ContactPoint',
+		telephone: '0804-710-9999',
+		contactType: 'customer service',
+		areaServed: 'IN',
+		availableLanguage: ['en', 'Kannada'],
+	},
+	sameAs: [
+		'https://www.facebook.com/microdegree',
+		'https://x.com/micro_degree',
+		'https://www.instagram.com/microdegree.work/',
+		'https://www.youtube.com/microdegree',
+		'https://www.linkedin.com/company/microdegree/',
+	],
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="theme-color" content="#000000" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		{robots && <meta name="robots" content={robots} />}
+		<slot name="head" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+			{preloadHero && <link rel="preload" as="image" href="/img/hero/ZDI-mobile.webp" media="(max-width: 767px)" fetchpriority="high" />}
+			{preloadHero && <link rel="preload" as="image" href="/img/hero/ZDI.webp" media="(min-width: 768px)" fetchpriority="high" />}
+			<link rel="preconnect" href="https://fonts.googleapis.com" />
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+			<!-- Non-blocking stylesheets: media=print swaps to all once loaded -->
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+			<noscript>
+				<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+				</noscript>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<body>
+		<slot />
+		<script>
+			// Scroll-reveal for any element tagged .reveal
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const e of entries) {
+						if (e.isIntersecting) {
+							e.target.classList.add('in');
+							io.unobserve(e.target);
+						}
+					}
+				},
+				{ threshold: 0.12 }
+			);
+			document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+		</script>
+	</body>
+</html>

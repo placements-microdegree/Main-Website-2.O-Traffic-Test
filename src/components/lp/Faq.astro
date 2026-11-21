@@ -1,0 +1,59 @@
+---
+// Shared by /awsdevops and /genai (the two pages carry identical FAQs). Native <details> replaces the React accordion.
+const faqs = [
+	{
+		question: 'What is the duration of dashboard access?',
+		answer: '<p>All live sessions are recorded and uploaded daily. You will have access to these recordings for 1 year from your enrollment date.</p>',
+	},
+	{
+		question: 'Is there flexibility in choosing batches?',
+		answer: '<p>Yes! You can join any of our morning or evening batches. Within 1 year of your enrollment, you may switch batches and complete your program as per your convenience.</p>',
+	},
+	{
+		question: 'What is the duration of the program?',
+		answer: '<p>We offer multiple learning plans. Depending on the plan you choose, the program duration can range from 3 months to 6 months.</p>',
+	},
+	{
+		question: 'How does career assistance work?',
+		answer: `<ul class="list-disc pl-5">
+			<li>We organize a Placement Drive every 2nd &amp; 4th Saturday.</li>
+			<li>During the drive, we assess your hands-on skills.</li>
+			<li>Our team will line up interview opportunities for you within 6 months of clearing the placement drive.</li>
+		</ul>`,
+	},
+	{
+		question: 'What is your refund policy?',
+		answer: `<p class="mb-3">We follow a session-based + time-based refund system to ensure fairness for students and protect against misuse.</p>
+		<p class="mb-3">Refund Timeline:</p>
+		<ol class="list-decimal pl-5 space-y-2">
+			<li>100% Refund – Request within 24 hours of payment</li>
+			<li>50% Refund – Request within 4 days of batch start OR before attending up to 2 sessions (whichever is earlier)</li>
+			<li>25% Refund – Request within 7 days of batch start OR before attending up to 5 sessions (whichever is earlier)</li>
+		</ol>`,
+	},
+];
+---
+
+<section class="container mx-auto px-4 sm:px-6 lg:px-12 py-12 max-w-screen-xl mb-16" aria-labelledby="faq-heading">
+	<div class="w-full flex flex-col items-center text-center space-y-3 2xl:space-y-5 mb-10 mt-16">
+		<h2 id="faq-heading" class="text-3xl sm:text-4xl font-semibold text-gray-900 text-center tracking-tight">Frequently Asked Questions</h2>
+	</div>
+
+	<div class="space-y-4 p-2 text-left">
+		{faqs.map((faq) => (
+			<details class="lp-faq w-full bg-white rounded-2xl shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-lg">
+				<summary class="w-full flex justify-between items-center p-6 text-left cursor-pointer">
+					<h3 class="text-lg font-semibold text-gray-800">{faq.question}</h3>
+					<i class="fa-solid fa-chevron-down text-[#4159ec] transition-transform duration-300"></i>
+				</summary>
+				<div class="px-6 pb-6 text-gray-600" set:html={faq.answer} />
+			</details>
+		))}
+	</div>
+</section>
+
+<style is:global>
+	.lp-faq summary { list-style: none; }
+	.lp-faq summary::-webkit-details-marker { display: none; }
+	.lp-faq[open] summary i { transform: rotate(180deg); }
+</style>

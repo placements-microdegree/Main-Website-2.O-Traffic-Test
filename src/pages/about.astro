@@ -1,0 +1,123 @@
+---
+// About page, rebuilt from https://pages.microdegree.work/about.html (same sections, images and links).
+import LPLayout from '../layouts/LPLayout.astro';
+import Icon from '../components/lp/Icon.astro';
+
+const description = 'Come, explore the power of learning job-ready skills in vernacular at an affordable price. Meet the team behind MicroDegree.';
+
+const base = 'https://pages.microdegree.work/assets/images';
+const photos = ['a5', 'a1', 'a2', 'a3', 'a8', 'a4'].map((n) => `${base}/about/${n}.jpeg`);
+/** Hero design: 'a' = split layout with photo collage, 'b' = dark centred hero with a tilted photo row. */
+const heroVersion: 'a' | 'b' = 'b';
+const heroPhotos = photos.slice(0, 3); // shown in the hero collage
+const gallery = photos.slice(3); // the rest sit in the gallery, so no photo repeats
+
+const leaders = [
+	{ name: 'Gaurav Kamath', role: 'Co-founder & Business Head', img: `${base}/agency/Gau-Pic.png`, href: 'https://www.linkedin.com/in/gaurav-kamath-37658088/' },
+	{ name: 'Rakesh Kothari', role: 'Co-founder & Technology Head', img: `${base}/about/rakesh.png`, href: 'https://www.linkedin.com/in/rakeshnk/' },
+	{ name: 'Manikanta Nair', role: 'Co-founder & Operations Head', img: `${base}/about/mani.png`, href: 'https://www.linkedin.com/in/manikanta-nair-825982157/' },
+];
+
+const h2 = 'text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight text-center';
+---
+
+<LPLayout title="Micro Degree - About Us" description={description} path="/about">
+	{/* Hero */}
+	{heroVersion === 'b' && (
+		<section class="relative mx-4 mt-5 sm:mx-6">
+			<div class="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#0b1020] via-[#141a52] to-[#151595] px-6 pb-9 pt-9 text-center text-white shadow-[0_20px_50px_-20px_rgba(21,21,149,0.6)] sm:px-10 sm:pt-12 sm:pb-12 lg:px-16 lg:pt-14 lg:pb-14">
+				<div class="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full bg-[#FF0049]/25 blur-3xl"></div>
+				<div class="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-blue-500/25 blur-3xl"></div>
+				<div class="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:22px_22px]"></div>
+
+				<div class="relative mx-auto max-w-4xl">
+					<h1 class="text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl">We're MicroDegree <span class="text-[#FF4D79]">|</span> Join our community.</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">Come, explore the power of learning job-ready skills in vernacular at an affordable price.</p>
+				</div>
+
+				{/* Tilted photo row */}
+				<div class="relative mx-auto mt-8 grid max-w-3xl grid-cols-3 items-center gap-3 sm:mt-10 sm:gap-5">
+					<div class="-rotate-3 overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl sm:p-2">
+						<img loading="eager" decoding="async" src={heroPhotos[0]} alt="img" class="block h-28 w-full rounded-xl object-cover sm:h-44 lg:h-52" />
+					</div>
+					<div class="z-10 scale-105 overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl sm:p-2">
+						<img loading="eager" decoding="async" src={heroPhotos[1]} alt="img" class="block h-32 w-full rounded-xl object-cover sm:h-52 lg:h-60" />
+					</div>
+					<div class="rotate-3 overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl sm:p-2">
+						<img loading="eager" decoding="async" src={heroPhotos[2]} alt="img" class="block h-28 w-full rounded-xl object-cover sm:h-44 lg:h-52" />
+					</div>
+				</div>
+			</div>
+		</section>
+	)}
+
+	{heroVersion === 'a' && (
+	<section class="relative mx-4 mt-5 sm:mx-6">
+		<div class="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-white/60 bg-gradient-to-br from-[#eef2ff] via-white to-[#fff1f5] px-6 py-12 shadow-[0_8px_30px_rgba(0,0,0,0.08)] ring-1 ring-black/5 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+			<div class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl"></div>
+			<div class="pointer-events-none absolute -bottom-28 left-1/4 h-72 w-72 rounded-full bg-pink-200/40 blur-3xl"></div>
+
+			<div class="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+				<div class="text-center lg:text-left">
+					<span class="mx-auto mb-6 block h-1.5 w-16 rounded-full bg-gradient-to-r from-blue-600 to-[#FF0049] lg:mx-0"></span>
+					<h1 class="text-4xl font-semibold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">We're MicroDegree <span class="text-[#FF0049] lg:hidden">|</span><br class="hidden lg:block" /><span class="lg:bg-gradient-to-r lg:from-blue-600 lg:to-[#FF0049] lg:bg-clip-text lg:text-transparent">Join our community.</span></h1>
+					<p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg lg:mx-0 lg:text-xl">Come, explore the power of learning job-ready skills in vernacular at an affordable price.</p>
+				</div>
+
+				{/* Photo collage */}
+				<div class="relative mx-auto grid h-[340px] w-full max-w-xl grid-cols-5 grid-rows-2 gap-3 sm:h-[420px] sm:gap-4 lg:h-[460px] lg:max-w-none">
+					<div class="col-span-3 row-span-2 overflow-hidden rounded-3xl bg-white shadow-2xl ring-4 ring-white">
+						<img loading="eager" decoding="async" src={heroPhotos[0]} alt="img" class="h-full w-full object-cover" />
+					</div>
+					<div class="col-span-2 translate-y-3 overflow-hidden rounded-3xl bg-white shadow-xl ring-4 ring-white sm:translate-y-5">
+						<img loading="eager" decoding="async" src={heroPhotos[1]} alt="img" class="h-full w-full object-cover" />
+					</div>
+					<div class="col-span-2 -translate-y-1 overflow-hidden rounded-3xl bg-white shadow-xl ring-4 ring-white sm:translate-y-1">
+						<img loading="eager" decoding="async" src={heroPhotos[2]} alt="img" class="h-full w-full object-cover" />
+					</div>
+					<span class="pointer-events-none absolute -bottom-4 -right-3 h-24 w-24 rounded-full border-4 border-dashed border-[#FF0049]/30" aria-hidden="true"></span>
+					<span class="pointer-events-none absolute -left-4 -top-4 h-16 w-16 rounded-2xl bg-blue-600/10" aria-hidden="true"></span>
+				</div>
+			</div>
+		</div>
+	</section>
+	)}
+
+	{/* Mission */}
+	<section class="w-full py-14 px-6 sm:px-10">
+		<div class="max-w-4xl mx-auto rounded-3xl border border-[#e4e6f2] bg-white p-8 sm:p-12 shadow-[0_10px_30px_-22px_rgba(65,89,236,0.2)] text-center">
+			<h4 class="text-xl sm:text-2xl font-semibold text-gray-900 leading-snug tracking-tight">We're a team of hustlers looking to impact the next generation of India's workforce. Wondering how?</h4>
+			<span class="mt-5 mx-auto block h-1 w-14 rounded-full bg-blue-600"></span>
+			<p class="mt-6 text-base sm:text-lg text-gray-600 leading-relaxed">We teach technology in local languages, using relatable analogies and examples to build strong fundamentals and concept clarity. Our aim is to make emerging technology affordable for students and early-career professionals in every region, regardless of educational background.</p>
+		</div>
+	</section>
+
+	{/* Gallery */}
+	<section class="w-full pb-14 px-6 sm:px-10">
+		<div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+			{gallery.map((src) => (
+				<div class="h-56 overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:h-64 lg:h-72">
+					<img loading="lazy" decoding="async" src={src} alt="img" class="block h-full w-full object-cover" />
+				</div>
+			))}
+		</div>
+	</section>
+
+	{/* Leadership */}
+	<section class="w-full py-14 px-6 sm:px-10 bg-[#f6f8ff]">
+		<div class="max-w-6xl mx-auto">
+			<h2 class={h2}>Leadership</h2>
+			<p class="mt-3 text-center text-base sm:text-lg font-medium text-blue-600">Vision. Conviction. Persistence</p>
+			<div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+				{leaders.map((l) => (
+					<div class="flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-md ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+						<img loading="lazy" decoding="async" src={l.img} alt="Avatar" class="h-32 w-32 rounded-full object-cover shadow-lg ring-4 ring-blue-50" />
+						<h3 class="mt-5 text-2xl font-semibold text-gray-900">{l.name}</h3>
+						<a href={l.href} target="_blank" rel="noopener noreferrer" class="mt-1 text-base text-gray-600 transition hover:text-blue-600">{l.role}</a>
+						<a href={l.href} target="_blank" rel="noopener noreferrer" aria-label={`${l.name} on LinkedIn`} class="mt-5 grid h-10 w-10 place-items-center rounded-full bg-blue-50 text-blue-600 transition hover:bg-blue-600 hover:text-white"><Icon name="FaLinkedin" class="text-lg" /></a>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</LPLayout>
