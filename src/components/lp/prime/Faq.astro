@@ -1,0 +1,58 @@
+---
+const faqs = [
+    {
+    q: "Do I get Refund?",
+    a: "Yes, Get a full refund within 3 days of purchase.",
+  },
+  {
+    q: "What is included in the Prime Bundle?",
+    a: "The Prime Bundle gives you access to 25+ premium courses covering Python, Data Analytics, AI/ML, Cloud, DevOps, Full-Stack Development, Testing, and more — all in one package.",
+  },
+  {
+    q: "Who can join the Prime Bundle?",
+    a: "Anyone! It’s designed for students, freshers, and working professionals who want to learn IT skills from scratch or upgrade for better career opportunities.",
+  },
+  {
+    q: "Will I get a certificate after completing the courses?",
+    a: "Yes, Each course in the Prime Bundle comes with a MicroDegree certification that you can showcase on LinkedIn and your resume.",
+  },
+    {
+    q: "In which language are the courses taught?",
+    a: "All our courses are taught in Kannada, making it easier for learners from Karnataka to understand complex tech topics and learn up to 10× faster.",
+  },
+      {
+    q: "How long will I have access to the courses?",
+    a: "You get unlimited access to all courses in the Prime Bundle for as long as you stay subscribed. Learn at your own pace, anytime, anywhere.",
+  },
+];
+---
+
+<div class="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
+  <div class="flex flex-col text-left basis-1/2">
+    <p class="sm:text-3xl text-3xl font-semibold text-base-content text-center">Frequently Asked Questions</p>
+  </div>
+
+  <ul class="basis-1/2">
+    {faqs.map((item) => (
+      <li>
+        <details class="prime-faq group border-t border-base-content/10">
+          <summary class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left md:text-lg cursor-pointer">
+            <span class="flex-1 text-base-content">{item.q}</span>
+            <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current transition-transform duration-200 group-open:rotate-45" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <rect y="7" width="16" height="2" rx="1" class="transform origin-center"></rect>
+              <rect y="7" width="16" height="2" rx="1" class="transform origin-center rotate-90"></rect>
+            </svg>
+          </summary>
+          <div class="pb-5 leading-relaxed">
+            <div class="space-y-2 leading-relaxed text-base-content/90 text-left">{item.a}</div>
+          </div>
+        </details>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style is:global>
+  .prime-faq > summary { list-style: none; }
+  .prime-faq > summary::-webkit-details-marker { display: none; }
+</style>

@@ -1,0 +1,134 @@
+---
+const heroImage = '/lp/anniversary/poster.webp';
+const mobileHero = '/lp/anniversary/poster.webp';
+const Flag = '/lp/kaoffer/flag.png';
+---
+
+<section
+      class="relative bg-white text-gray-900 overflow-hidden"
+      style="margin-bottom:-30px"
+    >
+
+      {/* 🟡 Main Hero Section */}
+      <div class="flex flex-col md:flex-row items-center justify-center md:justify-between py-8 gap-0 md:gap-16 min-h-[70vh] md:min-h-[75vh] px-0 md:px-12">
+        {/* ✅ Left side image (Visible only on desktop) */}
+        <div class="hidden md:flex md:w-[45%] flex-col items-center md:items-end mb-6 md:mb-0">
+<div class="relative w-[85%] md:w-[90%] max-w-[700px] mx-auto">
+  
+  {/* 🔵 Bottom Gradient Overlay */}
+  <div
+    class="absolute bottom-0 left-0 w-full h-12 pointer-events-none"
+    style="background:linear-gradient(to top, white 0%, rgba(255,255,255,0) 100%);z-index:10"
+  ></div>
+
+  {/* Actual Image */}
+  <img
+    src={heroImage}
+    alt="Digital Marketing Graduates"
+    class="w-full h-auto object-contain relative z-0"
+  />
+
+</div>
+
+        </div>
+
+        {/* 🌟 Right side content */}
+        <div class="md:w-[50%] w-full text-center md:text-left space-y-8 flex flex-col justify-center h-full md:-ml-4 px-0 md:px-6">
+          {/* Kannada Lines */}
+          {/* <div class="space-y-1 px-4 md:px-0">
+            <h1
+              class="text-3xl md:text-2xl font-extrabold tracking-wide"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #FFD700, #FF5C5C, #FFD700)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+                wordSpacing: "8px",
+                lineHeight: "1.3",
+                padding: "0.1em 0",
+                display: "inline-block",
+                filter: "drop-shadow(0px 0px 0px rgba(255, 180, 0, 0.4))",
+              }}
+            >
+              ಸಿರಿಗನ್ನಡಂ ಗೆಲ್ಗೆ
+            </h1>
+            <h1
+              class="text-3xl md:text-2xl ml-4 font-extrabold tracking-wide"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #FF5C5C, #FFD700, #FF5C5C)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+                wordSpacing: "8px",
+                lineHeight: "1.3",
+                padding: "0.1em 0",
+                display: "inline-block",
+                filter: "drop-shadow(0px 0px 0px rgba(255, 100, 0, 0.4))",
+              }}
+            >
+              ಸಿರಿಗನ್ನಡಂ ಬಾಳ್ಗೆ
+            </h1>
+          </div> */}
+
+<h1
+  class="
+    text-[42px] 
+    sm:text-[38px] 
+    md:text-[46px] 
+    font-bold
+    text-center 
+    md:text-left
+    tracking-tight
+  "
+  style="color:#0b1b58;font-family:Poppins', sans-serif;letter-spacing:0.8px;line-height:1.15"
+>
+  MicroDegree Turns 6!🎉
+</h1>
+
+
+
+
+
+
+          {/* 🖼️ Mobile image (Only visible on mobile) */}
+          <div class="md:hidden w-full flex justify-center mt-6">
+<div class="relative w-full">
+  
+  {/* 🔵 Bottom Gradient Overlay */}
+  <div
+    class="absolute bottom-0 left-0 w-full h-12 pointer-events-none"
+    style="background:linear-gradient(to top, white 0%, rgba(255,255,255,0) 100%);z-index:10"
+  ></div>
+
+  {/* Actual Image */}
+  <img
+    src={mobileHero}
+    alt="Mobile Special Image"
+    class="w-full max-w-none object-cover relative z-0"
+  />
+
+</div>
+
+          </div>
+      <p class="text-xl text-gray-900 mb-12 max-w-6xl p-2 mx-auto">
+         Enjoy exclusive anniversary benefits worth up to ₹35,000. Celebrate this milestone with us as we unlock special rewards, limited-time offers, and career-boosting opportunities. This is our way of saying thank you for being part of our journey.
+      </p>
+          {/* CTA Button */}
+          <div class="flex justify-center md:justify-start w-full px-4 md:px-0">
+            <button
+              data-scroll-to="course"
+              class="relative overflow-hidden bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-gray-900 font-bold py-3 px-10 rounded-full shadow-lg transition-all duration-300 
+                        hover:scale-105 hover:shadow-2xl hover:from-yellow-500 hover:to-amber-400 
+                        before:absolute before:inset-0 before:bg-white/30 before:opacity-0 hover:before:opacity-100 before:transition-opacity 
+                        mt-4 w-[90%] md:w-auto"
+            >
+              Explore Offers
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>

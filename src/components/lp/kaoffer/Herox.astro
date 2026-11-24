@@ -1,0 +1,100 @@
+---
+const heroImage = '/lp/kaoffer/tdi.webp';
+const mobileHero = '/lp/kaoffer/abc-2-.webp';
+const Flag = '/lp/kaoffer/flag.png';
+---
+
+<section
+      class="relative bg-white text-gray-900 overflow-hidden"
+      style="margin-bottom:-30px"
+    >
+
+      {/* 🟡 Main Hero Section */}
+      <div class="flex flex-col md:flex-row items-center justify-center md:justify-between py-8 gap-0 md:gap-16 min-h-[70vh] md:min-h-[75vh] px-0 md:px-12">
+        {/* ✅ Left side image (Visible only on desktop) */}
+        <div class="hidden md:flex md:w-[45%] flex-col items-center md:items-end mb-6 md:mb-0">
+          <img
+            src={heroImage}
+            alt="Digital Marketing Graduates"
+            class="w-[85%] md:w-[100%] max-w-[600px] object-contain"
+          />
+        </div>
+
+        {/* 🌟 Right side content */}
+        <div class="md:w-[50%] w-full text-center md:text-left space-y-8 flex flex-col justify-center h-full md:-ml-4 px-0 md:px-6">
+          {/* Kannada Lines */}
+          <div class="space-y-1 px-4 md:px-0">
+            <h1
+              class="text-3xl md:text-2xl font-extrabold tracking-wide"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #FFD700, #FF5C5C, #FFD700)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+                wordSpacing: "8px",
+                lineHeight: "1.3",
+                padding: "0.1em 0",
+                display: "inline-block",
+                filter: "drop-shadow(0px 0px 0px rgba(255, 180, 0, 0.4))",
+              }}
+            >
+              ಸಿರಿಗನ್ನಡಂ ಗೆಲ್ಗೆ
+            </h1>
+            <h1
+              class="text-3xl md:text-2xl ml-4 font-extrabold tracking-wide"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #FF5C5C, #FFD700, #FF5C5C)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+                wordSpacing: "8px",
+                lineHeight: "1.3",
+                padding: "0.1em 0",
+                display: "inline-block",
+                filter: "drop-shadow(0px 0px 0px rgba(255, 100, 0, 0.4))",
+              }}
+            >
+              ಸಿರಿಗನ್ನಡಂ ಬಾಳ್ಗೆ
+            </h1>
+          </div>
+
+          {/* Main Heading */}
+          <div class="space-y-2 mt-6 px-4 md:px-0">
+            <h1
+              class="text-[40px] md:text-[46px] font-extrabold leading-snug tracking-wide"
+              style="color:#0b1b58;line-height:1.3;letter-spacing:2.2px;word-spacing:8px;text-shadow:0 2px 6px rgba(11, 27, 88, 0.20)"
+            >
+              ಕನ್ನಡ ರಾಜ್ಯೋತ್ಸವ ಮಾಸದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು
+            </h1>
+          </div>
+
+          {/* 🖼️ Mobile image (Only visible on mobile) */}
+          <div class="md:hidden w-full flex justify-center mt-6">
+            <img
+              src={mobileHero}
+              alt="Mobile Special Image"
+              class="w-full max-w-none object-cover"
+            />
+          </div>
+      <p class="text-xl text-gray-900 mb-12 max-w-6xl mx-auto">
+         This Rajyotsava, let’s celebrate growth - grow with knowledge, upskill with purpose, and be part of a  smarter, stronger Karnataka.
+      </p>
+          {/* CTA Button */}
+          <div class="flex justify-center md:justify-start w-full px-4 md:px-0">
+            <button
+              data-scroll-to="course"
+              class="relative overflow-hidden bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-gray-900 font-bold py-3 px-10 rounded-full shadow-lg transition-all duration-300 
+                        hover:scale-105 hover:shadow-2xl hover:from-yellow-500 hover:to-amber-400 
+                        before:absolute before:inset-0 before:bg-white/30 before:opacity-0 hover:before:opacity-100 before:transition-opacity 
+                        mt-4 w-[90%] md:w-auto"
+            >
+              Explore Offers
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,87 @@
+---
+// FAQ Data
+const faqs = [
+    {
+    question: "Is there flexibility in choosing batches?",
+    answer:
+      "Yes! You can join any of our morning or evening batches. Within 1 year of your enrollment, you may switch batches and complete your program as per your convenience.",
+  },
+    {
+    question: "What is the duration of the program?",
+    answer:
+      "We offer multiple learning plans. Depending on the plan you choose, the program duration can range from 3 months to 6 months.",
+  },
+  {
+    question: "What roles can I apply for after the Cloud & DevOps course?",
+    answer:
+    `<p class="mb-3">You can apply for roles like:</p>
+        <ul class="list-disc pl-5">
+          <li>DevOps Engineer</li>
+          <li>Cloud Engineer</li>
+          <li>Site Reliability Engineer (SRE)</li>
+          <li>Platform Engineer</li>
+          <li>Build & Release Engineer</li>
+          <li>Cloud Support Engineer</li>
+        </ul>`,
+  },
+  {
+    question: "Is this course suitable for working professionals?",
+    answer:
+      "Absolutely. The programs are designed for working professionals who want to upskill, switch domains, or grow into higher-paying technology roles.",
+  },
+  {
+    question: "Do I need coding experience to learn Cloud, DevOps, or GenAI?",
+    answer:
+      "Basic technical knowledge is helpful, but the courses are structured to help learners gradually build practical skills step by step.",
+  },
+  {
+    question: "Is DevOps a good career option in 2026 and beyond?",
+    answer:
+      "Yes. Cloud and DevOps continue to be among the most in-demand skills globally as companies focus on automation, scalability, and faster software delivery.",
+  },
+  {
+    question: "What tools are covered in the Cloud & DevOps program?",
+    answer:
+    `<p class="mb-3">The course focuses on industry-relevant tools and technologies such as:</p>
+        <ul class="list-disc pl-5">
+          <li>Linux</li>
+          <li>AWS/Azure</li>
+          <li>Docker</li>
+          <li>Kubernetes</li>
+          <li>Jenkins</li>
+          <li>Terraform</li>
+          <li>CI/CD</li>
+          <li>Monitoring tools</li>
+          <li>AI-powered DevOps workflows</li>
+        </ul>`,
+  },
+];
+---
+
+<div class="container mx-auto px-4 sm:px-6 lg:px-12 py-12 max-w-screen-xl mb-16">
+  {/* Header */}
+  <div class="w-full flex flex-col items-center text-center space-y-3 2xl:space-y-5 mb-16 mt-16">
+    <h1 class="font-poppins tracking-tight text-3xl sm:text-3xl lg:text-4xl text-gray-700">
+      <span class="font-semibold">Frequently Asked Questions</span>
+    </h1>
+  </div>
+
+  {/* FAQ Items */}
+  <div class="space-y-4 p-2 text-left">
+    {faqs.map((faq) => (
+      <details class="ad-faq w-full bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+        <summary class="faq-toggle w-full flex justify-between items-center p-6 text-left cursor-pointer">
+          <h3 class="text-lg font-semibold text-gray-800">{faq.question}</h3>
+          <i class="fa-solid fa-chevron-down text-[#4159ec] transition-transform duration-300"></i>
+        </summary>
+        <div class="faq-content px-6 pb-6 text-gray-600" set:html={faq.answer} />
+      </details>
+    ))}
+  </div>
+</div>
+
+<style is:global>
+  .ad-faq > summary { list-style: none; }
+  .ad-faq > summary::-webkit-details-marker { display: none; }
+  .ad-faq[open] > summary i { transform: rotate(180deg); }
+</style>

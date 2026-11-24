@@ -1,0 +1,69 @@
+---
+const mentors = [
+  {
+    name: "Manoj Kumar",
+    title: "Senior DevOps Engineer | FAANG Company",
+    description: `With 7+ years of experience, Manoj currently works as a Senior DevOps Engineer at a leading FAANG company. He brings deep expertise in automation, CI/CD pipelines, and Cloud infrastructure, helping learners understand real-world DevOps workflows.`,
+  },
+  {
+    name: "Likith",
+    title: "Senior DevOps Engineer | FAANG Company",
+    description: `Likith has over 7 years of hands-on experience as a DevOps Engineer in a top FAANG organization. He specializes in Cloud automation, containerization, and deployment pipelines, guiding learners with practical, industry-level insights.`,
+  },
+  {
+    name: "Kumar",
+    title: "Senior Cloud Engineer | FAANG Company",
+    description: `With 8+ years of Cloud industry experience, Kumar works as a Senior Cloud Engineer in a FAANG company. He focuses on scalable Cloud architecture and modern infrastructure design, mentoring professionals to excel in Cloud and DevOps roles.`,
+  },
+];
+
+
+
+  const getInitials = (name) =>
+    name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
+---
+
+<div class="w-full py-12 px-6 sm:px-10 mb-10">
+      <div class="max-w-7xl mx-auto">
+        {/* Title */}
+        <h2 class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 text-center mb-12">
+          Meet Our Trainers & Experts
+        </h2>
+
+        {/* Mentor Cards */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {mentors.map((mentor, idx) => (
+            <div
+              class="relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 text-center flex flex-col items-center"
+            >
+              {/* Circle with initials instead of image
+              <div class="mb-5">
+                <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl font-semibold shadow-lg hover:scale-105 transition-transform duration-300">
+                  {getInitials(mentor.name)}
+                </div>
+              </div> */}
+
+              {/* Name + Title */}
+<h3 class="text-2xl sm:text-xl font-semibold text-gray-900 relative inline-block after:content-['✦'] after:text-yellow-500 after:ml-2 after:text-xl">
+  {mentor.name}
+</h3>
+              <p class="text-sm text-gray-500 mb-4">{mentor.title}</p>
+
+              {/* Divider */}
+              <div class="w-20 border-t-2 border-blue-600 mb-4"></div>
+
+              {/* Description (Justified Text) */}
+              <div class="text-base text-gray-600 leading-relaxed space-y-3 text-left">
+                {mentor.description.split("\n").map((para, i) => (
+                  <p>{para.trim()}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>

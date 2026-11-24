@@ -20,6 +20,10 @@ module.exports = {
         marquee: 'marquee 25s linear infinite',
         marquee2: 'marquee2 25s linear infinite',
       },
+      boxShadow: {
+        'neon-md': '0 4px 6px -1px rgba(255, 0, 85, 0.6), 0 2px 4px -1px rgba(255, 0, 85, 0.6)',
+        'neon-md-left-right-bottom': '0 0 10px rgba(255, 0, 85, 0.5), 0 10px 20px rgba(255, 0, 85, 0.5)',
+      },
       colors: { mdpink: '#FF0049' },
     },
   },

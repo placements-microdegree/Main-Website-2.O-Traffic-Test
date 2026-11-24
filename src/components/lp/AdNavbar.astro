@@ -1,0 +1,68 @@
+---
+// Navbar for the Google Ads landing pages (/cloud-devops-certification, /tech-course, /genaicourse). Port of "Ad Page/Navbar.jsx".
+interface Props {
+	logo: string;
+	/** id of the course section this page scrolls to */
+	courseId?: string;
+	courseLabel?: string;
+	/** px to leave above the section after scrolling (0 on the cloud page, 96 on the GenAI page, like the old site) */
+	offset?: number;
+}
+const { logo, courseId = 'course', courseLabel = 'Courses', offset = 0 } = Astro.props;
+const link = 'hover:text-gray-300 transition-all cursor-pointer';
+const desktop = [['demo', 'Free Demo'], [courseId, courseLabel], ['curriculum', 'Curriculum'], ['pricing', 'Pricing']];
+// The old mobile menu listed Curriculum before Courses.
+const mobile = [['demo', 'Free Demo'], ['curriculum', 'Curriculum'], [courseId, courseLabel], ['pricing', 'Pricing']];
+---
+
+<header data-ad-nav data-offset={offset} class="fixed inset-x-0 top-0 z-50 bg-[#f9f8fd] shadow-sm border-b border-gray-200">
+	<div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+		<div class="flex items-center justify-between">
+			<div class="flex-shrink-0">
+				<a class="text-2xl font-bold"><img src={logo} alt="MD Logo" class="h-6 ml-2" /></a>
+			</div>
+
+			<nav class="hidden md:flex space-x-10 text-lg font-medium">
+				{desktop.map(([id, label]) => <a data-ad-scroll={id} class={link}>{label}</a>)}
+			</nav>
+
+			<div class="hidden md:block">
+				<a href="#contact" class="border-2 border-[#f9f8fd] text-[#f9f8fd] py-2 px-6 rounded-full text-lg transition-all font-semibold">Watch Demo</a>
+			</div>
+
+			<div class="md:hidden flex items-center">
+				<button type="button" data-ad-menu aria-label="Toggle navigation menu" aria-expanded="false" class="text-black focus:outline-none">
+					<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<div data-ad-mobile hidden class="md:hidden mt-5 space-y-4">
+			{mobile.map(([id, label]) => <a data-ad-scroll={id} class={`block text-lg ${link}`}>{label}</a>)}
+		</div>
+	</div>
+</header>
+<div class="h-16"></div>
+
+<script>
+	const nav = document.querySelector<HTMLElement>('[data-ad-nav]')!;
+	const offset = Number(nav.dataset.offset || 0);
+	const mobile = nav.querySelector<HTMLElement>('[data-ad-mobile]')!;
+	const menuBtn = nav.querySelector<HTMLElement>('[data-ad-menu]')!;
+	menuBtn.addEventListener('click', () => {
+		mobile.hidden = !mobile.hidden;
+		menuBtn.setAttribute('aria-expanded', String(!mobile.hidden));
+	});
+	nav.querySelectorAll<HTMLElement>('[data-ad-scroll]').forEach((a) => a.addEventListener('click', (e) => {
+		e.preventDefault();
+		const section = document.getElementById(a.dataset.adScroll!);
+		if (section) {
+			if (offset) window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+			else section.scrollIntoView({ behavior: 'smooth' });
+		}
+		mobile.hidden = true;
+		menuBtn.setAttribute('aria-expanded', 'false');
+	}));
+</script>

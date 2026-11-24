@@ -1,0 +1,71 @@
+---
+const jobRoles = [
+  {
+    title: "AI Developer / Gen AI Engineer",
+    description:
+      "Designs and builds Gen AI based apps using LLMs and APIs (OpenAI, Bedrock, Gemini).",
+  },
+  {
+    title: "LLM Application Developer",
+    description:
+      "Integrates AI APIs and frameworks like LangChain, CrewAI, and LangGraph for business applications.",
+  },
+  {
+    title: "Agentic AI Engineer",
+    description:
+      "Builds multi-agent systems capable of reasoning, collaboration, and autonomous execution.",
+  },
+  {
+    title: "AI Product Builder",
+    description:
+      "Develops AI-based copilots and assistants that solve domain-specific problems.",
+  },
+  {
+    title: "AI Solutions Architect",
+    description:
+      "Designs scalable and secure AI workflows integrating LLMOps, RAG, and orchestration frameworks.",
+  },
+  {
+    title: "Data & Cloud Professional (AI Track)",
+    description:
+      "Upskills into Generative AI to deploy AI applications on AWS, Azure, and GCP.",
+  },
+];
+
+const skills = [
+  "Generative AI",
+  "Prompt Engineering",
+  "ChatGPT",
+  "Explainable AI",
+  "Large Language Models",
+  "Generative AI Architectures",
+  "Generative AI Models",
+  "Machine Learning Algorithms",
+  "Model Training and Optimization",
+  "Ensemble Methods",
+];
+---
+
+<div class="w-full py-12 px-6 sm:px-10">
+      <div class="max-w-6xl mx-auto"> {/* 🔹 Constrain width */}
+        {/* Section: Job Roles */}
+        <h2 class="text-3xl sm:text-4xl text-center font-semibold text-gray-700 mb-10">
+          What are the top job roles in Generative AI?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {jobRoles.map((role, idx) => (
+            <div
+              class="p-6 border-l-4 border-blue-600 bg-white rounded-md shadow-sm hover:shadow-md transition-all"
+            >
+              <h3 class="font-semibold text-lg text-gray-900 mb-2">
+                {role.title}
+              </h3>
+              <p class="text-gray-600 text-base leading-relaxed">
+                {role.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>

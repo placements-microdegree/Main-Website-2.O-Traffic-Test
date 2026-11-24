@@ -1,0 +1,36 @@
+---
+// Lead form shown inside the ad-page demo modals. Submission is handled by src/scripts/lp.ts (form[data-lead-form]).
+interface Props { table: string; redirect: string; heading: string; }
+const { table, redirect, heading } = Astro.props;
+---
+
+<div data-form-wrap class="bg-white py-8 px-6 shadow-2xl rounded-2xl">
+	<div data-loading class="hidden fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-center">
+		<div class="flex space-x-2">
+			<div class="h-4 w-4 bg-blue-600 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+			<div class="h-4 w-4 bg-blue-600 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+			<div class="h-4 w-4 bg-blue-600 rounded-full animate-bounce"></div>
+		</div>
+		<p class="mt-4 text-gray-600 text-sm">Redirecting you to the video...</p>
+	</div>
+
+	<form class="space-y-4" data-lead-form data-table={table} data-redirect={redirect} novalidate>
+		<h2 class="text-xl font-semibold text-center">{heading}</h2>
+		<p class="text-sm text-gray-600 text-center">Enter your details to watch the video 👇</p>
+		<p data-error hidden class="text-red-500 text-sm text-center" role="alert"></p>
+
+		<input type="text" name="name" placeholder="Enter your name" autocomplete="name" aria-label="Your name" class="w-full px-3 py-2 border border-gray-300 rounded-md" />
+		<input type="email" name="email" placeholder="Enter your email" autocomplete="email" aria-label="Your email" class="w-full px-3 py-2 border border-gray-300 rounded-md" />
+		<input type="tel" name="number" placeholder="Enter your phone number" autocomplete="tel" aria-label="Your phone number" class="w-full px-3 py-2 border border-gray-300 rounded-md" />
+
+		<select aria-label="Select Experience" name="experience" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+			<option value="">Select Experience</option>
+			<option value="it_working_professional">IT Professional</option>
+			<option value="non-it_working_professional">Non-IT Professional</option>
+			<option value="fresher-looking_for_job">Fresher</option>
+			<option value="student">Student</option>
+		</select>
+
+		<button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Watch the Video Now →</button>
+	</form>
+</div>

@@ -1,6 +1,7 @@
 // Shared client behaviour for the course / demo / thank-you landing pages:
 // Tally popups, count-up numbers, demo-form submission and the thank-you redirect.
 import { captureUtmParams, getUtmValues, insertRow, openTallyPopup } from './leads';
+import './ui';
 
 captureUtmParams();
 
@@ -58,7 +59,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-lead-form]').forEach((form
 		const err = await insertRow(form.dataset.table!, {
 			name, email, phone: number, experience, ...getUtmValues(), submitted_at: new Date().toISOString(),
 		});
-		if (err) { overlay?.classList.add('hidden'); alert(err); return; }
+		if (err) { overlay?.classList.add('hidden'); if (form.hasAttribute('data-inline-errors')) showError(err); else alert(err); return; }
 		form.reset();
 		setTimeout(() => { window.location.href = form.dataset.redirect || '/'; }, 500);
 	});

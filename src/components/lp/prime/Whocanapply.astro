@@ -1,0 +1,42 @@
+---
+const items = [
+    "Tech Working Professionals",
+    "Any BE/MCA/MTech Background",
+    "Freshers/Students",
+  ];
+---
+
+<section class="px-5 font-poppins">
+      {/* Top rule */}
+      <hr class="h-px my-8 bg-gray-200 border-0 w-[90%] md:w-[80%] mx-auto" />
+
+      {/* Heading */}
+      <h2 class="text-3xl md:text-3xl font-semibold text-center mb-10 md:mb-12">
+        Who is this Program For
+      </h2>
+
+      {/* List */}
+      <ul class="space-y-4 font-medium">
+        {items.map((text) => (
+          <li class="flex items-start">
+            <svg
+              class="w-6 h-6 text-[#04AA6D] flex-shrink-0 md:ml-36"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <p class="ml-3 leading-6 text-black text-base md:text-xl">
+              {text}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      {/* Bottom rule */}
+      <hr class="h-px my-8 bg-gray-200 border-0 w-[90%] md:w-[80%] mx-auto" />
+    </section>

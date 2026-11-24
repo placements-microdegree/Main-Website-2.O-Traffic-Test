@@ -1,0 +1,136 @@
+---
+
+
+  // Course sections data
+  const sections = [
+    {
+      id: 1,
+      title: "Cloud",
+      hours: "20 Hours",
+      content: [
+        "AWS Mini Course - 8 Hours",
+        "Azure Mini Course - 6 Hours",
+        "Project for AWS - 5 Hours",
+      ],
+      video: "BWALffUgl0I",
+    },
+    {
+      id: 2,
+      title: "DevOps",
+      hours: "13 Hours",
+      content: [
+        "DevSecOps Mini Course - 6 Hours",
+        "Project for DevOps - 5 Hours",
+        "Git - 5 Hours",
+      ],
+      video: "12rqemzT_fM",
+    },
+    {
+      id: 3,
+      title: "Data",
+      hours: "55 Hours",
+      content: [
+        "Data Analytics - 20 Hours",
+        "Artificial Intelligence & Machine Learning - 20 Hours",
+        "Power BI Mini Course - 15 Hours",
+      ],
+      video: "6IpdcvnuGNE",
+    },
+    {
+      id: 5,
+      title: "Testing",
+      hours: "180 Hours",
+      content: [
+        "Manual Testing Course - 60 Hours",
+        "Automation Testing – Selenium - 60 Hours",
+        "JAVA Automation Testing Course - 60 Hours",
+      ],
+      video: "FHdVxrPbxwA",
+    },
+    {
+      id: 6,
+      title: "Development",
+      hours: "105 Hours",
+      content: [
+        "Web Development - 22 Hours",
+        "Frontend Development - 20 Hours",
+        "ReactJS - 8 Hours",
+        "Python Full Stack Course - 40 Hours",
+        "Software Developer - 15 Hours",
+      ],
+      video: "rviNWQIipzM",
+    },
+    {
+      id: 7,
+      title: "Programming",
+      hours: "65 Hours",
+      content: [
+        "C Programming - 8 Hours",
+        "C++ - 8 Hours",
+        "Python - 9 Hours",
+        "JavaScript - 15 Hours",
+        "PHP - 10 Hours",
+        "MySQL - 6 Hours",
+        "HTML & CSS - 8 Hours",
+      ],
+      video: "Hl_DKn78mF8",
+    },
+    {
+      id: 8,
+      title: "Career Skills",
+      hours: "12 Hours",
+      content: ["Resume Building Course - 6 Hours", "Aptitude - 6 Hours"],
+      video: "qVajzEFaCsQ",
+    },
+  ];
+---
+
+<section id="intro" class="py-4 sm:py-16 lg:py-10">
+  <p class="font-poppins text-4xl font-semibold mb-5 text-center">Course Content</p>
+
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="mt-8 space-y-4 md:mt-16">
+      {sections.map((section) => (
+        <details class="prime-acc group cursor-pointer rounded-2xl border border-gray-200 bg-white shadow-lg transition-all duration-200 hover:bg-gray-50">
+          <summary class="flex w-full items-center justify-between px-4 py-5 sm:p-6">
+            <span class="font-poppins text-lg font-semibold text-black">{section.title}</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm font-medium text-gray-600">{section.hours}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </summary>
+
+          <div class="px-4 pb-5 sm:px-6 sm:pb-6">
+            <div class="grid gap-6 md:grid-cols-12">
+              <ul class="md:col-span-7 list-disc pl-5 space-y-2 text-left">
+                {section.content.map((item) => <li>{item}</li>)}
+              </ul>
+
+              <div class="md:col-span-5">
+                <div class="relative w-full pt-[56.25%] md:w-[65%] md:pt-[36.25%] overflow-hidden rounded-lg shadow-md">
+                  <button type="button" data-yt={section.video} data-title={section.title} class="absolute inset-0 flex items-center justify-center bg-black/40">
+                    <img
+                      src={`https://img.youtube.com/vi/${section.video}/hqdefault.jpg`}
+                      alt={`${section.title} thumbnail`}
+                      class="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="relative z-10 flex items-center justify-center w-14 h-14 text-2xl font-bold text-white bg-gradient-to-br from-[#3d56ec] to-[#1e2bbf] rounded-full shadow-xl hover:scale-105 hover:shadow-2xl transition-transform duration-200">▶</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .prime-acc > summary { list-style: none; }
+  .prime-acc > summary::-webkit-details-marker { display: none; }
+</style>

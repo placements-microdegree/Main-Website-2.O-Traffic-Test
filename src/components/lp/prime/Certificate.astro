@@ -1,0 +1,83 @@
+---
+const Certificates = '/img/pyfs/certificates.jpg';
+---
+
+<section class="relative bg-gradient-to-b from-light to-white py-10 sm:py-14">
+      <hr class="my-12 h-px w-4/5 mx-auto border-0 bg-gray-200" />
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          
+          {/* LEFT: Certificate Image (desktop first) */}
+          <div class="flex justify-center order-2 md:order-1">
+            <div
+              class="
+                relative w-full max-w-lg
+                rounded-2xl bg-white/80 backdrop-blur
+                ring-1 ring-gray-100 shadow-xl
+                transition-all duration-300 hover:shadow-2xl
+              "
+            >
+              {/* Decorative glow */}
+              <div class="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 blur-lg -z-10" />
+
+              {/* Image wrapper */}
+              <div class="overflow-hidden rounded-xl">
+                <img decoding="async"
+                  src={Certificates}
+                  alt="Course completion certificate"
+                  class="w-full h-auto object-contain max-h-[500px] mx-auto"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Content */}
+          <div class="text-center md:text-left order-1 md:order-2 flex flex-col">
+            {/* Title always comes first */}
+            <h2 class="text-center font-poppins text-3xl sm:text-4xl font-semibold tracking-tight mb-6">
+              Industry Recognised Certification
+            </h2>
+
+            {/* On mobile, paragraph comes after image → controlled with hidden/show */}
+            <p class="hidden md:block text-gray-700 text-lg leading-relaxed mb-8">
+              Completing our courses not only strengthens your skills but also 
+              provides you with proof of expertise that you can share with employers, 
+              colleagues, and on LinkedIn.
+            </p>
+
+            {/* Desktop CTA */}
+<div class="hidden sm:flex justify-center gap-4">
+  <a
+    href="https://rzp.io/rzp/ejGVnSa"
+    class="relative w-80 sm:w-96"
+  >
+    <span class="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-gray-700"></span>
+    <span class="fold-bold relative inline-block h-full w-full rounded border-2 border-gray-700 bg-[#FF0049] px-6 py-2 text-xl font-semibold text-white text-center transition duration-100 hover:bg-gray-900 hover:text-white">
+      Join MicroDegree Prime
+    </span>
+  </a>
+</div>
+
+          </div>
+        </div>
+
+        {/* Mobile Paragraph + CTA (after image) */}
+        <div class="md:hidden text-center mt-6">
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Completing our courses not only strengthens your skills but also 
+            provides you with proof of expertise that you can share with employers, 
+            colleagues, and on LinkedIn.
+          </p>
+          <a href="#" class="relative inline-block">
+            <span class="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-gray-700"></span>
+            <span class="fold-bold relative inline-block h-full w-full rounded border-2 border-black bg-[#FF0049] px-6 py-2 text-lg font-semibold text-white transition duration-100 hover:bg-gray-900 hover:text-white">
+              Join MicroDegree Prime
+            </span>
+          </a>
+        </div>
+      </div>
+
+      {/* Section divider */}
+      <hr class="mt-14 h-px w-4/5 mx-auto border-0 bg-gray-200" />
+    </section>

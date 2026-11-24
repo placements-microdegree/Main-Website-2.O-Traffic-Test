@@ -1,0 +1,103 @@
+---
+// Default plan is Yearly (the old page defaulted to "enterprise"). Toggle handled by src/scripts/ui.ts (data-tabs).
+const on = "bg-[#3d56ec] text-white shadow";
+const off = "text-gray-600 hover:text-[#3d56ec]";
+---
+
+<div class="px-4 py-10 mb-5 md:py-5">
+      <div class="mx-auto my-5 max-w-7xl overflow-hidden rounded-lg border-2 border-[#3d56ec] shadow-teal lg:flex">
+        {/* Left */}
+        <div class="bg-white px-6 py-8 lg:flex-shrink-1 lg:p-12">
+          <h3 class="text-left text-3xl font-semibold leading-8 text-gray-900 sm:text-4xl sm:leading-9">
+            Subscription
+          </h3>
+
+          <p class="mt-6 text-left text-lg leading-8 text-gray-500">
+            With this subscription get unlimited access to premium content
+          </p>
+
+          <div class="mt-8">
+            <div class="flex items-center">
+              <h4 class="flex-shrink-0 bg-white pr-4 text-sm font-semibold leading-5 tracking-wider uppercase text-[#3d56ec]">
+                What's included
+              </h4>
+              <div class="flex-1 border-t-2 border-gray-200" />
+            </div>
+
+            <ul class="mt-8 space-y-5 pl-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5 lg:space-y-0">
+              {[
+                "25+ expert-designed courses with 500+ hours of content",
+                "Simple video lessons & practice exercises",
+                "Completion certificates & interview preparation",
+                "Profile building & aptitude practice",
+              ].map((text) => (
+                <li class="flex items-start lg:col-span-1">
+                  <div class="flex-shrink-0">
+                    <svg
+                      class="h-5 w-5 text-[#3d56ec]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="ml-3 text-left text-lg leading-5 text-gray-700">
+                    {text}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Right */}
+        <div
+          class="bg-gray-50 px-6 py-8 text-center 
+                      mx-auto lg:mx-0   
+                      lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12 
+                      w-[320px] md:w-[360px] lg:w-[380px]"
+        >
+          {/* Toggle pill */}
+          <div data-tabs>
+          <div class="flex justify-center mb-2">
+            <div class="inline-flex rounded-full border border-gray-300 bg-gray-100 p-1">
+              <button type="button" data-tab="team" data-on={on} data-off={off} aria-pressed="false" class={`px-6 py-2 text-sm font-medium rounded-full transition ${off}`}>Monthly</button>
+              <button type="button" data-tab="enterprise" data-on={on} data-off={off} aria-pressed="true" class={`px-6 py-2 text-sm font-medium rounded-full transition ${on}`}>Yearly</button>
+            </div>
+          </div>
+
+          {/* Save line */}
+          <p class="mb-6 text-sm text-gray-500 font-medium">Save 30% with Yearly Subscription</p>
+
+          {/* Dynamic heading */}
+          <p class="mb-6 text-xl font-medium leading-6 text-gray-900 lg:mx-auto lg:max-w-xs">
+            <span data-tab-show="team" hidden>Monthly subscription</span><span data-tab-show="enterprise">Yearly subscription</span>
+          </p>
+
+          {/* Dynamic price */}
+          <div class="my-6 flex items-baseline justify-center text-5xl font-semibold leading-none text-gray-900">
+            <span data-tab-show="team" hidden>₹299</span><span data-tab-show="enterprise">₹2499</span>
+            <span class="ml-2 text-xl font-medium leading-7 text-gray-500">
+              <span data-tab-show="team" hidden>/month</span><span data-tab-show="enterprise">/year</span>
+            </span>
+          </div>
+          <p class="mt-2 text-sm text-gray-500">Inclusive of all taxes</p>
+          <div class="lg:mt-6">
+            <a
+              href="https://rzp.io/rzp/TEOOsjj"
+              data-tab-href-team="https://rzp.io/rzp/ejGVnSa"
+              data-tab-href-enterprise="https://rzp.io/rzp/TEOOsjj"
+              class="relative z-20 flex items-center justify-center rounded-md border-2 border-[#3d56ec] bg-white px-5 py-3 text-lg font-medium text-[#3d56ec] shadow-teal transition duration-200 ease-in-out hover:bg-[#3d56ec] hover:text-white hover:shadow-teal-hover focus:outline-none focus:ring"
+            >
+              Enrol Now
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-24 h-px w-4/5 mx-auto border-0 bg-gray-200" />
+    </div>

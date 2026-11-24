@@ -1,0 +1,55 @@
+---
+import AdDemoForm from '../AdDemoForm.astro';
+const gif1 = '/lp/adpage/gif2-compressed.mp4';
+const gif2 = '/lp/adpage/gif1-compressed.mp4';
+---
+
+<div class="py-10 px-4" id="demo">
+	<div class="max-w-7xl mx-auto rounded-3xl p-8 shadow-sm">
+		<div class="text-center max-w-6xl mx-auto mb-10">
+			<p class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-700">Take a Free Demo Now 👇🏼</p>
+		</div>
+
+		<div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+			<div class="rounded-3xl border border-slate-200/70 bg-white shadow-sm">
+				<div class="relative aspect-video overflow-hidden rounded-t-3xl">
+					<video src={gif1} autoplay loop muted playsinline aria-label="How IT professionals are moving to Cloud & DevOps in 2026" class="w-full h-full object-cover" />
+					<div class="absolute top-4 left-4 rounded-full bg-blue-600 px-3 py-1 text-white text-xs">Free Demo</div>
+				</div>
+				<div class="p-7 text-center">
+					<h3 class="text-lg sm:text-xl font-semibold mb-5">How IT professionals are moving to Cloud & DevOps in 2026</h3>
+					<button type="button" data-dialog-open="ad-demo-1" class="inline-flex items-center justify-center rounded-xl border border-[#151595] bg-[#151595] px-8 py-3 text-white transition duration-300 hover:bg-white hover:text-[#151595]">Watch Free Demo →</button>
+				</div>
+			</div>
+			<div class="rounded-3xl border border-slate-200/70 bg-white shadow-sm">
+				<div class="relative aspect-video overflow-hidden rounded-t-3xl">
+					<video src={gif2} autoplay loop muted playsinline aria-label="DevOps Engineer Job 2026 | Real Work, Tools & Salary" class="w-full h-full object-cover" />
+					<div class="absolute top-4 left-4 rounded-full bg-blue-700 px-3 py-1 text-white text-xs">Free Demo</div>
+				</div>
+				<div class="p-7 text-center">
+					<h3 class="text-lg sm:text-xl font-semibold mb-5">DevOps Engineer Job 2026 | Real Work, Tools & Salary</h3>
+					<button type="button" data-dialog-open="ad-demo-2" class="inline-flex items-center justify-center rounded-xl border border-[#151595] bg-[#151595] px-8 py-3 text-white transition duration-300 hover:bg-white hover:text-[#151595]">Watch Free Demo →</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<dialog id="ad-demo-1" data-dialog class="ad-modal">
+		<div class="relative w-full">
+			<button type="button" data-dialog-close aria-label="Close" class="absolute -top-3 -right-3 z-10 bg-white rounded-full w-8 h-8 shadow flex items-center justify-center text-gray-600 hover:text-black">✕</button>
+			<AdDemoForm table="demo_cloud" redirect="/demovideo1" heading="How IT professionals are moving to Cloud & DevOps in 2026" />
+		</div>
+	</dialog>
+	<dialog id="ad-demo-2" data-dialog class="ad-modal">
+		<div class="relative w-full">
+			<button type="button" data-dialog-close aria-label="Close" class="absolute -top-3 -right-3 z-10 bg-white rounded-full w-8 h-8 shadow flex items-center justify-center text-gray-600 hover:text-black">✕</button>
+			<AdDemoForm table="demo_devops" redirect="/demovideo2" heading="DevOps Engineer Job 2026 | Real Work, Tools & Salary" />
+		</div>
+	</dialog>
+</div>
+
+<style is:global>
+	dialog.ad-modal { background: transparent; padding: 1rem; max-width: 28rem; width: 100%; margin: auto; overflow: visible; border: 0; }
+	dialog.ad-modal::backdrop { background: rgb(0 0 0 / .4); backdrop-filter: blur(12px); }
+	body:has(dialog[open]) { overflow: hidden; }
+</style>

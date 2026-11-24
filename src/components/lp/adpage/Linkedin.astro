@@ -1,0 +1,118 @@
+---
+import Carousel from '../Carousel.astro';
+import Icon from '../Icon.astro';
+const roopaImg = '/lp/adpage/roopa-ls.jpeg';
+const praveenImg = '/lp/adpage/praveen-v.jpeg';
+const charanImg = '/lp/adpage/charan-kumar.jpeg';
+const vijethImg = '/lp/adpage/vijethpandith-ks.jpeg';
+const mallikarjunImg = '/lp/adpage/mallikarjun-h.jpeg';
+const shanthiImg = '/lp/adpage/shanti-bellary.jpeg';
+const testimonials = [
+    {
+    name: "praveen v",
+    role: "4 reviews • 3 photos",
+    image: praveenImg,
+    rating: 5,
+    content:
+      "I recently completed the AWS and DevOps online live classes from MicroDegree, and it was a very good learning experience. The trainers explained concepts clearly with practical examples and real-time scenarios. The live sessions were interactive, and doubts were answered patiently. The course covered important AWS and DevOps topics in a structured way, which helped me improve both my technical knowledge and confidence. The hands-on practice and guidance throughout the course were especially helpful. I would definitely recommend this course to anyone who wants to build a career in cloud computing and DevOps.",
+  },
+  {
+    name: "Shanthi Bellary",
+    role: "5 reviews • 0 photos",
+    image: shanthiImg,
+    rating: 5,
+    content:
+      "The quality of teaching and knowledge sharing is excellent. Concepts are explained clearly, and the team is very responsive whenever help is needed.",
+  },
+
+  {
+    name: "roopa ls",
+    role: "2 reviews • 1 photo",
+    image: roopaImg,
+    rating: 5,
+    content:
+      "MicroDegree’s AWS & DevOps classes were excellent. The teaching was beginner-friendly, practical, and industry-focused. I especially liked the hands-on training on real-world tools and projects. The trainers were knowledgeable and supportive in clearing doubts. This course helped me improve my technical skills and confidence in Cloud & DevOps concepts.",
+  },
+
+  {
+    name: "mallikarjun H",
+    role: "2 reviews • 0 photos",
+    image: mallikarjunImg,
+    rating: 5,
+    content:
+      "Experienced instructors and method of teaching is excellent. I would like to recommend anyone who wants to upgrade or start their IT career. 💐",
+  },
+
+  {
+    name: "Charan Kumar",
+    role: "1 review • 0 photos",
+    image: charanImg,
+    rating: 5,
+    content:
+      "The teaching here is amazing. They explain every topic in a very simple way so that it is easy to understand. I feel much more confident in my topics now. Thank you to the whole team!",
+  },
+
+  {
+    name: "vijethpandith ks",
+    role: "1 review • 0 photos",
+    image: vijethImg,
+    rating: 5,
+    content:
+      "Have enrolled for AWS and DevOps, and I can say that this institute is best for techies who prefer to learn in Kannada. Very good teaching in simple words.",
+  },
+];
+
+const colorPalette = [
+  { bg: "bg-red-100", text: "text-red-600" },
+  { bg: "bg-blue-100", text: "text-blue-600" },
+  { bg: "bg-green-100", text: "text-green-600" },
+  { bg: "bg-purple-100", text: "text-purple-600" },
+  { bg: "bg-pink-100", text: "text-pink-600" },
+  { bg: "bg-yellow-100", text: "text-yellow-600" },
+  { bg: "bg-indigo-100", text: "text-indigo-600" },
+];
+const getColorForName = (index) => colorPalette[index % colorPalette.length];
+const getInitial = (name) => name.charAt(0).toUpperCase();
+const truncateText = (text, limit = 200) => (text.length <= limit ? text : text.substring(0, limit) + '...');
+---
+
+<section class="py-16 px-4">
+  {/* Header */}
+  <div class="text-center mb-12">
+    <h1 class="font-poppins text-3xl sm:text-3xl lg:text-4xl text-gray-700">
+      <span class="font-semibold">Learners Success Stories</span>
+    </h1>
+  </div>
+
+  {/* Slider (react-slick: 3 / 2 / 1 slides, autoplay 4s) */}
+  <div class="max-w-7xl mx-auto">
+    <Carousel show={3} showTablet={2} showMobile={1} autoplay={4000} loop>
+      {testimonials.map((item) => (
+        <div class="px-3 h-full">
+          <div class="mx-auto max-w-[420px] h-full bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+            {/* Avatar + Name */}
+            <div class="flex items-center gap-4 mb-4">
+              <img loading="lazy" decoding="async" src={item.image} alt={item.name} class="w-12 h-12 rounded-full object-cover" />
+              <div class="flex-1 text-left">
+                <h3 class="font-semibold text-gray-900">{item.name}</h3>
+                <p class="text-xs text-gray-500">{item.role}</p>
+              </div>
+            </div>
+
+            {/* Stars */}
+            <div class="mb-3 flex justify-start">
+              <div class="flex gap-1 text-[14px]">
+                {[...Array(5)].map((_, i) => (
+                  <span class={i < item.rating ? 'text-yellow-400' : 'text-gray-300'}><Icon name="FaStar" /></span>
+                ))}
+              </div>
+            </div>
+
+            {/* Review */}
+            <p class="text-gray-600 text-sm leading-relaxed text-left flex-1">{truncateText(item.content)}</p>
+          </div>
+        </div>
+      ))}
+    </Carousel>
+  </div>
+</section>

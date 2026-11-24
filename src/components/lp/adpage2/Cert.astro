@@ -1,0 +1,65 @@
+---
+const ACP = '/img/cloud/ACP.png';
+const ASA = '/img/cloud/ASA.png';
+const ASC = '/img/cloud/ASC.png';
+const AZA = '/img/cloud/AZA.png';
+const AZF = '/img/cloud/AZF.png';
+const AZSA = '/img/cloud/AZSA.png';
+const CKA = '/img/cloud/CKA.png';
+  const projects = [
+    { name: "AWS Solutions Architect", img: ASC },
+    { name: "AWS Cloud Practitioner", img: ACP },
+    { name: "AWS SysOps Administrator", img: ASA },
+    { name: "Azure Associate", img: AZA },
+    { name: "Azure Solutions Architect", img: AZSA },
+    { name: "Azure Fundamentals", img: AZF },
+    { name: "Certified Kubernetes Administrator", img: CKA },
+  ];
+---
+
+<div class="mx-auto mt-24 mb-24 max-w-7xl text-center p-6">
+      {/* Header */}
+      <div class="w-full flex flex-col items-center text-center space-y-3 2xl:space-y-5 mb-16">
+        <h1 class="font-poppins tracking-tight text-3xl sm:text-3xl lg:text-4xl text-gray-700">
+          <span class="font-semibold">Crack Multiple Global Certifications</span>
+        </h1>
+      </div>
+
+      {/* First row: 4 items */}
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 mb-3 sm:mb-6">
+        {projects.slice(0, 4).map((project, idx) => (
+          <div
+            class="flex flex-col items-center rounded-xl border border-black border-opacity-10 p-2 text-black duration-200 hover:border-opacity-0 hover:shadow-md sm:hover:shadow-lg"
+          >
+            <img loading="lazy" decoding="async"
+              class="w-20 h-20 sm:w-36 sm:h-36 lg:w-32 lg:h-32 object-contain"
+              src={project.img}
+              alt={project.name}
+            />
+            <div class="mt-2 text-center font-semibold text-sm sm:text-base text-black break-words">
+              {project.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Second row: 3 items centered */}
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 justify-center max-w-4xl mx-auto">
+        {projects.slice(4, 7).map((project, idx) => (
+          <div
+            class={`flex flex-col items-center rounded-xl border border-black border-opacity-10 p-2 text-black duration-200 hover:border-opacity-0 hover:shadow-md sm:hover:shadow-lg ${
+              idx === 2 ? "col-span-2 sm:col-span-1 justify-self-center max-w-[50%] sm:max-w-none" : ""
+            }`}
+          >
+            <img loading="lazy" decoding="async"
+              class="w-20 h-20 sm:w-36 sm:h-36 lg:w-32 lg:h-32 object-contain"
+              src={project.img}
+              alt={project.name}
+            />
+            <div class="mt-2 text-center font-semibold text-sm sm:text-base text-black break-words">
+              {project.name}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>

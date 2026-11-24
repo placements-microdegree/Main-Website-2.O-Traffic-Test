@@ -1,0 +1,158 @@
+---
+const BgImage = '/lp/adpage/v2.webp';
+const MobileBgImage = '/lp/adpage/v3.webp';
+  const skills = [
+    "AWS",
+    "Azure",
+    "GCP",
+    "GenAI",
+    "Networking",
+    "Linux",
+    "DevOps",
+    "CKA",
+    "MLOps",
+    "CI/CD",
+    "DevSecOps",
+    "+More",
+  ];
+---
+
+<div class="relative py-10 overflow-hidden">
+      <div class="absolute inset-0 -z-10 hidden sm:block" style={{
+        backgroundImage: `url(${BgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }} />
+      <div class="absolute inset-0 -z-10 block sm:hidden">
+        <img
+          src={MobileBgImage}
+          alt="Hero mobile background"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <section class="relative max-w-7xl mx-auto px-6" id="hero">
+        <div class="flex flex-col lg:flex-row items-start justify-between gap-16">
+
+          {/* LEFT SIDE */}
+          <div class="w-full lg:w-[58%] md:pt-5">
+
+            {/* Top Heading */}
+            <h2 class="text-[#151595] text-left text-[38px] sm:text-4xl lg:text-[38px] font-semibold leading-[1.1] tracking-tight mb-8">
+              Cloud, DevOps & AI Certification Program
+            </h2>
+
+            {/* Sub Heading */}
+            <h1 class="text-[#111827] text-left text-2xl sm:text-xl lg:text-3xl font-semibold leading-[1.2] tracking-tight mb-6">
+              Learn in Kannada & Transition to 4x Salary Roles
+            </h1>
+
+            {/* Description */}
+            {/* <h1 class="text-[#111827] text-left text-2xl md:text-2xl font-semibold leading-[1.1] tracking-tight mb-6">
+              Learn 10x Faster in Kannada & Transition to a 4x Higher Salary Role.
+            </h1> */}
+
+            {/* Skills Heading */}
+            <p class="text-2xl text-left font-semibold text-gray-600 mb-3">
+              Skills Covered
+            </p>
+
+            {/* Skills Pills */}
+            <div class="flex flex-wrap gap-2 mb-10">
+              {skills.map((skill) => (
+                <span
+                  class="rounded-2xl bg-gray-100 px-3 py-1 font-semibold text-blue-700 text-sm ring-1 ring-inset ring-blue-700/10 backdrop-blur-sm"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+
+            {/* Buttons */}
+            <div class="flex flex-col sm:flex-row gap-5">
+
+                <button type="button" data-scroll-to="curriculum" class="w-full sm:w-auto bg-[#FF0049] text-white px-12 py-4 rounded-xl font-bold shadow-lg transition">
+                  Download Curriculum
+                </button>
+
+              {/* <button type="button" data-scroll-to="demo" class="w-full sm:w-auto border-2 border-[#151595] text-[#151595] hover:bg-[#151595] hover:text-white px-12 py-4 rounded-xl font-bold shadow-md transition">
+                Join Free Demo Session
+              </button> */}
+            </div>
+          </div>
+
+          {/* RIGHT FORM */}
+          <div class="w-full lg:w-[32%] flex justify-center">
+            <div class="bg-white rounded-2xl shadow-xl p-4 w-full max-w-sm">
+
+              <h2 class="text-2xl font-bold mb-2">
+                Talk to Our Experts
+              </h2>
+
+              <p class="text-gray-500 mb-6">
+                Find the right roadmap for your IT career growth.
+              </p>
+
+              <p data-error hidden class="text-red-500 text-sm mb-3" role="alert"></p>
+
+              
+              <form class="space-y-4" data-lead-form data-table="google_adpage" data-redirect="/thankyou5" data-inline-errors novalidate>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  class="w-full border rounded-lg px-4 py-3"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  class="w-full border rounded-lg px-4 py-3"
+                />
+
+                <input
+                  type="tel"
+                  name="number"
+                  placeholder="Phone Number"
+                  class="w-full border rounded-lg px-4 py-3"
+                />
+
+                <select aria-label="Select Work Experience"
+                  name="experience"
+                  class="w-full border rounded-lg px-4 py-3"
+                >
+                  <option value="">
+                    Select Work Experience
+                  </option>
+
+                  <option value="it_working_professional">
+                    IT Professional
+                  </option>
+
+                  <option value="non-it_working_professional">
+                    Non-IT Professional
+                  </option>
+
+                  <option value="fresher-looking_for_job">
+                    Fresher
+                  </option>
+
+                  <option value="student">
+                    Student
+                  </option>
+                </select>
+
+                <button
+                  type="submit"
+                  class="w-full bg-[#151595] text-white py-3 rounded-lg font-semibold"
+                >
+                  Get My Free Career Roadmap
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#f9f8fd] via-[#f9f8fd]/80 to-transparent" />
+    </div>

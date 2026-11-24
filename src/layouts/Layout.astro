@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/icons.css';
+import FloatingContact from '../components/FloatingContact.astro';
 
 interface Props {
 	title: string;
@@ -62,9 +63,62 @@ const schema = {
 				<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 				</noscript>
 		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+		<!--
+			Tracking (same IDs as MainWebsite-2026/public/index.html): GTM, GA4 x3, Google Ads, AdSense, Meta Pixel x2, Clarity x2.
+			The queues/stubs are created immediately so no event is lost; the heavy third-party files are fetched after the
+			page has loaded (or on first interaction), so they never compete with first paint.
+		-->
+		<script is:inline>
+			(function () {
+				var w = window, d = document;
+				w.dataLayer = w.dataLayer || [];
+				function gtag() { w.dataLayer.push(arguments); }
+				w.gtag = gtag;
+				gtag('js', new Date());
+				['G-W10NN6S3KL', 'G-NXT05R9647', 'G-KF9TCK8HDL', 'AW-625115666'].forEach(function (id) { gtag('config', id); });
+
+				var n = (w.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); });
+				if (!w._fbq) w._fbq = n;
+				n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+				w.fbq('init', '2260688611407524');
+				w.fbq('init', '187849266414718');
+				w.fbq('track', 'PageView');
+
+				w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); };
+
+				function load(src, cors) {
+					var s = d.createElement('script');
+					s.async = true; s.src = src;
+					if (cors) s.crossOrigin = 'anonymous';
+					d.head.appendChild(s);
+				}
+				var started = false;
+				function loadTags() {
+					if (started) return;
+					started = true;
+					w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+					load('https://www.googletagmanager.com/gtm.js?id=GTM-KD29V9Z');
+					load('https://www.googletagmanager.com/gtag/js?id=G-W10NN6S3KL');
+					load('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7261980403640770', true);
+					load('https://connect.facebook.net/en_US/fbevents.js');
+					load('https://www.clarity.ms/tag/77n7r6x6vd');
+					load('https://www.clarity.ms/tag/wknm8tw9ry');
+				}
+				w.__mdLoadTags = loadTags;
+
+				['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
+					w.addEventListener(ev, loadTags, { once: true, passive: true });
+				});
+				function afterLoad() { setTimeout(loadTags, 2500); }
+				if (d.readyState === 'complete') afterLoad(); else w.addEventListener('load', afterLoad);
+			})();
+		</script>
 	</head>
 	<body>
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD29V9Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2260688611407524&ev=PageView&noscript=1" /><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=187849266414718&ev=PageView&noscript=1" /></noscript>
 		<slot />
+		<FloatingContact />
 		<script>
 			// Scroll-reveal for any element tagged .reveal
 			const io = new IntersectionObserver(

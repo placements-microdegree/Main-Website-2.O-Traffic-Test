@@ -1,0 +1,59 @@
+---
+const Aws = '/lp/prime/aws.png';
+const Azure = '/lp/adpage/azure.png';
+const Ansible = '/lp/adpage/ansible.png';
+const Docker = '/lp/adpage/docker.png';
+const Linux = '/lp/awsdevops/logo/linux.webp';
+const Grafana = '/lp/adpage/grafana.png';
+const Kubernetes = '/lp/adpage/kubernetes.png';
+const Maven = '/lp/adpage/maven.png';
+const Terraform = '/lp/adpage/terraform.png';
+const Jenkins = '/lp/adpage/jenkins.png';
+const Git = '/lp/adpage/git.png';
+const ChatGPT = '/lp/adpage/chatgpt.png';
+const CodeRabbit = '/lp/adpage/coderabbit.png';
+const Bedrock = '/lp/adpage/bedrock.png';
+const Prometheus = '/lp/adpage/prometheus.png';
+const tools = [
+  { name: "AWS", logo: Aws },
+  { name: "Azure", logo: Azure },
+  { name: "Docker", logo: Docker },
+  { name: "Linux", logo: Linux },
+  { name: "Grafana", logo: Grafana },
+  { name: "Prometheus", logo: Prometheus },
+  { name: "Kubernetes", logo: Kubernetes },
+  { name: "Maven", logo: Maven },
+  { name: "Terraform", logo: Terraform },
+  { name: "Ansible", logo: Ansible },
+  { name: "Jenkins", logo: Jenkins },
+  { name: "Git", logo: Git },
+  { name: "ChatGPT", logo: ChatGPT },
+  { name: "Bedrock", logo: Bedrock },
+  { name: "CodeRabbit", logo: CodeRabbit },
+];
+---
+
+<div class="w-full py-12 px-6 sm:px-10">
+      {/* Title */}
+      <h2 class="font-poppins text-3xl sm:text-3xl lg:text-4xl text-gray-700 font-semibold tracking-tight text-center mb-10">
+        Tools Covered
+      </h2>
+
+      {/* Tools Grid */}
+      <div class="max-w-6xl mx-auto grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+        {tools.map((tool, idx) => (
+          <div
+            class="bg-white rounded-2xl flex flex-col sm:flex-row items-center justify-center sm:justify-start text-center sm:text-left p-3 sm:p-4 shadow-sm hover:shadow-md transition-all"
+          >
+            <img loading="lazy" decoding="async"
+              src={tool.logo}
+              alt={tool.name}
+              class="w-9 h-9 sm:w-12 sm:h-12 mb-2 sm:mb-0 sm:mr-4 shrink-0"
+            />
+            <span class="font-poppins tracking-tight font-medium text-sm sm:text-xl break-words">
+              {tool.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>

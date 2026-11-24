@@ -1,0 +1,119 @@
+---
+const Aws = '/lp/prime/aws.png';
+const Python = '/lp/prime/python.png';
+const DA = '/lp/prime/da.png';
+const PBI = '/lp/prime/pbi.webp';
+const AI = '/lp/prime/ai.png';
+const DevOps = '/lp/prime/devops.webp';
+const ReactJS = '/lp/prime/react.png';
+const FD = '/lp/prime/frontend.png';
+const WD = '/lp/prime/web.png';
+const AT = '/lp/prime/at.png';
+const MT = '/lp/prime/mt.png';
+const JavaScript = '/lp/prime/js.png';
+const tools = [
+  { name: "Python", icon: Python },
+  { name: "Data Analytics", icon: DA },
+  { name: "Power BI", icon: PBI },
+  { name: "Artificial Intelligence & Machine Learning", icon: AI },
+  { name: "AWS", icon: Aws },
+  { name: "DevOps", icon: DevOps },
+  { name: "ReactJS", icon: ReactJS },
+  { name: "Frontend Development", icon: FD },
+  { name: "Web Development", icon: WD },
+  { name: "Automation Testing", icon: AT },
+  { name: "Manual Testing", icon: MT },
+  { name: "JavaScript", icon: JavaScript },
+];
+---
+
+<section class="relative bg-light/60 py-12 sm:py-16 lg:py-5">
+      {/* soft background accent */}
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-secondary/5" />
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div class="text-center mb-10 sm:mb-12">
+          <h2 class="font-poppins tracking-tight font-semibold text-3xl sm:text-4xl">
+            <span class="bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              Technologies Covered
+            </span>
+          </h2>
+          <p class="mt-3 text-gray-500 text-base sm:text-lg">
+            Industry-relevant tools you’ll use from day one
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div
+          class="
+          grid gap-3 sm:gap-4 lg:gap-5
+          grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+        "
+        >
+          {tools.map((t) => (
+            <div
+              class="
+                group relative
+                rounded-2xl bg-white/90 backdrop-blur
+                ring-1 ring-gray-100 shadow-sm
+                transition-all duration-300
+                hover:shadow-lg hover:-translate-y-0.5
+              "
+            >
+              <div class="flex items-center gap-4 p-4 sm:p-5">
+                {/* Icon wrapper */}
+                <div
+                  class="
+                  shrink-0
+                  grid place-items-center
+                  w-14 h-14 sm:w-12 sm:h-12
+                  rounded-full bg-white shadow-inner
+                "
+                >
+                  <img
+                    src={t.icon}
+                    alt={`${t.name} logo`}
+                    class="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                </div>
+
+                {/* Label */}
+                <div class="min-w-0">
+                  <p class="font-poppins font-medium tracking-tight text-lg sm:text-xl text-dark truncate">
+                    {t.name}
+                  </p>
+                  <div class="mt-1 h-1 w-10 rounded-full bg-gradient-to-r from-primary/70 to-secondary/70 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+
+              {/* subtle gradient border on hover */}
+              <div class="pointer-events-none absolute inset-0 rounded-2xl ring-0 group-hover:ring-1 group-hover:ring-primary/20 transition" />
+            </div>
+          ))}
+
+          {/* + More Text */}
+          <div class="col-span-full flex items-center justify-center">
+            <span
+              class="
+                font-poppins font-semibold
+                text-lg sm:text-xl text-primary
+                cursor-pointer
+                transition-all duration-300 hover:text-secondary
+              "
+            >
+              + Many More
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+});
+
+export default Tools;

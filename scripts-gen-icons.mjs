@@ -2,8 +2,8 @@ import * as solid from '@fortawesome/free-solid-svg-icons';
 import * as brands from '@fortawesome/free-brands-svg-icons';
 import { writeFileSync } from 'node:fs';
 
-const names = ['check','phone','chevron-right','chevron-left','chevron-down','angles-right','users','user-check','triangle-exclamation','play','phone-volume','medal','language','envelope','download','diagram-project','circle-check','calendar-check','briefcase','bolt','bars','arrow-trend-up','award','building-user','chalkboard-user','chart-column','chart-pie','circle-play','clock-rotate-left','cloud','database','desktop','infinity','laptop','paper-plane','circle-arrow-down','star','video'];
-const brandNames = ['youtube','linkedin-in','instagram','x-twitter','telegram','google','facebook-f'];
+const names = ['house','check','phone','chevron-right','chevron-left','chevron-down','angles-right','users','user-check','triangle-exclamation','play','phone-volume','medal','language','envelope','download','diagram-project','circle-check','calendar-check','briefcase','bolt','bars','arrow-trend-up','award','building-user','chalkboard-user','chart-column','chart-pie','circle-play','clock-rotate-left','cloud','database','desktop','infinity','laptop','paper-plane','circle-arrow-down','star','video'];
+const brandNames = ['facebook','linkedin','youtube','linkedin-in','instagram','x-twitter','telegram','google','facebook-f'];
 const camel = (n) => 'fa' + n.split('-').map((p) => p[0].toUpperCase() + p.slice(1)).join('');
 const rule = (cls, [w, h, , , d]) => {
 	const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${w} ${h}'><path d='${d}'/></svg>`;

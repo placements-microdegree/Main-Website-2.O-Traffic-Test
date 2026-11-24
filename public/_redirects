@@ -1,0 +1,139 @@
+# Ported from MainWebsite-2026/public/_redirects (Netlify). Forced proxies (200!)
+# keep the URL on www.microdegree.work. Blog, learning app and landing pages are
+# separate projects. The old SPA catch-all (/* /index.html 200) is intentionally
+# NOT carried over: this site is static, unknown URLs fall through to 404.astro.
+
+# Multi-Zones reverse proxy: serve the separate Next.js "learning" app under
+# microdegree.work/learning/*. MUST sit above the SPA catch-all below, since
+# _redirects rules are first-match top-to-bottom. 200! = forced proxy: Netlify
+# returns the upstream response with the URL staying on www.microdegree.work
+# (never a 301/302). The /* splat also carries /learning/_next/*,
+# /learning/images/* and /learning/api/*. Origin is also mirrored in
+# netlify.toml; LEARNING_ORIGIN in .env.example / Netlify config documents it.
+/learning       https://mdelearnfordotwork.netlify.app/learning        200!
+/learning/*     https://mdelearnfordotwork.netlify.app/learning/:splat  200!
+# Clean URL /e-learning -> learning app's /learning/e-learning page (forced
+# proxy, URL stays /e-learning). No /e-learning/* splat on purpose: its assets
+# load via /learning/_next/* etc. Mirrors the rules in netlify.toml.
+/e-learning     https://mdelearnfordotwork.netlify.app/learning/e-learning  200!
+/e-learning/    https://mdelearnfordotwork.netlify.app/learning/e-learning  200!
+# Clean URL /tech-courses -> learning app's /learning/tech-courses page (forced
+# proxy, URL stays /tech-courses). No /tech-courses/* splat on purpose: assets
+# load via /learning/_next/* etc. Mirrors the rules in netlify.toml.
+/tech-courses   https://mdelearnfordotwork.netlify.app/learning/tech-courses  200!
+/tech-courses/  https://mdelearnfordotwork.netlify.app/learning/tech-courses  200!
+
+# Multi-Zones reverse proxy: serve MicroDegree's Google Ads landing pages (a
+# separate static site on Cloudflare Pages) under www.microdegree.work as
+# sub-paths. Forced proxy (200!) - the URL stays on our host and the upstream
+# response passes straight through unmodified. Query strings are preserved
+# automatically. /_lp/* carries the CSS/JS/font/image assets. Only
+# /cloudprograms, /genaiprograms, /cloudcertification and /genaicertification
+# are proxied - other route names (e.g. /genai -> the in-app <Genai /> page)
+# stay with the React app. Origin is also mirrored in netlify.toml;
+# LANDING_ORIGIN in .env.example / Netlify config documents it. MUST sit
+# above the SPA catch-all below.
+/cloudprograms       https://md-landingpages.pages.dev/cloudprograms        200!
+/genaiprograms       https://md-landingpages.pages.dev/genaiprograms        200!
+/cloudcertification  https://md-landingpages.pages.dev/cloudcertification   200!
+/genaicertification  https://md-landingpages.pages.dev/genaicertification   200!
+/_lp/*               https://md-landingpages.pages.dev/_lp/:splat           200!
+
+# Blog: served by the separate Next.js blog app (Cloudflare Pages), reverse-proxied
+# under www.microdegree.work/blog like /learning. Forced proxy (200!): the URL stays on
+# our host. /blog goes straight to /blog/ because Pages answers /blog with a 308 to
+# /blog/, which would otherwise send visitors to the pages.dev host. /blog/* also
+# carries /blog/_next/* and /blog/blog-images/*. Origin is mirrored in netlify.toml.
+# MUST sit above the SPA catch-all below. Order matters: first match wins, so the
+# redirects come before the /blog/* proxy.
+
+# Renamed blog slug: permanent redirect straight to its final address.
+/blog/generative-ai-skills-software-engineers-2026  /blog/genai-skills-software-engineers  301
+
+# Posts that used to live at /<slug> now live at /blog/<slug> (same slug): permanent
+# redirects so old links and search results keep working.
+/genai-skills-software-engineers                                    /blog/genai-skills-software-engineers  301
+/generative-ai-skills-2026                                          /blog/generative-ai-skills-2026  301
+/model-context-protocol-mcp-vs-apis                                 /blog/model-context-protocol-mcp-vs-apis  301
+/cloud-certification-roadmap-2026                                   /blog/cloud-certification-roadmap-2026  301
+/devops-interview-questions-working-professionals                   /blog/devops-interview-questions-working-professionals  301
+/cka-preparation-2026-guide                                         /blog/cka-preparation-2026-guide  301
+/which-google-cloud-certification-should-you-choose                 /blog/which-google-cloud-certification-should-you-choose  301
+/terraform-associate-certification-worth-it-guide                   /blog/terraform-associate-certification-worth-it-guide  301
+/in-demand-tech-skills-2026                                         /blog/in-demand-tech-skills-2026  301
+/cloud-certification-path-aws-azure-kubernetes-ai                   /blog/cloud-certification-path-aws-azure-kubernetes-ai  301
+/platform-engineer-salary-india                                     /blog/platform-engineer-salary-india  301
+/what-is-gitops-vs-traditional-cicd                                 /blog/what-is-gitops-vs-traditional-cicd  301
+/aws-well-architected-framework-guide                               /blog/aws-well-architected-framework-guide  301
+/what-is-aws-vpc-secure-cloud-network-design                        /blog/what-is-aws-vpc-secure-cloud-network-design  301
+/aws-iam-explained-users-roles-policies-permissions                 /blog/aws-iam-explained-users-roles-policies-permissions  301
+/rag-evaluation-metrics-guide                                       /blog/rag-evaluation-metrics-guide  301
+/aws-disaster-recovery-rto-rpo-strategy                             /blog/aws-disaster-recovery-rto-rpo-strategy  301
+/cloud-engineer-salary-product-vs-service-company                   /blog/cloud-engineer-salary-product-vs-service-company  301
+/how-does-aws-auto-scaling-work-scalable-applications               /blog/how-does-aws-auto-scaling-work-scalable-applications  301
+/how-to-become-an-mlops-engineer-in-2026                            /blog/how-to-become-an-mlops-engineer-in-2026  301
+/how-to-secure-ci-cd-pipeline                                       /blog/how-to-secure-ci-cd-pipeline  301
+/cka-practice-guide-kubernetes-tasks                                /blog/cka-practice-guide-kubernetes-tasks  301
+/agentic-ai-vs-generative-ai                                        /blog/agentic-ai-vs-generative-ai  301
+/devsecops-engineer-vs-cloud-security-engineer-salary               /blog/devsecops-engineer-vs-cloud-security-engineer-salary  301
+/can-you-learn-aws-without-programming                              /blog/can-you-learn-aws-without-programming  301
+/cka-certification-worth-it-2026                                    /blog/cka-certification-worth-it-2026  301
+/ai-agents-explained                                                /blog/ai-agents-explained  301
+/networking-mistakes-that-break-applications                        /blog/networking-mistakes-that-break-applications  301
+/generative-ai-in-devops                                            /blog/generative-ai-in-devops  301
+/reasons-llms-give-wrong-answers                                    /blog/reasons-llms-give-wrong-answers  301
+/genai-developer-portfolio-7-projects                               /blog/genai-developer-portfolio-7-projects  301
+/devops-to-mlops-salary                                             /blog/devops-to-mlops-salary  301
+/networking-basics-it-professional                                  /blog/networking-basics-it-professional  301
+/ai-powered-cloud-infrastructure                                    /blog/ai-powered-cloud-infrastructure  301
+/what-does-an-mlops-engineer-do                                     /blog/what-does-an-mlops-engineer-do  301
+/kubernetes-pod-troubleshooting                                     /blog/kubernetes-pod-troubleshooting  301
+/desktop-support-to-azure-administrator-guide                       /blog/desktop-support-to-azure-administrator-guide  301
+/what-is-observability-in-devops-logs-metrics-traces-opentelemetry  /blog/what-is-observability-in-devops-logs-metrics-traces-opentelemetry  301
+/software-tester-to-sre                                             /blog/software-tester-to-sre  301
+/cloud-skills-to-learn-after-first-it-job                           /blog/cloud-skills-to-learn-after-first-it-job  301
+/generative-ai-career-for-non-coders                                /blog/generative-ai-career-for-non-coders  301
+/technical-support-to-devops-in-bangalore                           /blog/technical-support-to-devops-in-bangalore  301
+/in-demand-cloud-skills-in-bangalore-2026                           /blog/in-demand-cloud-skills-in-bangalore-2026  301
+/react-developer-to-cloud-engineer                                  /blog/react-developer-to-cloud-engineer  301
+/manual-tester-to-ai-engineer                                       /blog/manual-tester-to-ai-engineer  301
+/cloud-skills-for-scrum-masters                                     /blog/cloud-skills-for-scrum-masters  301
+/frontend-developer-to-cloud-engineer-roadmap                       /blog/frontend-developer-to-cloud-engineer-roadmap  301
+/troubleshooting-skills-for-generative-ai-careers                   /blog/troubleshooting-skills-for-generative-ai-careers  301
+/aws-vs-linux-vs-devops-for-system-administrators                   /blog/aws-vs-linux-vs-devops-for-system-administrators  301
+/full-stack-developer-to-cloud-engineer                             /blog/full-stack-developer-to-cloud-engineer  301
+/ci-cd-projects-for-software-testers                                /blog/ci-cd-projects-for-software-testers  301
+/cloud-administrator-vs-cloud-engineer                              /blog/cloud-administrator-vs-cloud-engineer  301
+/service-desk-to-cloud-engineer                                     /blog/service-desk-to-cloud-engineer  301
+/backend-developer-to-devops-engineer                               /blog/backend-developer-to-devops-engineer  301
+/devops-engineer-after-it-support-experience                        /blog/devops-engineer-after-it-support-experience  301
+/generative-ai-for-program-managers                                 /blog/generative-ai-for-program-managers  301
+/best-it-training-institutes-in-bangalore                           /blog/best-it-training-institutes-in-bangalore  301
+/genai-applications-for-qa-automation-engineers                     /blog/genai-applications-for-qa-automation-engineers  301
+/best-generative-ai-training-institutes-in-bengaluru                /blog/best-generative-ai-training-institutes-in-bengaluru  301
+/cloud-vs-devops-vs-genai-for-it-support                            /blog/cloud-vs-devops-vs-genai-for-it-support  301
+/it-careers-without-programming                                     /blog/it-careers-without-programming  301
+/it-jobs-most-exposed-to-ai                                         /blog/it-jobs-most-exposed-to-ai  301
+/top-cloud-devops-courses-in-bengaluru                              /blog/top-cloud-devops-courses-in-bengaluru  301
+/will-ai-replace-it-support-engineers                               /blog/will-ai-replace-it-support-engineers  301
+/llm-engineer-salary-in-india                                       /blog/llm-engineer-salary-in-india  301
+/it-skills-to-learn-in-2026                                         /blog/it-skills-to-learn-in-2026  301
+/generative-ai-for-scrum-masters                                    /blog/generative-ai-for-scrum-masters  301
+/agentic-ai-engineer-roadmap                                        /blog/agentic-ai-engineer-roadmap  301
+/change-it-specialisation-without-starting-from-zero                /blog/change-it-specialisation-without-starting-from-zero  301
+/what-is-finops-for-cloud-engineers                                 /blog/what-is-finops-for-cloud-engineers  301
+/network-engineer-to-cloud-engineer                                 /blog/network-engineer-to-cloud-engineer  301
+/application-support-to-cloud-operations-cloudops-roles             /blog/application-support-to-cloud-operations-cloudops-roles  301
+/best-cloud-devops-training-institutes-in-mangalore                 /blog/best-cloud-devops-training-institutes-in-mangalore  301
+/top-generative-ai-tools-everyone-should-try                        /blog/top-generative-ai-tools-everyone-should-try  301
+/git-and-github-for-devops-engineers                                /blog/git-and-github-for-devops-engineers  301
+/what-is-amazon-bedrock-beginners-guide                             /blog/what-is-amazon-bedrock-beginners-guide  301
+/database-administrator-to-cloud-engineer                           /blog/database-administrator-to-cloud-engineer  301
+/best-non-coding-cloud-jobs-india                                   /blog/best-non-coding-cloud-jobs-india  301
+/ai-infrastructure-technology-investment                            /blog/ai-infrastructure-technology-investment  301
+/it-automation-without-coding-system-administrators                 /blog/it-automation-without-coding-system-administrators  301
+/cybersecurity-analyst-to-cloud-security-engineer                   /blog/cybersecurity-analyst-to-cloud-security-engineer  301
+
+/blog      https://main-website-blog.pages.dev/blog/         200!
+/blog/     https://main-website-blog.pages.dev/blog/         200!
+/blog/*    https://main-website-blog.pages.dev/blog/:splat   200!

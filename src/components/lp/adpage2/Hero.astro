@@ -1,0 +1,154 @@
+---
+const BgImage = '/lp/adpage2/white2.webp';
+const MobileBgImage = '/lp/adpage2/mobile2.webp';
+  const highlights = [
+    "Build 10+ Real Capstone Projects",
+    "Learn 10x Faster in Kannada",
+    "Get Trained by Industry experts",
+    "Designed for Working IT Professionals",
+  ];
+---
+
+<div class="relative py-10 sm:py-16 overflow-hidden">
+      <div class="absolute inset-0 -z-10 hidden sm:block" style={{
+        backgroundImage: `url(${BgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }} />
+      <div class="absolute inset-0 -z-10 block sm:hidden">
+        <img
+          src={MobileBgImage}
+          alt="Hero mobile background"
+          class="h-full w-full object-cover"
+        />
+      </div>
+
+      {/* Depth overlay + brand glows */}
+      <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-tr from-white/75 via-white/25 to-transparent" />
+      <div class="pointer-events-none absolute -top-28 -right-24 -z-10 h-80 w-80 rounded-full bg-[#151595]/10 blur-3xl" />
+      <div class="pointer-events-none absolute bottom-0 -left-24 -z-10 h-80 w-80 rounded-full bg-[#4c53d9]/10 blur-3xl" />
+      <section class="relative max-w-7xl mx-auto px-6" id="hero">
+        <div class="flex flex-col lg:flex-row items-start justify-between gap-16">
+
+          {/* LEFT SIDE */}
+          <div class="w-full lg:w-[58%] md:pt-5">
+
+            {/* Top Heading */}
+            <h2 class="text-[#151595] text-left text-[38px] sm:text-4xl lg:text-[38px] font-semibold leading-[1.1] tracking-tight mb-8"
+              style="text-shadow:0 0 24px rgba(255,255,255,1), 0 0 48px rgba(255,255,255,0.9), 2px 2px 0 rgba(255,255,255,0.8)">
+              Generative AI &amp; Agentic AI Certification Program
+            </h2>
+
+            {/* Sub Heading */}
+            <h1 class="text-[#111827] text-left text-2xl sm:text-xl lg:text-3xl font-semibold leading-[1.2] tracking-tight mb-6"
+              style="text-shadow:0 0 24px rgba(255,255,255,1), 0 0 48px rgba(255,255,255,0.9), 2px 2px 0 rgba(255,255,255,0.8)">
+              Master Generative AI, LLMs, Prompt Engineering, RAG, and Agentic AI Systems.
+            </h1>
+
+            {/* Description */}
+            {/* <h1 class="text-[#111827] text-left text-2xl md:text-2xl font-semibold leading-[1.1] tracking-tight mb-6">
+              Learn 10x Faster in Kannada & Transition to a 4x Higher Salary Role.
+            </h1> */}
+
+            {/* Highlights / Tick Points */}
+            <div class="flex flex-col gap-3 mb-10">
+              {highlights.map((point) => (
+                <div class="flex items-start gap-2.5">
+                  <svg aria-hidden="true" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="mt-1 flex-shrink-0 text-[#151595] text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path></svg>
+                  <span class="text-left text-base sm:text-lg font-medium text-gray-800">
+                    {point}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Buttons */}
+            <div class="flex flex-col sm:flex-row gap-5">
+
+                <button type="button" data-scroll-to="curriculum" class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#FF0049] text-white px-12 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(255,0,73,0.4)] active:translate-y-0">
+                  Download Curriculum
+                  <svg aria-hidden="true" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="transition-transform duration-300 group-hover:translate-x-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>
+                </button>
+
+              {/* <button type="button" data-scroll-to="demo" class="w-full sm:w-auto border-2 border-[#151595] text-[#151595] hover:bg-[#151595] hover:text-white px-12 py-4 rounded-xl font-bold shadow-md transition">
+                Join Free Demo Session
+              </button> */}
+            </div>
+          </div>
+
+          {/* RIGHT FORM */}
+          <div class="w-full lg:w-[32%] flex justify-center">
+            <div class="bg-white rounded-2xl shadow-xl p-4 w-full max-w-sm">
+
+              <h2 class="text-2xl font-bold mb-2">
+                Talk to Our Experts
+              </h2>
+
+              <p class="text-gray-500 mb-6">
+                Find the right roadmap for your IT career growth.
+              </p>
+
+              <p data-error hidden class="text-red-500 text-sm mb-3" role="alert"></p>
+
+              
+              <form class="space-y-4" data-lead-form data-table="google_adpage" data-redirect="/thankyou5" data-inline-errors novalidate>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  class="w-full border rounded-lg px-4 py-3"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  class="w-full border rounded-lg px-4 py-3"
+                />
+
+                <input
+                  type="tel"
+                  name="number"
+                  placeholder="Phone Number"
+                  class="w-full border rounded-lg px-4 py-3"
+                />
+
+                <select aria-label="Select Work Experience"
+                  name="experience"
+                  class="w-full border rounded-lg px-4 py-3"
+                >
+                  <option value="">
+                    Select Work Experience
+                  </option>
+
+                  <option value="it_working_professional">
+                    IT Professional
+                  </option>
+
+                  <option value="non-it_working_professional">
+                    Non-IT Professional
+                  </option>
+
+                  <option value="fresher-looking_for_job">
+                    Fresher
+                  </option>
+
+                  <option value="student">
+                    Student
+                  </option>
+                </select>
+
+                <button
+                  type="submit"
+                  class="w-full bg-[#151595] text-white py-3 rounded-lg font-semibold"
+                >
+                  Get My Free Career Roadmap
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#f9f8fd] via-[#f9f8fd]/80 to-transparent" />
+    </div>

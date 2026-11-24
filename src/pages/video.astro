@@ -1,0 +1,30 @@
+---
+import LPLayout from '../layouts/LPLayout.astro';
+---
+
+<LPLayout title="3-Step Framework Video | MicroDegree" description="Watch the free MicroDegree video on the 3-step framework to switch to Cloud, DevOps & AI roles." path="/video" noindex>
+	<div class="flex flex-col items-center justify-center p-4 bg-gray-100">
+		<div class="w-full max-w-5xl">
+			<div class="relative w-full aspect-w-16 aspect-h-9">
+				<iframe
+					loading="lazy"
+					title="vimeo-player"
+					src="https://player.vimeo.com/video/1076877917?share=copy#t=0"
+					class="w-full h-full rounded-lg shadow-lg"
+					frameborder="0"
+					allowfullscreen
+				></iframe>
+			</div>
+			<div class="mt-6 mb-6 flex justify-center">
+				<a
+					href="/"
+					download
+					class="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md text-lg font-semibold transition inline-flex items-center"
+				>
+					<i class="fa-solid fa-house mr-2"></i>
+					Go Back to Home
+				</a>
+			</div>
+		</div>
+	</div>
+</LPLayout>

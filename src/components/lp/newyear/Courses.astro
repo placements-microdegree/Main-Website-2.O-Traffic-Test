@@ -1,0 +1,180 @@
+---
+const course1 = '/lp/kaoffer/1.jpg';
+const course2 = '/lp/kaoffer/2.jpg';
+const course3 = '/lp/kaoffer/3.jpg';
+  const courses = [
+    {
+      id: 1,
+      tag: "Get Benefits Worth Upto ₹60,000",
+      discount: "Offer",
+      title: "New Year Resolution Offer",
+      desc: [
+        "Flat ₹4000 OFF for Kannada Medium Students.",
+        "MLOps Program Worth ₹30,000 Absolutely FREE on Titanium & Titanium+ Plan.",
+        "MicroDegree Pro Access (25+ recorded courses) Worth ₹30,000 Absolutely FREE on Titanium & Titanium+ Plan.",
+      ],
+      rating: "4.8 Google Ratings",
+      enrolled: "Join 100000+ Community",
+      image: course1,
+      link: "https://tally.so/r/1AdVWL",
+    },
+  {
+    id: 2,
+    tag: "Get Benefits Worth Upto ₹35,000",
+    discount: "Offer",
+    hours: "Get Benefits Worth Upto ₹35,000",
+    title: "Generative AI & Agentic AI Certification Program ",
+    desc: [
+      "Flat ₹5,000 OFF on Generative AI & Agentic AI Certification Program.",
+      "FREE MicroDegree Prime worth Rs 25000/- \n(25+ Premium recorded courses included)",
+      "Plus additional  ₹5,000 OFF for all Microdegree existing learners🥳",
+    ],
+    rating: "4.8 Google Ratings",
+    enrolled: "Join 100000+ Community",
+    image: course2,
+    link: "https://tally.so/r/lbDrDB", // 🔗 Add your link here
+  },
+  {
+    id: 3,
+    tag: "Save Upto ₹7300/- Now",
+    discount: "Offer",
+    hours: "Save Upto ₹7300/- Now",
+    title: "Cloud & DevOps Starter Program",
+    desc: [
+      "Confused where to begin your Cloud & DevOps journey? Start here",
+      "Get 30+ hrs of premium content, mini courses, and projects - worth ₹7,500, now at just ₹199.",
+    ],
+    rating: "4.8 Google Ratings",
+    enrolled: "Join 100000+ Community",
+    image: course3,
+    link: "https://rzp.io/rzp/PVLNwBjm", // 🔗 Add your link here
+  },
+];
+---
+
+<div class="py-16 bg-white text-center">
+      <style>{`
+        @keyframes pulseButton {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.15); }
+          100% { transform: scale(1); }
+        }
+        .pulse-red {
+          animation: pulseButton 1.5s infinite ease-in-out;
+        }
+      `}</style>
+
+      <h2 class="text-3xl md:4xl font-bold text-black mb-2">
+        Celebrate MicroDegree’s New Year Resolution Offer
+      </h2>
+      <p class="text-xl text-gray-900 mb-12 max-w-6xl p-2 mx-auto p-4">
+        At MicroDegree our mission is to uplift Karnataka’s tech talent & help you build a strong career path. Unlock Exclusive offer with special benefits & free premium access across our Cloud, DevOps, AI & MLOps programs.
+      </p>
+
+      {/* Courses Grid */}
+      <div id="course" class="flex flex-wrap justify-center gap-8 p-3">
+        {courses.slice(0, 2).map((course) => (
+          <div
+            class="w-[580px] border border-gray-300 shadow-md rounded-2xl p-6 text-left hover:shadow-lg transition relative"
+          >
+            <span class="absolute top-4 left-4 bg-blue-100 text-black px-3 py-1 rounded-full text-sm font-semibold">
+              {course.tag}
+            </span>
+            <span class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold pulse-red">
+              {course.discount}
+            </span>
+
+            <div class="text-gray-600 mt-10 text-sm border-b pb-3 text-left"></div>
+
+            {/* Responsive Image and Details */}
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mt-6 text-center md:text-left">
+              <img loading="lazy" decoding="async"
+                src={course.image}
+                alt={course.title}
+                class="w-32 h-32 rounded-full object-cover border-4 border-yellow-400 mx-auto md:mx-0"
+              />
+              <div>
+                <h3 class="font-bold text-lg text-black mt-3 md:mt-0">
+                  {course.title}
+                </h3>
+                <ul class="list-disc pl-5 text-gray-800 text-sm mt-2 space-y-1 text-left">
+                  {course.desc.map((point, index) => (
+                    <li>
+                      {point.split("\n").map((line, i) => (
+                        <span>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <p class="mt-3 text-[#4CBB17] font-medium text-center md:text-left">
+              ⭐ {course.rating} | {course.enrolled}
+            </p>
+
+            <div class="text-center md:text-left">
+              <a href={course.link} target="_blank" rel="noopener noreferrer">
+              <button class="mt-5 bg-yellow-500 text-gray-700 font-semibold px-5 py-2 rounded-lg transition">
+                Claim Offer
+              </button>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Third Course Centered */}
+      <div class="flex justify-center mt-5 p-3">
+        <div class="w-[580px] border border-gray-300 shadow-md rounded-2xl p-6 text-left hover:shadow-lg transition relative">
+          <span class="absolute top-4 left-4 bg-blue-100 text-black px-3 py-1 rounded-full text-sm font-semibold">
+            {courses[2].tag}
+          </span>
+          <span class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold pulse-red">
+            {courses[2].discount}
+          </span>
+
+          <div class="text-gray-600 mt-10 text-sm border-b pb-3 text-left"></div>
+
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mt-6 text-center md:text-left">
+            <img loading="lazy" decoding="async"
+              src={courses[2].image}
+              alt={courses[2].title}
+              class="w-32 h-32 rounded-full object-cover border-4 border-yellow-400 mx-auto md:mx-0"
+            />
+            <div>
+              <h3 class="font-bold text-lg text-black mt-3 md:mt-0">
+                {courses[2].title}
+              </h3>
+              <ul class="list-disc pl-5 text-gray-800 text-sm mt-2 space-y-1 text-left">
+                {courses[2].desc.map((point, index) => (
+                  <li>
+                    {point.split("\n").map((line, i) => (
+                      <span>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <p class="mt-3 text-[#4CBB17] font-medium text-center md:text-left">
+            ⭐ {courses[2].rating} | {courses[2].enrolled}
+          </p>
+
+          <div class="text-center md:text-left">
+<a href={courses[2].link} target="_blank" rel="noopener noreferrer">
+            <button class="mt-5 bg-yellow-500 text-gray-700 font-semibold px-5 py-2 rounded-lg transition">
+              Claim Offer
+            </button>
+                        </a>
+          </div>
+        </div>
+      </div>
+    </div>
