@@ -1,0 +1,35 @@
+# Netlify config for the new (Astro) site.
+# Redirects / proxies (/blog, /learning, ...) live in public/_redirects and are copied into dist/ by the build.
+# Environment variables (set in Netlify > Site configuration > Environment variables, then redeploy):
+#   PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 7 needs Node >= 22.23.4; "22" makes Netlify use the latest 22.x.
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Hashed build output: safe to cache forever.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images / videos / icons keep their names between deploys, so cache for 30 days (not "immutable").
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/lp/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

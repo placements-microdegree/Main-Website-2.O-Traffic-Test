@@ -1,0 +1,16 @@
+name = "microdegree-traffic-split"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# Attach the Worker to the live domain. "microdegree.work" must be a zone on your Cloudflare account.
+routes = [
+  { pattern = "www.microdegree.work/*", zone_name = "microdegree.work" },
+  { pattern = "microdegree.work/*", zone_name = "microdegree.work" },
+]
+
+[vars]
+# Percentage of visitors sent to the NEW site. 0 = everyone on the old site (instant kill switch), 100 = everyone on the new one.
+NEW_SITE_PERCENT = "10"
+# Netlify addresses of the two sites (use the *.netlify.app names, not microdegree.work).
+OLD_ORIGIN = "https://mymicrodegree.netlify.app"
+NEW_ORIGIN = "https://REPLACE-WITH-NEW-SITE-NAME.netlify.app"

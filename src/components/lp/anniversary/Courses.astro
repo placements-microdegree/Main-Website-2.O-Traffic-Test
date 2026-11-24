@@ -53,7 +53,7 @@ const course3 = '/lp/kaoffer/3.jpg';
 ---
 
 <div class="py-16 bg-white text-center">
-      <style>{`
+      <style is:global>
         @keyframes pulseButton {
           0% { transform: scale(1); }
           50% { transform: scale(1.15); }
@@ -62,7 +62,7 @@ const course3 = '/lp/kaoffer/3.jpg';
         .pulse-red {
           animation: pulseButton 1.5s infinite ease-in-out;
         }
-      `}</style>
+      </style>
 
       <h2 class="text-3xl md:4xl font-bold text-black mb-2">
         Celebrate MicroDegree’s 6th Anniversary With Exclusive Offers
